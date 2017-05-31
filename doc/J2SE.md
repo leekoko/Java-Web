@@ -11,9 +11,9 @@
 
 JDK：Java 语言的软件开发工具包，包含JRE（Java运行环境）  
 
-## 2.简单程序  
+## 2.第一个简单程序  
 
-输入一个成绩，判断输出是“及格”，还是“不及格”。（ps:用到Scanner）
+**输入一个成绩，判断输出是“及格”，还是“不及格”。（ps:用到Scanner）**
 ```java
 import java.util.Scanner;
 public class Main {
@@ -29,6 +29,23 @@ public class Main {
 	}
 }
 ```
+
+## 3.循环语句  
+**循环打印姓名"Mike","Jenny","Johnson","Amy","Mary","Cathrine","Armstrong","Dony"并且三个一换行**
+```java
+public static void main(String[] args) {
+//	1.将姓名存入数组
+	String[] arr={"Mike","Jenny","Johnson","Amy","Mary","Cathrine","Armstrong","Dony"};
+	for (int i = 0; i < arr.length; i++) {
+		System.out.print(arr[i]+"\t\t");
+//		2.判断一旦3的倍数，添加换行
+		if((i+1)%3==0){
+			System.out.println();
+		}
+	}
+}
+```
+
 
 
 
