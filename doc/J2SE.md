@@ -46,6 +46,43 @@ public static void main(String[] args) {
 }
 ```
 
+## 4.基本元素
+### 1.基本数据类型  
+一共有4大类（8种）基本的数据类型  
+1. 整型:byte(8个二进制),short（2个字节）,int（4个字节）,long（8个字节）  
+2. 浮点:float,double  
+3. 字符:char  
+4. 布尔:boolean  
+
+### 2.名词解释  
+1. 类：具有相同或相似的事物统称（抽象的概念）  
+2. 对象：类的某一个特例，叫做对象（活生生的个体）  
+3. 成员变量：类的属性，类所具有的特征  
+4. 成员函数：类的方法，类能实施的行为  
+**定义一个类Person，其属性有：name，age，其方法有：eat()，sing()。实例化类，调用方法，打印“XX岁的XX在唱歌/吃饭”**
+```java
+public class Main {
+public static void main(String[] args) {
+	Person person=new Person();
+	person.age=5;
+	person.name="小明";
+	person.eat();
+	System.out.println("-----------");
+	person.sing();
+}
+}
+//1. 定义类，声明属性，方法
+class Person{
+	int age;
+	String name;
+	void eat(){
+		System.out.println(age+"岁的"+name+"正在吃饭");
+	}
+	void sing(){
+		System.out.println(age+"岁的"+name+"正在唱歌");
+	}
+}
+```
 
 
 
