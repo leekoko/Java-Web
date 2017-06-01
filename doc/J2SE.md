@@ -131,6 +131,46 @@ public class Person {
 }
 ```
 
+### 4.重载  
+重载overloading：方法名相同，参数列表不同  
+重写overridding：子类重写并覆盖父类的方法  
+
+### 5.继承  
+一个子类只能extends一个父类（也叫：超类，基类）  
+所有的类都默认继承于java.lang.Object（就算Object也在基本包lang中）  
+**定义一个类Person，其属性有：name，age，其方法有：show()，调用打印“XX岁XX人”。定义Student类继承Person，其属性追加score，其重写方法show(),调用打印“XX岁XX学生分数是XX”**
+```java
+public class Person {
+	int age;
+	String name;
+	void show(){
+		System.out.println(age+"岁"+name+"人");		
+	}
+}
+
+public class Student extends Person{  //Student继承于Person
+	int score;
+	void show(){   //重写方法
+		System.out.println(age+"岁"+name+"学生分数"+score);
+	}
+}
+
+public class Main {
+	public static void main(String[] args) {
+		Person p=new Person();
+		p.age=5;
+		p.name="小黑";
+		p.show();
+		
+		Student s=new Student();
+		s.age=6;
+		s.name="小黄";
+		s.score=100;
+		s.show();
+	}
+}
+
+```
 
 
 
