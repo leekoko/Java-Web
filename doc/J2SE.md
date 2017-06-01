@@ -91,7 +91,7 @@ class Person{
 ```
 
 ### 3.修饰符   
-[](images/1.png)  
+[](../images/1.png)  
 （包package：用于对类（或其他类型）进行分类组织的机制）  
 
 
