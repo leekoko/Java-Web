@@ -249,7 +249,6 @@ public static void main(String[] args) {
 }
 }
 ```  
-接口也可以用多态表示  
 *如果没有代码提示，开启提示：Window -> preferences -> Java -> Editor -> Content assist -> Auto-Activation.abcdefghijklmnopqrstuvwxyz*  
 
 ### 9.  
