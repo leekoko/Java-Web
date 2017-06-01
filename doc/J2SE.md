@@ -92,8 +92,44 @@ class Person{
 
 ### 3.修饰符   
 ![](../images/1.jpg)  
-（包package：用于对类（或其他类型）进行分类组织的机制）  
+当修饰符为private的时候，要在外部访问，需要设置setter&getter方法  
+*包package：用于对类（或其他类型）进行分类组织的机制*  
+**定义一个类Person，其_私有_属性有：name，age，其_公开_方法有：eat()，sing()。实例化类，调用方法，打印“XX岁的XX在唱歌/吃饭”**  
+```java
+public class Main {
+public static void main(String[] args) {
+	Person person=new Person();
+//	person.age=11111;    没办法赋值
+	person.setAge(11);   //使用setter方法赋值
+	person.setName("小白");
+	person.eat();
+	person.sing();
+}
+}
 
+public class Person {
+	private String name;
+	private int age;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public void eat(){
+		System.out.println(age+"岁的"+name+"正在吃饭");
+	}
+	public void sing(){
+		System.out.println(age+"岁的"+name+"正在唱歌");
+	}
+}
+```
 
 
 
