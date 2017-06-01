@@ -89,6 +89,7 @@ class Person{
 	}
 }
 ```
+*多态：父类的引用可以指向子类的对象：``Animal a=new Dog();``，当调用a对象的方法：如果子类用重写方法，则执行子类的方法，如果子类没有重写方法，则执行父类的方法。*
 
 ### 3.修饰符   
 ![](../images/1.jpg)  
@@ -206,5 +207,51 @@ public static void main(String[] args) {
 }
 }
 ```
+
+### 7.传值与传址  
+传值：简单的类型 byte,short,int,long / float,double / boolean / char  
+传址：引用的类型 String,对象  
+
+### 8.接口  
+接口类似于父类，区别就是接口只能为抽象方法  
+**定义教师与学生接口，用助教类实现它们，把多态体现出来**  
+```java
+public interface Teacher {
+public void teach();
+}
+
+public interface Student {
+public void study();
+}
+
+public class Assist implements Teacher,Student{
+	public void study() {
+		System.out.println("正在学习");
+	}
+	public void teach() {
+		System.out.println("正在教书");
+	}
+}
+
+public class Main {
+public static void main(String[] args) {
+	//助教状态
+	Assist a=new Assist();
+	a.study();
+	a.teach();
+	System.out.println("------------");
+	//教师状态
+	Teacher t=new Assist();
+	t.teach();   //教师状态没有study()方法
+	//转化为学生状态
+	Student s=(Student)t;    //强制转化为学生，就有study()方法
+	s.study();
+}
+}
+```  
+接口也可以用多态表示  
+*如果没有代码提示，开启提示：Window -> preferences -> Java -> Editor -> Content assist -> Auto-Activation.abcdefghijklmnopqrstuvwxyz*  
+
+### 9.  
 
 
