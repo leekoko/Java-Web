@@ -259,5 +259,6 @@ public static void main(String[] args) {
 **内部类**：类中又包含类  
 （ 内部类的深析：http://www.360doc.com/showWeb/0/0/412191736.aspx ）  
 
-进入下一章：[2.J2SE：J2SE轻松入门第二季](/J2SE_2.md)
+
+**进入下一章：[2.J2SE：J2SE轻松入门第二季](J2SE_2.md)**
 
