@@ -1,4 +1,4 @@
-# 1.Java的基础（一）：J2SE  
+# 1.J2SE：Java基础入门  
 
 ## 1.java环境  
 
