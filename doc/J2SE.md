@@ -172,7 +172,39 @@ public class Main {
 
 ```
 
+### 6.构造函数  
+构造函数用来初始化对象，在创建对象的时候会被调用  
+默认构造函数没有参数，不编写的时候系统会自动生成，自己编写则不会自动生成  
+特点：1.名字和类的名字相同  2.没有返回值，但是不加void  3.构造函数可以有多个，参数不能相同  
+**使用构造函数初始化Person类的姓名和年龄，调用show方法打印“XX岁XX人”，编写重载构造函数，传入姓名和年龄再打印show方法**  
+```java
+public class Person {
+	int age;
+	String name;
+	//重写默认构造函数
+	public Person() {
+		this.age=3;
+		this.name="初始化";
+	}
+	//重载构造函数
+	public Person(int age,String name){
+		this.age=age;
+		this.name=name;
+	}
+	void show(){
+		System.out.println(age+"岁的"+name+"人");
+	}
+}
 
-
+public class Main {
+public static void main(String[] args) {
+	Person p=new Person();
+	p.show();
+	System.out.println("-------------");
+	Person p2=new Person(8,"小灰");
+	p2.show();
+}
+}
+```
 
 
