@@ -251,6 +251,11 @@ public static void main(String[] args) {
 ```  
 *如果没有代码提示，开启提示：Window -> preferences -> Java -> Editor -> Content assist -> Auto-Activation.abcdefghijklmnopqrstuvwxyz*  
 
-### 9.  
+### 9.抽象类&内部类  
+**抽象类**：包含抽象方法的类（接口是纯抽象类）  
+编写抽象方法需要在方法和类上面添加abstract  
+抽象类不能实例化，需要创建一个类去继承抽象类（继承之后没实现，也叫抽象类），实现其方法之后才可以实例化  
 
+**内部类**：类中又包含类  
+（内部类的深析：http://www.360doc.com/showWeb/0/0/412191736.aspx）  
 
