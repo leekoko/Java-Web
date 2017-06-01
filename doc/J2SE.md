@@ -11,6 +11,8 @@
 
 JDK：Java 语言的软件开发工具包，包含JRE（Java运行环境）  
 
+---
+
 ## 2.第一个简单程序  
 
 **输入一个成绩，判断输出是“及格”，还是“不及格”。（ps:用到Scanner）**
@@ -30,6 +32,8 @@ public class Main {
 }
 ```
 
+---
+
 ## 3.循环语句  
 **循环打印姓名"Mike","Jenny","Johnson","Amy","Mary","Cathrine","Armstrong","Dony"并且三个一换行**
 ```java
@@ -45,6 +49,8 @@ public static void main(String[] args) {
 	}
 }
 ```
+
+---
 
 ## 4.基本元素
 ### 1.基本数据类型  
@@ -83,6 +89,10 @@ class Person{
 	}
 }
 ```
+
+### 3.修饰符   
+[](images/1.png)  
+（包package：用于对类（或其他类型）进行分类组织的机制）  
 
 
 
