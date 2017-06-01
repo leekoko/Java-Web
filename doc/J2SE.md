@@ -257,5 +257,5 @@ public static void main(String[] args) {
 抽象类不能实例化，需要创建一个类去继承抽象类（继承之后没实现，也叫抽象类），实现其方法之后才可以实例化  
 
 **内部类**：类中又包含类  
-（内部类的深析：http://www.360doc.com/showWeb/0/0/412191736.aspx）  
+（ 内部类的深析：http://www.360doc.com/showWeb/0/0/412191736.aspx ）  
 
