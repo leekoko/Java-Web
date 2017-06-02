@@ -9,7 +9,7 @@
 异常是一个类的对象，所有的异常父类都为Throwable  
 Throwable主要有两个子类：Error&Exception  
 1. Error:JVM（虚拟机）运行异常，无法处理  
-2. Exception：之一RuntimeException，表示运行时异常，可以try catch。而非RunTimeException必须得处理。  
+2. Exception：之一RuntimeException，表示运行时异常，可以try catch。而非RunTimeException必须得处理。添加finally表示最后一定会执行的代码块。  
 
 >**RuntimeException**  
 >1.NullPointerException（空指针异常）  
@@ -19,7 +19,8 @@ Throwable主要有两个子类：Error&Exception
 >5.IllegalArgumentException（非法参数异常）  
 >6.ArithmeticException（算术异常）  
 >7.IllegalStateException（非法语句异常）   
->
+>  
 >**非RuntimeException**  
 >ClassNotFoundException（类找不到异常）  
 
+异常也可以使用throws抛出的方式，谁调用谁处理  
