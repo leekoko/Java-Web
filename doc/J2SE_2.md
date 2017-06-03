@@ -24,3 +24,10 @@ Throwable主要有两个子类：Error&Exception
 >ClassNotFoundException（类找不到异常）  
 
 异常也可以使用throws抛出的方式，谁调用谁处理  
+
+## 3.反射  
+
+动态加载类  Class<?> c=Class.forName("javastudy.Person");  
+创建对象  Person zhang=(Person)c.newInstance();  
+
+
