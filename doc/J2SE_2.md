@@ -26,7 +26,6 @@ Throwable主要有两个子类：Error&Exception
 异常也可以使用throws抛出的方式，谁调用谁处理  
 
 ## 3.反射  
-
 动态加载类 ``Class<?> c=Class.forName("javastudy.Person");``  
 创建对象 ``Person zhang=(Person)c.newInstance();``   
 获取构造函数数组 ``Constructor<?> cons=c.getConstructors();``  
@@ -65,8 +64,13 @@ public static void main(String[] args) throws ClassNotFoundException, Instantiat
 	Class<?>[] inter=c.getInterfaces();
 	//使用获取来的构造函数
 	Person wang=(Person) cons[1].newInstance(30,"Mary");
-	
-	
+
 }
 ```
 
+## 4.集合框架  
+1. 数组：定长，只能存同一种类型  
+2. 
+
+![](../images/2.jpg)  
+List和Set都属于接口，其下结点为它们的实现类  
