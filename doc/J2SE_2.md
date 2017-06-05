@@ -27,7 +27,13 @@ Throwable主要有两个子类：Error&Exception
 
 ## 3.反射  
 
-动态加载类  Class<?> c=Class.forName("javastudy.Person");  
-创建对象  Person zhang=(Person)c.newInstance();  
+动态加载类 ``Class<?> c=Class.forName("javastudy.Person");``  
+创建对象 ``Person zhang=(Person)c.newInstance();``   
+获取构造函数数组 ``Constructor<?> cons=c.getConstructors();``  
+获取该类的接口组 ``Class<?>[] inter=c.getInterfaces();``  
+通过反射获取对象 ``Person wang=(Person)cons[1].newInstance("Mary",30);``  
+**利用反射，动态加载Person类。获取该类的构造函数数组，使用构造函数构造对象。获取该类的接口数组，列出所有的接口名**  
+```java
 
+```
 
