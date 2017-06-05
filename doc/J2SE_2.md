@@ -34,6 +34,39 @@ Throwable主要有两个子类：Error&Exception
 通过反射获取对象 ``Person wang=(Person)cons[1].newInstance("Mary",30);``  
 **利用反射，动态加载Person类。获取该类的构造函数数组，使用构造函数构造对象。获取该类的接口数组，列出所有的接口名**  
 ```java
+public interface Animal {
 
+}
+
+public class Person implements Animal{   //实现animal接口
+	int age;
+	String name;
+	//重写构造方法
+	public Person() {
+		// TODO Auto-generated constructor stub
+	}
+	//重载构造方法
+	public Person(int age,String name){
+		this.name=name;
+		this.age=age;
+	}
+	
+}
+
+public class Main {
+public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	//动态加载类
+	Class<?> c=Class.forName("javastudy.Person");
+	//用newInstance方法创建对象
+	Person zhang=(Person) c.newInstance();
+	//获取构造函数数组
+	Constructor<?>[] cons=c.getConstructors();
+	//获取接口数组
+	Class<?>[] inter=c.getInterfaces();
+	//使用获取来的构造函数
+	Person wang=(Person) cons[1].newInstance(30,"Mary");
+	
+	
+}
 ```
 
