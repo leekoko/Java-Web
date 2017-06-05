@@ -72,5 +72,5 @@ public static void main(String[] args) throws ClassNotFoundException, Instantiat
 1. 数组：定长，只能存同一种类型  
 2. 
 
-![](../images/2.jpg)  
+![](../images/2.png)  
 List和Set都属于接口，其下结点为它们的实现类  
