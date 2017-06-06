@@ -75,6 +75,7 @@ public static void main(String[] args) throws ClassNotFoundException, Instantiat
 ---
 
 ## 4.集合框架  
+### 1.Collection介绍  
 1. 数组：定长，只能存同一种类型  
 2. ArrayList:基于数组，查找速度比较快  
 遍历器循环：  
@@ -85,12 +86,12 @@ while(it.hasNext()){
 }
 ```  
 3. LinkList:基于链表，修改数据比较快  
-4. HashSet:Set没有索引，不可以重复，Hash是无序的  
+4. HashSet:Set没有索引，**不可以重复**，Hash是无序的  
 5. TreeSet:没有索引，并且是无序的  
 ![](../images/2.png)  
 List和Set都属于接口，其下结点为它们的实现类  
 
-**定义比较器**  
+### 2.定义比较器  
 1. 比较类实现Comparator<Person>接口  
 2. 实例化ComparaTo方法，用传进来的Person类比较  
 返回1,0，-1三个值（或者直接返回compareTo方法）  
@@ -137,4 +138,11 @@ class MyCom implements Comparator<Person>{
 
 ---
 
-## 5.
+### 3.Map介绍（HashMap&TreeMap）  
+1. 获取键的集合：使用keySet()方法，Set集合用Iterator遍历  
+2. 通过序号获取内容：cities.get(序号);  
+3. 拿整个键值对：``Set<Entry<String,String>> entries=cities.entrySet();``,拿到Entry之后可以通过getKey()获取键，用getValue()获取值。  
+
+---
+
+**进入下一章：[3.J2SE：J2SE轻松入门第三季](J2SE_3.md)**
