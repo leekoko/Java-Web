@@ -5,6 +5,8 @@
 2. 静态成员：表示该成员属于所有的类，到处都能访问（访问静态成员，必须使用静态方法）  
 ``被static修饰后的成员，在编译时由内存分配一块内存空间，直到程序停止运行才会释放，那么就是说该类的所有对象都会共享这块内存空间``  
 
+---
+
 ## 2.异常  
 异常是一个类的对象，所有的异常父类都为Throwable  
 Throwable主要有两个子类：Error&Exception  
@@ -24,6 +26,8 @@ Throwable主要有两个子类：Error&Exception
 >ClassNotFoundException（类找不到异常）  
 
 异常也可以使用throws抛出的方式，谁调用谁处理  
+
+---
 
 ## 3.反射  
 动态加载类 ``Class<?> c=Class.forName("javastudy.Person");``  
@@ -68,9 +72,69 @@ public static void main(String[] args) throws ClassNotFoundException, Instantiat
 }
 ```
 
+---
+
 ## 4.集合框架  
 1. 数组：定长，只能存同一种类型  
-2. 
-
+2. ArrayList:基于数组，查找速度比较快  
+遍历器循环：  
+```
+Iterator<String> it=al.iterator();
+while(it.hasNext()){
+	syso(it.next());	
+}
+```  
+3. LinkList:基于链表，修改数据比较快  
+4. HashSet:Set没有索引，不可以重复，Hash是无序的  
+5. TreeSet:没有索引，并且是无序的  
 ![](../images/2.png)  
 List和Set都属于接口，其下结点为它们的实现类  
+
+**定义比较器**  
+1. 比较类实现Comparator<Person>接口  
+2. 实例化ComparaTo方法，用传进来的Person类比较  
+返回1,0，-1三个值（或者直接返回compareTo方法）  
+3. 调用的时候，传方法  
+``TreeSet<Dog> ts=new TreeSet<Dog>(new MyCom());   //传比较器对象``  
+**定义一个类，实例化类之后存进TreeSet中，其输出通过类的age排序**  
+```java
+public class Main {
+	public static void main(String[] args) {
+		TreeSet<Person> ts=new TreeSet<Person>(new MyCom());
+		ts.add(new Person(1, "xiaoming"));
+		ts.add(new Person(2, "xiaobai"));
+		ts.add(new Person(3, "xiaohei"));
+		ts.add(new Person(6, "xiaohong"));
+		ts.add(new Person(5, "xiaohuang"));
+		Iterator<Person> it=ts.iterator();
+		while(it.hasNext()){
+			System.out.println(it.next().name);
+		}
+	}
+}
+
+class Person{
+	int age;
+	String name;
+	public Person(int age,String name) {
+		this.name=name;
+		this.age=age;
+	}
+}
+
+class MyCom implements Comparator<Person>{
+	public int compare(Person o1, Person o2) {
+		if(o1.age>o2.age){
+			return 1;
+		}else if(o1.age==o2.age){
+			return 0;
+		}else{
+			return -1;
+		}
+	}
+}
+```
+
+---
+
+## 5.
