@@ -48,6 +48,13 @@ public static void main(String[] args) throws ClassNotFoundException, SQLExcepti
 }
 ```  
 
+8. 获取字段标题:``ResultSetMetaData data=rs.getMetaData(); data.getColumnName(i)``    
+
+### 4.增加数据  
+1. 增加，修改，数据删除都没有返回数据，所以用st.executeUpdate("sql语句");  
+2. 使用占位符的方式添加数据更加高效：先``conn.prepareStatement(sql);``,再``ps.setString(1,"003")``,最后``ps.executeUpdate();``执行    
+
+
 
 
 
