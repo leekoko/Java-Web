@@ -14,6 +14,8 @@ view 视图
 stored procedure 存储过程：用sql语法编写的程序  
 结构化语言：用来增删改查  
 
+**创建student数据库，新建studinfo表，字段为no，name，sex，age**
+
 2. 常用命令  
 增：insert into studinfo values('002','李四'，'男'，20)  
 删：update studinfo set name='李五' where no = '002'    
@@ -21,7 +23,34 @@ stored procedure 存储过程：用sql语法编写的程序
 查：select * from studinfo  
 select name,chinese from studinfo,grade where studinfo.no==grade.no(联表查询)  
 
-3. JDBC访问数据库  
-首先下载JDBC的驱动程序  
-引入到项目中（项目下：内部jar包  项目外：外部jar包）  
+### 3.JDBC访问数据库  
+1. 首先下载JDBC的驱动程序  
+2. 引入到项目中（项目下：内部jar包  项目外：外部jar包）  
+3. 编写程序：加载驱动程序到内存``Class.forName("com.mysql.jdbc.Driver");``   
+4. 创建连接：``Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/student","root","123456");``(需要账号密码，使用sql下的jar包而不是mysql)  
+5. 创建Statement：``Statement st=conn.createStatement();``  
+6. 执行sql语句：``st.executeQuery("select * from studinfo");``返回的是ResultSet  
+7. 循环打印,从1开始打印,用``while(rs.next())``循环，每层循环打印n个，每个用rs.getString(i)获取  
+
+**加载jdbc，创建连接后读取student数据库studinfo表（4个字段）的所有数据**  
+```java
+public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	Class.forName("com.mysql.jdbc.Driver");
+	Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/student", "root", "123456");
+	Statement st=conn.createStatement();
+	ResultSet rs=st.executeQuery("select * from studinfo");
+	while(rs.next()){
+		for (int i = 1; i <= 4; i++) {
+			System.out.print(rs.getString(i)+"\t");
+		}
+		System.out.println();
+	}
+}
+```  
+
+
+
+
+
+
 
