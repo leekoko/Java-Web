@@ -80,12 +80,77 @@ ca.getTime().toLocaleString();```
 ## 4.字符流&字节流  
 字节就是byte（8位），字符是char（16位，和具体编码有关）  
 字节流可以处理所有的工作，字符流在处理字符工作的时候比较方便  
+```
+                           Java IO 流
+                          /          \
+                         /            \
+                      字节流        字符流
+                       /                \
+                      /                  \
+                     /                    \
+         InputStream,OutputStream         Reader,Writer
+                   /                        \
+                  /                          \
+                 /                            \
+FileInputStream,FileOutputStream              FileReader,FileWriter
+BufferedInputStream,BufferedOutputStream      BufferedReader,BufferedWriter
+                                              InputStreamReader,OutputStreamWriter
 
+    PrintStream                                   PrintWriter 
+```
 
+### 1.字节流读取文本文件（不适合使用）  
+1. 新建FileInputStream对象：``FileInputStream fis=new　FileInputStream("E:\\目录\\文件.txt");``  
+2. 获取文件的长度：fis.available(),然后利用获取到的长度新建字节数组:byte[] data=new byte[len]  
+3. 将读取的内容存到字节数组中：fis.read(data);  
+4. 最后将字节数组包装成字符串new String(data)，记得关闭字节流fis.close()  
 
-###　
+### 2.字符流读取文本文件
+1. 新建FileReader对象：``FileReader fr=new FileReader("E:\\目录\\文件.txt");``  
+2. 用int型获取数据:``ch=fr.read()``  
+当读出来为-1的时候说明读取结束，跟字节流的不同，字节流读出来的不能直接强转为字符，需要装配为数组再包装为字符串  
+3. 将int型转化为字符，记得关闭字符流fr.close()  
 
+### 3.字节流的方式写文件  
+1. 新建FileOutputStream对象  
+2. 执行write方法，将String转化为字节：``fos.write(str.getBytes())``，记得关闭字节流fos.close()　　
 
+### 4.字符流的方式写文件   
+1. 新建FileWriter对象  
+2. 直接调用write方法写String(字符串)对象，记得关闭字符流fw.close()  
 
+### 5.利用读写做复制  
+读写的时候如果用字节流的话，数组的长度定义为1024。将内容读取到byte[] data字节数组中，将读取的个数存到int型中  
+写出的时候，fos.write(data,0,ch),每一次写出0到ch的内容，最后一次可能就不是1024了  
+提高效率的方式：使用装饰模式,BufferedOutputStream bis=new BufferedOutputStream(bis);&BufferedInputStream包装  
+使用装饰模式的BufferedReader，他有readLine()方法，可以进行整行读取。
 
+### 6.将字节流转化为字符流  
+字节流转化为字符流的方式 ``OutputStreamWriter osw=new OutputStreamWriter(fos);``  
 
+### 7.PrintStream&PrintWriter  
+1. 定义输出对象：fos  
+2. 将输出对象包装为PrintStream对象  
+3. 调用print("输出的文字")；方法就可以输出打印文字  
+
+**用字节流的装饰模式高效复制文件**  
+```java
+	public static void main(String[] args) throws IOException {
+		FileInputStream fis=new FileInputStream("F:\\Test.txt");
+		BufferedInputStream bfi=new BufferedInputStream(fis);
+		FileOutputStream fos=new FileOutputStream("C:\\Test.txt");
+		BufferedOutputStream bos=new BufferedOutputStream(fos);
+		byte[] arr=new byte[1024];
+		int ch=0;
+		while((ch=bfi.read(arr))!=-1){
+			bos.write(arr, 0, ch);
+		}
+		bfi.close();
+		bos.close();
+		System.out.println("复制完毕");
+	}
+```
+
+---
+
+**进入下一章：[4.javascript](Javascript.md)**
