@@ -70,10 +70,20 @@ ca.setTimeInMillis(file.lastModified());
 ca.getTime().toLocaleString();```  
 - 文件大小：file.length()  
 - 文件类型：file.isDirectory()  
+- 子目录：file.listFiles()  
+- 路径：file.getPath(),转化为大写并txt结尾:getPath().toUpperCase().endsWith(".TXT")  
 
+寻找磁盘下的子目录信息，使用递归算法，可能会遇到系统不让读文件，直接忽略。  
 
 ---
 
+## 4.字符流&字节流  
+字节就是byte（8位），字符是char（16位，和具体编码有关）  
+字节流可以处理所有的工作，字符流在处理字符工作的时候比较方便  
+
+
+
+###　
 
 
 
