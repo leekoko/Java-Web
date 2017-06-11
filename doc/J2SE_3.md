@@ -5,6 +5,8 @@
 泛型传的只能是引用类型  
 调用方式：``MyTest<String> mt=new MyTest<String>();``  
 
+---
+
 ## 2.MySql  
 java连接数据库的方法：JDBC  
 安装之后让MySql随系统启动启动（在 服务 中可以设置，也可以设置手动：net start mysql/ net stop mysql）  
@@ -54,6 +56,20 @@ public static void main(String[] args) throws ClassNotFoundException, SQLExcepti
 1. 增加，修改，数据删除都没有返回数据，所以用st.executeUpdate("sql语句");  
 2. 使用占位符的方式添加数据更加高效：先``conn.prepareStatement(sql);``,再``ps.setString(1,"003")``,最后``ps.executeUpdate();``执行    
 
+---
+
+## 3.文件系统操作  
+### 1.显示文件的信息  
+1. 创建File对象：``File file=new File("D:\\eclipse\\eclipse.exe");``  
+2. 将信息存进StringBuilder中：str.append("信息内容")  
+可以获得的信息：  
+- 最后修改日期：file.lastModified()  
+修改时间格式的方式：
+```Calendar ca=Calendar.getInstance();  
+ca.setTimeInMillis(file.lastModified());  
+ca.getTime().toLocaleString();```  
+- 文件大小：file.length()  
+- 文件类型：file.isDirectory()  
 
 
 
