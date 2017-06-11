@@ -63,15 +63,17 @@ public static void main(String[] args) throws ClassNotFoundException, SQLExcepti
 1. 创建File对象：``File file=new File("D:\\eclipse\\eclipse.exe");``  
 2. 将信息存进StringBuilder中：str.append("信息内容")  
 可以获得的信息：  
-- 最后修改日期：file.lastModified()  
+  1. 最后修改日期：file.lastModified()  
 修改时间格式的方式：
-```Calendar ca=Calendar.getInstance();  
+```
+Calendar ca=Calendar.getInstance();  
 ca.setTimeInMillis(file.lastModified());  
-ca.getTime().toLocaleString();```  
-- 文件大小：file.length()  
-- 文件类型：file.isDirectory()  
-- 子目录：file.listFiles()  
-- 路径：file.getPath(),转化为大写并txt结尾:getPath().toUpperCase().endsWith(".TXT")  
+ca.getTime().toLocaleString();
+```  
+  2. 文件大小：file.length()  
+  3. 文件类型：file.isDirectory()  
+  4. 子目录：file.listFiles()  
+  5. 路径：file.getPath(),转化为大写并txt结尾:getPath().toUpperCase().endsWith(".TXT")  
 
 寻找磁盘下的子目录信息，使用递归算法，可能会遇到系统不让读文件，直接忽略。  
 
