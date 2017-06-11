@@ -72,6 +72,8 @@ ca.getTime().toLocaleString();```
 - 文件类型：file.isDirectory()  
 
 
+---
+
 
 
 
