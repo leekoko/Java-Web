@@ -18,11 +18,11 @@ stored procedure 存储过程：用sql语法编写的程序
 
 **创建student数据库，新建studinfo表，字段为no，name，sex，age**
 
-2. 常用命令  
-增：insert into studinfo values('002','李四'，'男'，20)  
-删：update studinfo set name='李五' where no = '002'    
-改：delete studinfo where no='002'  
-查：select * from studinfo  
+2. 常用命令  
+**增**：insert into studinfo values('002','李四'，'男'，20)  
+**删**：update studinfo set name='李五' where no = '002'    
+**改**：delete studinfo where no='002'  
+**查**：select * from studinfo  
 select name,chinese from studinfo,grade where studinfo.no==grade.no(联表查询)  
 
 ### 3.JDBC访问数据库  
