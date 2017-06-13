@@ -86,7 +86,30 @@ style.display=block/none 元素和空间都会隐藏(为了防止排版出错，
 
 **点击男女选框，表格中的输入框发生改变**
 ```html
-
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title>显示隐藏</title>
+		<script>
+			function nan(){
+				document.getElementById("de").checked=true;
+				document.getElementById("nan").style.display="block";
+				document.getElementById("nv").style.display="none";
+			}
+			function nv(){
+				document.getElementById("nan").style.display="none";
+				document.getElementById("nv").style.display="block";
+			}
+		</script>
+	</head>
+	
+	<body onload="nan()">
+		男：<input type="radio" name="sex" id="de" onclick="nan()"/>
+		女：<input type="radio" name="sex" onclick="nv()"/>		
+		<div style="background: black; width: 20px; height: 20px;" id="nan"></div>
+		<div style="background: red; width: 20px; height: 20px;" id="nv"></div>		
+	</body>
+</html>
 ```  
 
 ---
