@@ -114,4 +114,11 @@ style.display=block/none 元素和空间都会隐藏(为了防止排版出错，
 
 ---
 
-## 3.
+## 3.调试  
+1.  DOM资源管理器  
+可以查看javascript执行完之后的结果（跟直接查看源码不一样）  
+可以修改显示的内容，右边为对应样式  
+2.  DeBug  
+在Debug页面可以调试断点  
+Source中可以断点跟踪，查看属性  
+Firefox可以添加插件firebug  
