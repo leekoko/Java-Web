@@ -1,10 +1,12 @@
 # 4.javascript   
+
 ## 1. 元素  
 ### 1.按钮  
 分为功能按钮和普通按钮，功能按钮有submit,reset（只能放在表格中），普通按钮是button  
 点击事件：用onclick添加  
 ### 2.选择框  
 document.forms[0].ah[i].checked判断是否选中（ah是选择框的name）  
+选中选择框：``document.getElementById("nan").checked=true;``  
 ### 3.输入框  
 document.form[0].mm.focus()选中内容  
 ### 4.方法  
@@ -14,12 +16,72 @@ function sayHello(){
 }
 ```  
 name有多个，所以Elements需要加s  
+onload事件：页面加载的时候执行，写在body中  
+
 ### 5.正则表达式  
+1. 定义正则表达式  
+方法1：var reName=new RegExp("正则表达式");    
+方法2：var reName=/正则表达式/;  
 
+2. 中文正则表达式  
+/^[\u4e00-\u9fa5]+$/i   
+该编码范围内，+表示出现1次以上  
 
+3. 使用正则表达式  
+```javascript
+var str=/^[\u4e00-\u9fa5]+$/i;
+if(!str.test(某个value)){
+	...
+}
+```  
+
+4. 数字正则表达式  
+/^[1-9][0-9]?$/ 第一位1-9，第二位0-9，问号表示不一定会出现  
+该正则表达式用来限制1-99的数字  
+
+**使用正则表达式，判断输入框的名字是否为中文，岁数是否为1-99岁**  
+```html
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title>正则表达式</title>
+		<script>
+			function yz(){
+				var a=/^[\u4e00-\u9fa5]+$/;
+				var b=/^[1-9][0-9]?$/;
+				if(!a.test(document.getElementsByName("xm").item(0).value)){
+					alert("请输入中文");
+					return;
+				}
+				if(!b.test(document.getElementsByName("nl").item(0).value)){
+					alert("请输入1-99的数字");
+					return;
+				}
+				alert("验证成功");
+			}
+		</script>
+	</head>
+	
+	<body>
+		姓名：<input name="xm" /><br />
+		年龄：<input name="nl" /><br />
+		<button onclick="yz()">验证</button>
+	</body>
+</html>
+```
 
 
 ---
 
 ## 2.DOM  
 操作网页上的元素（文档对象模型）  
+1. 隐藏元素  
+``document.getElementsByName("nvhx").item(i).style.display="none";``  
+style.visibility=visible/hidden 元素隐藏，空间留着  
+style.display=block/none 元素和空间都会隐藏  
+
+
+
+---
+
+## 3.
