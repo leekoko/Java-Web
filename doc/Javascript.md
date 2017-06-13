@@ -7,8 +7,10 @@
 ### 2.选择框  
 document.forms[0].ah[i].checked判断是否选中（ah是选择框的name）  
 选中选择框：``document.getElementById("nan").checked=true;``  
+
 ### 3.输入框  
 document.form[0].mm.focus()选中内容  
+
 ### 4.方法  
 ```javascript
 function sayHello(){
@@ -17,6 +19,7 @@ function sayHello(){
 ```  
 name有多个，所以Elements需要加s  
 onload事件：页面加载的时候执行，写在body中  
+parseFloat(value值)：转化为浮点数  
 
 ### 5.正则表达式  
 1. 定义正则表达式  
@@ -76,11 +79,15 @@ if(!str.test(某个value)){
 ## 2.DOM  
 操作网页上的元素（文档对象模型）  
 1. 隐藏元素  
-``document.getElementsByName("nvhx").item(i).style.display="none";``  
+``document.getElementsByName("nvhx").item(i).style.display="none";``
+获取name必须添加item，从0开始计算    
 style.visibility=visible/hidden 元素隐藏，空间留着  
-style.display=block/none 元素和空间都会隐藏  
+style.display=block/none 元素和空间都会隐藏(为了防止排版出错，block改为table-row)  
 
+**点击男女选框，表格中的输入框发生改变**
+```html
 
+```  
 
 ---
 
