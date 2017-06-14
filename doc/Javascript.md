@@ -87,6 +87,12 @@ style.display=block/none 元素和空间都会隐藏(为了防止排版出错，
 2. 获取元素宽度  
 ``document.getElementBy("inner").style.width=document.getElementById("inner").offsetWidth+50+"px";``  
 offsetWidth取出来的是纯粹数字，没有带px  
+
+3. 打印元素内容  
+document.write("<tr>");  
+document.write(books[i].name);  
+双引号内容用单引号代替  
+
 **点击男女选框，表格中的输入框发生改变**
 ```html
 <html>
@@ -125,8 +131,8 @@ offsetWidth取出来的是纯粹数字，没有带px
 在Debug页面可以调试断点  
 Source中可以断点跟踪，查看属性  
 Firefox可以添加插件firebug  
-3. console
-可以在控制台打印：console.log(...width);
+3. console  
+可以在控制台打印：console.log(...width);  
 
 ---
 
@@ -135,3 +141,33 @@ Firefox可以添加插件firebug
 启动定时器：``timer=window.setInterval(show,50);``50毫秒执行一次show方法  
 停止定时器：``window.clearInterval(timer);``  
 2. setTimeout：单次定时器  
+
+---
+
+## 5.对象  
+创建对象：  
+```javascript
+function Person(firstname,lastname,age,eyecolor){
+	this.firstname=firstname;
+	this.lastname=lastname;
+	this.age=age;
+	this.eyecolor=eyecolor;
+}
+
+var myFather=new Person("Bill","Gates",56,"blue");  
+```
+
+**新建对象存入数组，用js编写一个动态表单，将对象的信息显示出来,添加选框（有全选）**  
+```javascript
+等待录制  
+```
+
+---
+
+
+
+
+
+
+
+
