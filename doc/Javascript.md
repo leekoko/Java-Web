@@ -84,6 +84,9 @@ if(!str.test(某个value)){
 style.visibility=visible/hidden 元素隐藏，空间留着  
 style.display=block/none 元素和空间都会隐藏(为了防止排版出错，block改为table-row)  
 
+2. 获取元素宽度  
+``document.getElementBy("inner").style.width=document.getElementById("inner").offsetWidth+50+"px";``  
+offsetWidth取出来的是纯粹数字，没有带px  
 **点击男女选框，表格中的输入框发生改变**
 ```html
 <html>
@@ -122,3 +125,13 @@ style.display=block/none 元素和空间都会隐藏(为了防止排版出错，
 在Debug页面可以调试断点  
 Source中可以断点跟踪，查看属性  
 Firefox可以添加插件firebug  
+3. console
+可以在控制台打印：console.log(...width);
+
+---
+
+## 4.定时器  
+1. setInterval：多次定时器  
+启动定时器：``timer=window.setInterval(show,50);``50毫秒执行一次show方法  
+停止定时器：``window.clearInterval(timer);``  
+2. setTimeout：单次定时器  
