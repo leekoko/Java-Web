@@ -194,7 +194,8 @@ Firefox可以添加插件firebug
 ---
 
 ## 5.对象  
-创建对象：  
+js有许多内置对象，可以获取坐标，浏览器信息，屏幕大小等  
+1. 创建对象：  
 ```javascript
 function Person(firstname,lastname,age,eyecolor){
 	this.firstname=firstname;
@@ -267,10 +268,36 @@ var myFather=new Person("Bill","Gates",56,"blue");
 	</body>
 </html> 
 ```
+ 
+---
+
+## 6.事件  
+1. 匿名事件处理函数：  
+``document.getElementsByTagName("input").item(0).onclick=function(){alert("匿名函数测试")};``  
+2. 事件的使用：可以通过window.XX来调用  
+获取鼠标移动信息：  
+```javascript
+window.onmousemove=function(evt){
+	if(window.event) evt=window.event;
+	document.getElementById("info").innerHTML=evt.screenX+":"+evt.screenY;
+	if(evt.ctrlKey){
+		document.getElementById("info").innerHTML+=":Ctrl";
+	}
+}
+```
+3. 事件的使用  
+```
+哪个鼠标按钮被点击？
+光标的坐标是？
+被按的按键的 unicode 是？
+相对于屏幕，光标的坐标是？
+shift 键被按了吗？
+哪个元素被点击了？
+哪个事件类型发生了？
+```
 
 ---
- 
-
+**进入下一章：[5.JQuery](JQuery.md)**
 
 
 

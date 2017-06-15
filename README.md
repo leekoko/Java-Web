@@ -9,8 +9,8 @@
 ### 1.[J2SE：Java基础入门](doc/J2SE.md)
 ### 2.[J2SE：J2SE轻松入门第二季](doc/J2SE_2.md)
 ### 3.[J2SE：J2SE轻松入门第三季](doc/J2SE_3.md)  
-### 4.[Javascript](doc/Javascript.md)
-
+### 4.[Javascript](doc/Javascript.md)  
+### 5.[JQuery](doc/JQuery.md)
 
 ---
 
