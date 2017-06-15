@@ -158,8 +158,65 @@ var myFather=new Person("Bill","Gates",56,"blue");
 ```
 
 **新建对象存入数组，用js编写一个动态表单，将对象的信息显示出来,添加选框（有全选）**  
-```javascript
-等待录制  
+```html
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动态加载表单</title>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td><input type="checkbox" name="op" onclick="quan()"/></td>
+				<td>序号</td>
+				<td>书名</td>
+				<td>数量</td>
+			</tr>
+			<script>
+				function Book(name,num){
+					this.name=name;
+					this.num=num;
+				}
+				var arr=new Array();
+				arr[0]=new Book("java书",50);
+				arr[1]=new Book("android书",20);
+				arr[2]=new Book("C书",60);
+				arr[3]=new Book("javascript书",40);
+				arr[4]=new Book("jquery书",20);
+				//新建完数组，进行输出
+				for(var i=0;i<arr.length;i++){
+					document.write("<tr>");
+					
+					document.write("<td>");
+					document.write("<input type='checkbox' name='op'/>");
+					document.write("</td>");
+					
+					document.write("<td>");
+					document.write(i+1);
+					document.write("</td>");
+			
+					document.write("<td>");
+					document.write(arr[i].name);		
+					document.write("</td>");
+					
+					document.write("<td>");
+					document.write(arr[i].num);		
+					document.write("</td>");
+					
+					document.write("</tr>");
+
+				}
+				//编写全选功能
+				function quan(){
+					for(var i=0;i<document.getElementsByName("op").length;i++){
+						document.getElementsByName("op").item(i).checked=document.getElementsByName("op").item(0).checked;
+					}
+				}
+			</script>
+		</table>		
+		
+	</body>
+</html> 
 ```
 
 ---
