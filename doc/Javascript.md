@@ -121,6 +121,55 @@ document.write(books[i].name);
 </html>
 ```  
 
+4. 添加options属性  
+``document.getElementById("month").options.add(new Option("-月-"，0));``  
+**做一个年月日三级联动下拉框（四年一闰，百年不闰，四百年一润，闰年29）**  
+```html
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>三级联动</title>
+		<script>
+			function init(){
+				var year=document.getElementById("year");
+				var month=document.getElementById("month");
+				var day=document.getElementById("day");
+				year.options.add(new Option("-年-",0));
+				month.options.add(new Option("-月-",0));
+				day.options.add(new Option("-日-",0));
+				
+				for(var i=1900;i<=2017;i++){
+					year.options.add(new Option(i,i));
+				}
+				for(var i=1;i<=12;i++){
+					month.options.add(new Option(i,i));
+				}
+			}
+			function toDay(){
+				var year=document.getElementById("year").value;
+				var month=document.getElementById("month").value;
+				var arr=new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+				var days=arr[month-1];
+				if((year%4==0&&year%100!=0)||year%400==0){
+					if(month==2){
+						days++;
+					}
+				}
+				for(var i=1;i<days;i++){
+					document.getElementById("day").options.add(new Option(i,i));
+				}
+			}
+		</script>
+	</head>
+	<body onload="init()"> 
+		<select id="year" onchange="toDay()"></select>年
+		<select id="month" onchange="toDay()"></select>月
+		<select id="day"></select>日
+	</body>
+</html>
+```
+
+
 ---
 
 ## 3.调试  
@@ -220,6 +269,7 @@ var myFather=new Person("Bill","Gates",56,"blue");
 ```
 
 ---
+ 
 
 
 
