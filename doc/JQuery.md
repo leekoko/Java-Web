@@ -16,13 +16,19 @@ $("div[id='div']").mouseover(function(){
 ### 案例2.获取/设置属性值  
 1. 获取css样式属性（带px）  
 ``$("#ht").val($("#div1").css("height"));``  
-获取到的是“300px”的内容  
+获取到的是“300px”的内容，修改为background-color获取的就是该元素的背景色  
+ 
+获取容器的大小：  
+width，height内容所占空间  
+innerWidth,innerHeight内边框以内  
+outerWidth，outerHeight外边框以内  
 
 2. 获取css样式属性（不带px） 
 ``$("#ht").val($("#div1").height());``  
 
 3. 设置css属性值  
 ``$("#div").css({height:$("#ht").val()});``  
+
 设置属性的方式2：  
 ``$("div").width($("#wd").val());``  
 
