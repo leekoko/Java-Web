@@ -100,20 +100,24 @@ $(function(){      //程序默认运行
 2. 还有带参数的回调函数  
 当$(".info").html(function(index，old){形成循环体})，那么根据index可以判别同类的info的第几个元素，old表示当前循环到的对象的内容。  
 
-
-
-
-
-
 ---
 
+## 3.遍历元素  
+### 1.父类遍历  
+拿到a4所有的祖先：``$("#a4").parents().each(function(index,element){})；``  
+这里是jq的语法，所以获取其元素需要用$(this).attr("id"),不能用element.attr("id")  
 
+### 2.子类遍历  
+1. 获取子元素：``$("#a4").children().each(function(index,element){})；``  
+2. 获取标签名：e.tagName  
+3. 获取第0个元素  $(this).get(0)  
+4. 获取所有子孙后代find("*"),必须加参数，*表示所有子元素，也可以加div  
 
-
-
-
-
-
+### 3.同胞遍历  
+1. 获取同胞元素：``$("#a3").siblings().each(function(i,e){});``  
+2. 获取第一个元素$("div p").first().each(...),获取最后一个元素$("div p").last().each(...),获取第n个$("div p").eq(n)  
+3. 过滤器：只获取id=p2的内容：``$("div p").filter("#p2")``  
+4. 反选过滤：获取id！=p2的内容：``$("div p").not("#p2")``  
 
 
 
