@@ -217,13 +217,21 @@ CheckUser.java
 上方注解记得添加：``@WebServlet("/CheckUser")``  
 
 ### 2.jQuery检测用户存在的案例  
+(引入jQuery：``<script src="jQuery/jquery-1.11.3.js"></script>``)
 1. ajax访问url的方式：``obj=$.ajax({url:"CheckUser?uname="+$("uname").val(),async:false});``  
 2. 将返回对象显示：``$("#info").html(obj.responseText);``  
 3. 使用load简化ajax的url访问  
 ``$("#info").load("CheckUser?uname="+$("#uname").val());``(查询字符串的方式)  
 ``$("#info").load("CheckUser",{uname:$("#uname").val()});``(data的方式)    
-load还可以加载文本文件的内容：``$("#div").load("text1.txt");``  
+load还可以加载文本文件的内容：``$("#div").load("text1.txt");``，加载完之后还可以执行回调函数  
+4. 使用post访问并且执行回调函数：
+```javascript
+	$.post("CheckUser",{uname:$("#uname").val()},function(d,s){...});
+```  
 
+（当$和其他前端框架产生冲突，查询文档进行解决)  
 
-
-
+**使用jQuery的多线程，通过ajax访问servlet后台数据**  
+```javascript
+	
+```  
