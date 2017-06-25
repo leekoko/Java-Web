@@ -13,7 +13,7 @@ $("div[id='div']").mouseover(function(){
 
 3. 鼠标变换移上离开事件：hover  
 
-4. 鼠标点击事件：``$(":button").click(...);``
+4. 鼠标点击事件：``$(":button").click(...);``(type的选择器前面加：)  
 
 ### 案例2.获取/设置属性值  
 1. 获取css样式属性（带px）  
@@ -217,7 +217,7 @@ CheckUser.java
 上方注解记得添加：``@WebServlet("/CheckUser")``  
 
 ### 2.jQuery检测用户存在的案例  
-(引入jQuery：``<script src="jQuery/jquery-1.11.3.js"></script>``)
+(引入jQuery：``<script src="jQuery/jquery-1.11.3.js"></script>``,必须为对标签)  
 1. ajax访问url的方式：``obj=$.ajax({url:"CheckUser?uname="+$("uname").val(),async:false});``  
 2. 将返回对象显示：``$("#info").html(obj.responseText);``  
 3. 使用load简化ajax的url访问  
@@ -228,10 +228,23 @@ load还可以加载文本文件的内容：``$("#div").load("text1.txt");``，�
 ```javascript
 	$.post("CheckUser",{uname:$("#uname").val()},function(d,s){...});
 ```  
-
+d为response返回的数据，s为执行的情况  
 （当$和其他前端框架产生冲突，查询文档进行解决)  
 
 **使用jQuery的多线程，通过ajax访问servlet后台数据**  
 ```javascript
-	
+<script src="jQuery/jquery-1.11.3.js"></script>
+<script>
+	$(function(){
+		$(":button").click(function(){
+			$.post("CheckUser",{uname:$("#uname").val()},function(d,s){
+				$("#info").html(d);
+			});
+		});
+	});
+
+</script>
 ```  
+
+---
+**进入下一章：[6.javaweb快速入门](javaweb_ABC.md)**  
