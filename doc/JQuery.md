@@ -126,6 +126,8 @@ Ajax可以网页局部刷新，通过子线程的异步更新进行数据更新�
 
 ### 1.javascript检测用户的案例  
 1. 做一个表单，输入用户名，点击运行checkit()方法  
+新建项目的方式：新建一个project，选择tomcat，新建jsp文件（记得修改编码为utf-8）  
+
 2. 判断浏览器的类型，生成访问服务器对象，用来联系服务器  
 ```javascript
 	 if (window.XMLHttpRequest) {
@@ -135,24 +137,83 @@ Ajax可以网页局部刷新，通过子线程的异步更新进行数据更新�
 	 }
 ```  
 3. 访问服务器地址（使用GET）：  
-``url="CheckUser?uname="+documrnt.getElementById("uname").value ;``checkUser对应Servlet里面的注解  
+``url="CheckUser?uname="+document.getElementById("uname").value ;``checkUser对应Servlet里面的注解  
 ``req.open("GET",url,true);``  
 访问并且带参数过去  
 4. 访问结束，回调函数：``req.onreadystatechange=show``(调用show)  
 5. 启动子线程：``req.send(null);``
 6. 回调函数判断是否访问到，访问到有没有结果  
 ```javscript
- function complete(){
+ function show(){
   if (req.readyState == 4) {   //判断是否访问到
        if (req.status == 200) {   //访问到有没有结果
           var city = req.responseText;   //获取servlet中response打印回来的数据
+		  document.getElementById("info").innerHTML=city;
        }
    }
  }
 ```  
 7. 新建一个servlet(注意注解跟调用地址一致)  
 编写doGet()方法，获取带过来的参数：``String uname=request.getParameter("uname");``  
-将拿到的参数跟数据库中的信息进行匹配，如果已注册则通过response打印信息:``response.getWriter().println("该用户名已注册")；``  
+将拿到的参数跟数据库中的信息进行匹配，如果已注册则通过response打印信息:``response.getWriter().println("该用户名已注册");``  
 (因为中文的存在，还需要在输出之前用response.setCharacterEncoding("UTF-8")来设置编码格式)  
 
 **使用javascript的多线程，通过ajax访问servlet后台数据**  
+register.html  
+```html
+<table>
+	<tr><td>用户名：</td><td><input type="text" id="uname"/></td></tr>
+	<tr><td><input type="button" value="验证" onclick="checkUser()"/></td><td><div id="info"></div></td></tr>
+</table>
+```
+
+```javascript
+function checkUser(){
+	//生成访问服务器对象
+	 if (window.XMLHttpRequest) {
+		req = new XMLHttpRequest();
+	 }else if (window.ActiveXObject) {
+		req = new ActiveXObject("Microsoft.XMLHTTP");
+	 }
+	var url="CheckUser?uname="+document.getElementById("uname").value;
+	req.open("GET",url,true);
+	req.onreadystatechange=show;   //回调show方法
+	req.send(null);   //启动子线程
+	
+}
+ function show(){
+	 if (req.readyState == 4) {   //判断是否访问到
+	      if (req.status == 200) {   //访问到有没有结果
+			var city = req.responseText;   //获取servlet中response打印回来的数据
+			document.getElementById("info").innerHTML=city;
+	      }
+	  }
+ }
+```
+
+CheckUser.java  
+```java
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String uname=request.getParameter("uname");
+		response.setCharacterEncoding("UTF-8");
+		//模拟数据库
+		String[] arr={"小明","小黑","小白"};
+		boolean flag=false;   //默认不重复
+		for (int i = 0; i < arr.length; i++) {
+			if(arr[i].equals(uname)){
+				flag=true;
+			}
+		}
+		if(flag){
+			response.getWriter().println("该用户名已注册");
+		}else{
+			response.getWriter().println("注册成功");
+		}
+	}
+```  
+上方注解记得添加：``@WebServlet("/CheckUser")``
+
+### 2.
+
+
