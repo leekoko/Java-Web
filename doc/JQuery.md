@@ -13,6 +13,8 @@ $("div[id='div']").mouseover(function(){
 
 3. 鼠标变换移上离开事件：hover  
 
+4. 鼠标点击事件：``$(":button").click(...);``
+
 ### 案例2.获取/设置属性值  
 1. 获取css样式属性（带px）  
 ``$("#ht").val($("#div1").css("height"));``  
@@ -124,7 +126,7 @@ $(function(){      //程序默认运行
 ## 4.Ajax  
 Ajax可以网页局部刷新，通过子线程的异步更新进行数据更新。  
 
-### 1.javascript检测用户的案例  
+### 1.javascript检测用户存在的案例  
 1. 做一个表单，输入用户名，点击运行checkit()方法  
 新建项目的方式：新建一个project，选择tomcat，新建jsp文件（记得修改编码为utf-8）  
 
@@ -212,8 +214,16 @@ CheckUser.java
 		}
 	}
 ```  
-上方注解记得添加：``@WebServlet("/CheckUser")``
+上方注解记得添加：``@WebServlet("/CheckUser")``  
 
-### 2.
+### 2.jQuery检测用户存在的案例  
+1. ajax访问url的方式：``obj=$.ajax({url:"CheckUser?uname="+$("uname").val(),async:false});``  
+2. 将返回对象显示：``$("#info").html(obj.responseText);``  
+3. 使用load简化ajax的url访问  
+``$("#info").load("CheckUser?uname="+$("#uname").val());``(查询字符串的方式)  
+``$("#info").load("CheckUser",{uname:$("#uname").val()});``(data的方式)    
+load还可以加载文本文件的内容：``$("#div").load("text1.txt");``  
+
+
 
 
