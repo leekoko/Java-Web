@@ -1,9 +1,16 @@
 ﻿# 忽略 HBuilder 创建的 .project 文件
+
 .project
 
+
+
 # 忽略 webstorm 创建的 .idea/ 文件夹
+
 .idea/
 
 
+
+
 # 忽略 eclipse创建的 .metadata/ 文件夹
+
 .metadata/
