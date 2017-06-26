@@ -19,3 +19,10 @@ RemoteSystemsTempFiles/
 
 
 
+
+# 忽略 eclipse创建的 Servers/ 文件夹
+
+Servers/
+
+
+
