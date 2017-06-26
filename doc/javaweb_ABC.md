@@ -129,6 +129,7 @@ function checkit(){
 
 
 
+
 jsp的运行原理：写的jsp文件会被翻译成java文件  
 
 
