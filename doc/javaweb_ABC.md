@@ -128,3 +128,7 @@ function checkit(){
 [案例源码](../SourceCode/javaWeb_ABC/)   
 
 
+
+jsp的运行原理：写的jsp文件会被翻译成java文件  
+
+
