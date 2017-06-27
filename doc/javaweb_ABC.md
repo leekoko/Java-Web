@@ -150,7 +150,7 @@ JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。
 
 1. 创建对象<jsp:useBean>：  
 
-   **<jsp:useBean id="u" class="javastudy.UserInfo"></jsp:useBean>**是一个动作元素，它的作用是创建一个对象(名字为u，类为UserInfo)  
+   ``<jsp:useBean id="u" class="javastudy.UserInfo"></jsp:useBean>``是一个动作元素，它的作用是创建一个对象(名字为u，类为UserInfo)  
 
 2. 属性赋值<jsp:setProperty>：将提交表格中name的属性设置到创建的对象中，``<jsp:setProperty name="u" property="*">``(提交表格中的name必须和对象属性一致，而该标签的name需要与创建对象标签的id一致)  
 
@@ -163,7 +163,9 @@ JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。
    1. include指令：在运行前会将引用内容包含到java文件中（静态包含）  
    2. include动作：在运行java文件的时候再翻译引用的jsp文件，把结果包含进来（引入执行页面或应答文本）  
 
-5. 传递参数<jsp:param>：``<jsp:param value="北京甲骨文科技" name="firm" />``，接收方式：``<%=request.getParameter("firm")%>``(可以通过include动作把参数传过去)  
+5. 传递参数<jsp:param>：``<jsp:param value="北京甲骨文科技" name="firm" />``，  
+
+   接收方式：``<%=request.getParameter("firm")%>``(可以通过include动作把参数传过去)  
 
 6. 跳转页面<jsp:forward>：里面还可以传参数过去：  
 
