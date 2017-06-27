@@ -216,39 +216,87 @@ JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。
 </form>
 ```
 
-代码补充...
+show.jsp  
 
+```jsp
+<%
+request.setCharacterEncoding("UTF-8");
+%>
+<jsp:useBean id="u" class="javastudy.UserInfo"></jsp:useBean>
+<!-- 设置值 -->
+<jsp:setProperty property="*" name="u"/>
 
+<jsp:getProperty property="userName" name="u"/><br>
+<jsp:getProperty property="vip" name="u"/><br>
+<jsp:getProperty property="password" name="u"/><br>
+```
 
-### 2.第二个案例  
+### 2.传参数    
 
-录制完当前视频，录制下一个  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+> 将表单内容提交到本页面，判断之后将数据传到下一个页面  
 
 1. 除了可以提交到show.jsp页面，也可以不写提交给自身页面。需要判断是提交过来还是第一次打开，判断有没有传userName过来  
+2. 内嵌双引导需要转义  
+3. 可以在跳转后的页面获取到<jsp:param>传过来的值  
+
+- 前端设计  
+
+```html
+<form method="post" action="">
+	<table>
+		<tr><td>姓名</td><td><input type="text" name="name"></td></tr>
+		<tr><td colspan="2"><input type="submit" value="保存数据"></td></tr>
+	</table>
+</form>
+```
+
+Test.jsp
+
+```jsp
+<%
+request.setCharacterEncoding("utf-8");
+if(request.getParameter("name")!=null){
+	
+%>
+	<jsp:forward page="show.jsp">
+		<jsp:param value="<%=request.getParameter(\"name\") %>" name="a"/>
+	</jsp:forward>
+<%
+}
+%>
+```
+
+show.jsp
+
+```jsp
+你好，<%=request.getParameter("name") %>
+```
+
+---
+
+## 3.
 
 
-``if(request.getParameter("userName")==null){...``  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
 
