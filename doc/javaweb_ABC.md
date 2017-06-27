@@ -144,7 +144,7 @@ jsp的运行原理：写的jsp文件会被翻译成servlet文件
 2. include指令：可以将文件包含到jsp文件中``<%@include file="filename"%>``  
 3. taglib指令：引入标签库，可以是自定义标签也可以内部标签  
 
-### 3.Jsp动作元素
+### 3.Jsp动作元素  
 
 JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。  
 
@@ -156,7 +156,7 @@ JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。
 
    当只要获取一部分的属性，那就不用*，而用具体的属性名``<jsp:setProperty name="u" property="userName">``    
 
-3. 获取属性<jsp:getProperty>  
+3. 获取属性<jsp:getProperty>：``<jsp:getProperty name="u" property="userName"></jsp:getProperty>``,要指定显示哪一个对象的哪一个属性    
 
 4. 包含网页<jsp:include>：``<jsp:include>``,它和include指令的区别就是：
 
@@ -182,7 +182,43 @@ JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。
 
 ### 4.案例  
 
-> 编写一个UserInfo对象，输入表单内容为其赋值，提交到本身页面，验证其是否第一次打开，本身页面还要用上include动作引入footer（做完再写问题）  
+### 1.传递数据  
+
+> 新建UserInfo类（userName,vip,password），在另一个页面来接收表单传过来的属性值，赋值后显示出来  
+
+1. 前端设计  
+
+```html
+<form action="show.jsp" method="post">
+	<table>
+		<tr>
+			<td>用户名</td>
+			<td><input type="text" name="userName" /></td>
+		</tr>
+		<tr>
+			<td>是否VIP</td>
+			<td><input type="checkbox" name="vip" /></td>
+		</tr>		
+		<tr>
+			<td>密码</td>
+			<td><input type="text" name="password" /></td>
+		</tr>
+		<tr>
+			<td><input type="submit" value="保存信息"/></td>
+		</tr>
+	</table>
+</form>
+```
+
+
+
+代码补充...
+
+### 2.第二个案例  
+
+录制完当前视频，录制下一个  
+
+
 
 
 
