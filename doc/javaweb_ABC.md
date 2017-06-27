@@ -1,6 +1,6 @@
 # 6.javaweb快速入门 
 
-## 1.案例  
+## 1.jsp基础使用    
 
 ### 1.前端设计  
 因为这一部分主要学的是jsp，所以前端代码直接提供,不予解释  
@@ -131,7 +131,7 @@ function checkit(){
 
 ---
 
-## 2.jsp基础构成  
+## 2.jsp结构构成  
 jsp的运行原理：写的jsp文件会被翻译成servlet文件  
 
 ### 1.jsp脚本元素  
@@ -186,7 +186,13 @@ JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。
 
 > 新建UserInfo类（userName,vip,password），在另一个页面来接收表单传过来的属性值，赋值后显示出来  
 
-1. 前端设计  
+1. 编写一个UserInfo的javaBean  
+2. 编写表格，用来输入属性值，用post提交到show.jsp（注意name属性跟javaBean属性一致）  
+3. 在show.jsp中：
+   1. 创建UserInfo对象  
+   2. 为对象设置属性  
+
+- 前端设计  
 
 ```html
 <form action="show.jsp" method="post">
@@ -210,9 +216,9 @@ JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。
 </form>
 ```
 
-
-
 代码补充...
+
+
 
 ### 2.第二个案例  
 
@@ -239,24 +245,7 @@ JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。
 
 
 
-
-
-
-
-1. Tomcat对于post提交默认编码为ISO，所以在接收页面需要设置编码转化``request.setCharacterEncoding("UTF-8");``  
-
-
-
-### 
-
-
-1. 编写一个UserInfo的javaBean  
-2. 编写表格，用来输入属性值，用post提交到show.jsp（注意name属性跟javaBean属性一致）  
-3. 在show.jsp中：
-
-   1. 创建UserInfo对象  
-   2. 为对象设置属性  
-4. 除了可以提交到show.jsp页面，也可以不写提交给自身页面。需要判断是提交过来还是第一次打开，判断有没有传userName过来  
+1. 除了可以提交到show.jsp页面，也可以不写提交给自身页面。需要判断是提交过来还是第一次打开，判断有没有传userName过来  
 
 
 ``if(request.getParameter("userName")==null){...``  
