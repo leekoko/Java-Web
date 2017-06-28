@@ -274,7 +274,53 @@ show.jsp
 
 ---
 
-## 3.
+## 3.JSP内置对象    
+
+内置对象由服务器（Tomcat）创建，可以直接使用  
+
+request、response、out、session、application、pageContext、page、config、exception  
+
+### 1.out对象      
+
+out对象可以向客户端输出信息：``out.print("hello");``    
+
+### 2.request对象      
+
+request对象可以获取客户端传递到服务器的信息，它是HttpServletrequest的实例  
+
+常用方法：
+
+1. ``request.getParameter("uname")``获取一个参数的值  
+2. ``request.getParameterNames()``获取传给服务器所有参数的名字，返回的是Enumeration类型  
+
+
+Enumeration的使用方式：判断下一个是否有元素e.hasMoreElements()，获取下一个的元素e.nextElements()  
+
+3. ``request.getParameterValues("uname")``获取一个参数的多个值，像checkbox  
+4. ``request.setAttribute("name","微软科技有限公司");``设置属性  
+5. ``request.getAttribute("name")``获取这个属性值  
+6. ``request.removeAttribute("name");``去掉这个属性  
+7. ``request.getAttributeNames()``获取多个属性名字  
+8. ``request.getCookies()``把个人信息存放在客户端  
+9. ``request.getCharacterEncoding()``获取设置的编码  
+10. ``request.getContentLength()``获取整个网页的长度  
+11. ``request.getMethod()``获取get（直接输入地址）/post方法  
+12. ``request.getRemoteAddr()``获取远程主机地址  
+13. ``request.getRemoteHost()``获取远程主机名称  
+14. ``request.getServerName()``获取服务器名称  
+15. ``request.getServerPort（）``获取服务端口  
+16. ``request.getRequestURL()``获取访问地址，URI就是URL-http://localhost:8080  
+17. ``request.getServletPath()``jsp转化为Servlet的路径  
+18. ``request.getContextPath()``子目录的名字  
+19. ``request.getHeaderNames())``
+
+
+
+看到16的部分  
+
+
+
+header：网页头，网页控制信息
 
 
 
@@ -290,15 +336,6 @@ show.jsp
 
 
 
-
-
-
-
-
-
-
-
- 
 
 
 
