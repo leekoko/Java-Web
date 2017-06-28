@@ -312,15 +312,21 @@ Enumeration的使用方式：判断下一个是否有元素e.hasMoreElements()�
 16. ``request.getRequestURL()``获取访问地址，URI就是URL-http://localhost:8080  
 17. ``request.getServletPath()``jsp转化为Servlet的路径  
 18. ``request.getContextPath()``子目录的名字  
-19. ``request.getHeaderNames())``
+19. ``request.getHeaderNames()``获取头文件信息，获取头文件``request.getHeader(name)``,信息有语言，用户浏览器，操作系统，cpu，服务器等    
+
+### 3.response对象  
+
+responset对象可以向客户端发出请求，它是HttpServletresponse的实例  
+
+1. ``response.sendRedirect("url地址");``跳转到指定网页  
+2. ``response.getWriter().print("你好");``往网页打东西，跟out.print一样效果  
+3. 各种Header的操作  
+
+### 4.session对象
+
+session对象是一个会话对象，tomcat会话时间默认是30min  
 
 
-
-看到16的部分  
-
-
-
-header：网页头，网页控制信息
 
 
 
