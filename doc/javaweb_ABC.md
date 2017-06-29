@@ -274,19 +274,19 @@ show.jsp
 
 ---
 
-## 3.JSP内置对象    
+## 3.JSP内置对象      
 
-内置对象由服务器（Tomcat）创建，可以直接使用  
+内置对象由服务器（Tomcat）创建，可以直接使用    
 
-request、response、out、session、application、pageContext、page、config、exception  
+request、response、out、session、application、pageContext、page、config、exception   
 
-### 1.out对象      
+### 1.out对象        
 
-out对象可以向客户端输出信息：``out.print("hello");``    
+out对象属于JspWriter类，可以向客户端输出信息：``out.print("hello");``    
 
-### 2.request对象      
+### 2.request对象        
 
-request对象可以获取客户端传递到服务器的信息，它是HttpServletrequest的实例  
+request对象可以获取客户端传递到服务器的信息，它是HttpServletrequest的实例，只有在同一次请求可见    
 
 常用方法：
 
@@ -314,7 +314,7 @@ Enumeration的使用方式：判断下一个是否有元素e.hasMoreElements()�
 18. ``request.getContextPath()``子目录的名字  
 19. ``request.getHeaderNames()``获取头文件信息，获取头文件``request.getHeader(name)``,信息有语言，用户浏览器，操作系统，cpu，服务器等    
 
-### 3.response对象  
+### 3.response对象    
 
 responset对象可以向客户端发出请求，它是HttpServletresponse的实例  
 
@@ -322,9 +322,76 @@ responset对象可以向客户端发出请求，它是HttpServletresponse的实�
 2. ``response.getWriter().print("你好");``往网页打东西，跟out.print一样效果  
 3. 各种Header的操作  
 
-### 4.session对象
+### 4.session对象  
 
-session对象是一个会话对象，tomcat会话时间默认是30min  
+session对象是一个会话可见，tomcat会话时间默认是30min，其父接口为HttpSession   
+
+1. ``session.setAttribute("COLOR", color);``设置属性  
+2. ``session.getAttribute("COLOR");``获取属性值  
+
+
+(session在页面上关闭的方式：在page标签中添加``session="false"``)  
+
+
+
+
+重录视频：颜色变化  
+
+
+
+> 保存颜色到session
+
+1. 按钮绑定事件``$("#c").bind("click",function(){...})``  
+2. ​
+
+
+
+1. main.jsp  
+
+
+
+
+### 5.appliction对象  
+
+application设置的对象整个网站共用，所有会话可见，并且不会过期（服务器运行可见），其实现的接口是ServleContext    
+
+1. ``application.getRealPath("");``获取真实的路径（最后部署完成的目录）  
+
+### 6.page对象    
+
+page对象就是页面转化为Servlet类的实例，所以当我运行page.getClass().getName()获取到的就是当前网页编译后的Servlet的文件名（Object page=this）    
+
+### 7.config对象    
+
+config用来配置指定的jsp参数，像在web.xml中配置初始化参数，那么通过config在网页上得到它 （也可以得到servletName），其属于ServletConfig的接口  
+
+ ### 8.exception对象    
+
+在page标签中添加errorPage=“error.jsp”,在页面出现错误的时候，就会自动跳转到错误页面（error.jsp中也需要指明这是一个错误页面：page标签中添加isErrorPage="true"）,跳转之后可以用exception对象来获取错误信息``<%out.print(exception.getMessage());%>``  
+
+### 9.pageContext对象     
+
+1. pageContext可以获取前面八大对象，例如``pageContext.getOut().print()``(applicetion&config比较特殊，使用的是getServletContext()&getServletConfig()),其所属的类是PageContext类      
+2. 可以设置范围  
+   1. ``pageContext.setAttribute("name","john");``值本页面有效  
+   2. ``pageContext.setAttribute("name","john",pageContext.REQUEST_SCOPE);``同一个request有效，相当于``request.setAttribute("name","john");``  
+   3. ``pageContext.setAttribute("name","john",pageContext.SESSION_SCOPE);``同一个session有效，相当于``session.setAttribute("name","john");``  
+   4.  ``pageContext.setAttribute("name","john",pageContext.APPLICATION_SCOPE);``同一个application有效，相当于``application.setAttribute("name","john");``    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
