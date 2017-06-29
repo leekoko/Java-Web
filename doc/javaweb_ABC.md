@@ -182,7 +182,7 @@ JSP动作元素用来控制JSP行为，执行一些常用的JSP页面动作。
 
 ### 4.案例  
 
-### 1.传递数据  
+#### 1.传递数据  
 
 > 新建UserInfo类（userName,vip,password），在另一个页面来接收表单传过来的属性值，赋值后显示出来  
 
@@ -231,7 +231,7 @@ request.setCharacterEncoding("UTF-8");
 <jsp:getProperty property="password" name="u"/><br>
 ```
 
-### 2.传参数    
+#### 2.传参数  
 
 > 将表单内容提交到本页面，判断之后将数据传到下一个页面  
 
@@ -332,24 +332,59 @@ session对象是一个会话可见，tomcat会话时间默认是30min，其父�
 
 (session在页面上关闭的方式：在page标签中添加``session="false"``)  
 
+> 输入颜色，保存颜色到session，然后另一个页面再从session获取颜色  
+
+1. 按钮绑定事件``$("#c").bind("click",function(){...})``，判断如果文本框输入内容长度为0，则选择文本框，return结束运行    
+2. 否则设置背景色为文本框输入颜色，并且调用ajax把文字内容传到save.jsp页面中（设置鼠标点击打开窗口事件）  
+3. save.jsp页面用request获取到传来的数据，将其存进session中  
+4. page1.jsp页面再css样式中设置背景色，参数为session的内容  
 
 
+- 前端页面  
 
-重录视频：颜色变化  
+```html
+<input type="button" value="设置颜色" id="c"/><input type="text" id="color"><br>
+<input type="button" value="打开窗口1" id="p1"/>
+```
 
+main.jsp
 
+```javascript
+<script type="text/javascript">
+	$(function(){
+		$("#c").click(function(){
+			if($.trim($("#color").val()).length==0){
+				$("#color").focus();
+				return;
+			}
+			$("body").css("background-color",$("#color").val());
+			$.ajax("save.jsp?color="+$("#color").val());
+		});
+		$("#p1").bind("click",function(){
+			window.open("show.jsp");
+		});
+	});
+</script>
+```
 
-> 保存颜色到session
+save.jsp
 
-1. 按钮绑定事件``$("#c").bind("click",function(){...})``  
-2. ​
+```java
+<%
+String color=request.getParameter("color");
+session.setAttribute("COLOR", color);
+%>
+```
 
+show.jsp
 
-
-1. main.jsp  
-
-
-
+```css
+<style type="text/css">
+body{
+background-color: <%=session.getAttribute("COLOR")%>
+}
+</style>
+```
 
 ### 5.appliction对象  
 
@@ -378,7 +413,9 @@ config用来配置指定的jsp参数，像在web.xml中配置初始化参数，�
    3. ``pageContext.setAttribute("name","john",pageContext.SESSION_SCOPE);``同一个session有效，相当于``session.setAttribute("name","john");``  
    4.  ``pageContext.setAttribute("name","john",pageContext.APPLICATION_SCOPE);``同一个application有效，相当于``application.setAttribute("name","john");``    
 
-  
+  ---
+
+
 
 
 
