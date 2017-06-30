@@ -411,13 +411,101 @@ config用来配置指定的jsp参数，像在web.xml中配置初始化参数，�
    1. ``pageContext.setAttribute("name","john");``值本页面有效  
    2. ``pageContext.setAttribute("name","john",pageContext.REQUEST_SCOPE);``同一个request有效，相当于``request.setAttribute("name","john");``  
    3. ``pageContext.setAttribute("name","john",pageContext.SESSION_SCOPE);``同一个session有效，相当于``session.setAttribute("name","john");``  
-   4.  ``pageContext.setAttribute("name","john",pageContext.APPLICATION_SCOPE);``同一个application有效，相当于``application.setAttribute("name","john");``    
+   4. ``pageContext.setAttribute("name","john",pageContext.APPLICATION_SCOPE);``同一个application有效，相当于``application.setAttribute("name","john");``    
 
   ---
 
+## 4.Servlet  
+
+### 1.用jsp页面实现初始化    
+
+1. 创建DBLib类  
+
+   编写创建数据库方法，创建表方法，添加数据方法  
+
+2. 声明一个连接``Connection conn``,编写构造函数中进行初始化：
+
+```java
+public DBLib() throws ClassNotFoundException,SQLException{
+  	Class.forName("com.mysql.jdbc.Driver");]
+    String url="jdbc:mysql://127.0.0.1:3306";
+  	String user="root";	
+  	String pwd="123456";
+  	conn=DriverManager.getConnection(url,user,pwd);
+  	st=conn.createStatement();  //创建命令
+}
+```
+
+3. 编写创建数据库方法  
+
+用``st.executeUpdate(sql);``执行sql语句，sql语句为先删除原数据库``drop database if exists Book;``，再创建新数据库``create database Book;``   
+
+4. 编写创建表方法  
+
+将sql语句执行  
+
+``use Book;``  
+
+```sql
+create table BOOKS
+ (
+   ID int(4) not null primary key auto_increment,
+   Name	varchar(100),
+   Author varchar(50),
+   Price  decimal,
+   Publisher varchar(100)
+ )
+```
+
+(长的语句+=组起来再执行)  
+
+5. 编写添加数据方法  
+   1. 执行sql语句``use Book``  
+   2. 读取文件：新建FileReader对象，对传进来的filename路径进行读取，为了加速读取，用到BufferedReader包装类  
+   3. 取出一行的方式：br.readLine(),判断这一行是否为空，非空的话对该行数据进行切分（存入数组中），关闭读取对象  
+   4. 新建PreparedStatement对象，传入sql语句``INSERT INTO BOOKS (Name,Author,Price,Publisher) VALUES(?,?,?,?)``  
+   5. 然后对sql语句设置参数，设置的方式：``ps.setString(1,values[0]);``(除了String，还有double等)  
+6. 使用jsp执行数据初始化类    
+   1.  编写按钮初始化，用jq给按钮绑定一个页面，这个页面专门调用初始化类，初始化成功执行回调函数  
+   2. jsp初始化方式：先new一个对象，执行其初始化方法（添加数据方法需要传路径，用application.getRealPath("")获取真实路径，加上文件夹和文件名构成完整路径）
+
+### 2.用Servlet初始化    
+
+Servlet是用来处理逻辑的，而jsp是用来显示结果。所以讲上面的jsp页面改为Servlet页面。Servlet主要有doGet&doPost方法  
+
+1. 创建Servlet，新建初始化对象，调用其方法(但是application是在jsp中的九大内置对象，在Servlet中没有，所以要通过``this.getServletContext()``来获取application对象)  
+
+2. 调用url（定义url有/，调用的时候没有），在jsp页面直接调用注解上的url即可  
+
+   上面使用的是注解配置的方式，除此之外还有web.xml的配置方式：  
+
+   1. 配置类和所属的名字：为类设置一个名字  
+
+   ```xml
+   <servlet>
+     <servlet-name>a</servlet-name>
+     <servlet-class>javastudy.InitIt</servlet-class>
+   </servlet>  
+   ```
+
+   2. 配置访问路径：将名字和访问路径连接起来  
+
+   ```xml
+   <servlet-mapping>
+   	<servlet-name>a</servlet-name>
+     	<url-pattern>/myservlet</url-pattern>
+   </servlet-mapping>
+   ```
+
+3. out返回执行完的信息：在jsp中，输出信息是out输出，但是Servlet中没有out对象，所以用``PrintWriter out=response.getWriter()``来获取out对象  
 
 
 
+> 实例尝试  
+
+
+
+---
 
 
 
