@@ -38,7 +38,6 @@
 	</table>
 	
 </form>	
-
 ```
 1. submit按钮要验证后才给予提交，在submit中添加onclick属性``onclick="return check()"``,在js中写return false还是true来确定是否提交    
 
@@ -67,7 +66,10 @@ show.jsp
 %>
 ```
 
+
+
 ### 3.用js验证数据  
+
 1. 去除空格：``str=str.replace(/\s|/g,"");``  
 2. 光标定位，focus()方法  
 3. 用innnerHTML插入文字提示  
@@ -386,6 +388,8 @@ background-color: <%=session.getAttribute("COLOR")%>
 </style>
 ```
 
+[案例源码](../SourceCode/Session_T/)   
+
 ### 5.appliction对象  
 
 application设置的对象整个网站共用，所有会话可见，并且不会过期（服务器运行可见），其实现的接口是ServleContext    
@@ -427,7 +431,7 @@ config用来配置指定的jsp参数，像在web.xml中配置初始化参数，�
 
 ```java
 public DBLib() throws ClassNotFoundException,SQLException{
-  	Class.forName("com.mysql.jdbc.Driver");]
+  	Class.forName("com.mysql.jdbc.Driver");
     String url="jdbc:mysql://127.0.0.1:3306";
   	String user="root";	
   	String pwd="123456";
@@ -467,7 +471,7 @@ create table BOOKS
    5. 然后对sql语句设置参数，设置的方式：``ps.setString(1,values[0]);``(除了String，还有double等)  
 6. 使用jsp执行数据初始化类    
    1.  编写按钮初始化，用jq给按钮绑定一个页面，这个页面专门调用初始化类，初始化成功执行回调函数  
-   2. jsp初始化方式：先new一个对象，执行其初始化方法（添加数据方法需要传路径，用application.getRealPath("")获取真实路径，加上文件夹和文件名构成完整路径）
+   2.  jsp初始化方式：先new一个对象，执行其初始化方法（添加数据方法需要传路径，用application.getRealPath("")获取真实路径，加上文件夹和文件名构成完整路径）
 
 ### 2.用Servlet初始化    
 
@@ -500,10 +504,115 @@ Servlet是用来处理逻辑的，而jsp是用来显示结果。所以讲上面�
 3. out返回执行完的信息：在jsp中，输出信息是out输出，但是Servlet中没有out对象，所以用``PrintWriter out=response.getWriter()``来获取out对象  
 
 
+（在servlet中设置编码格式用response，因为是传出）  
 
-> 实例尝试  
 
+> 调用jsp页面初始化数据库，调用servlet初始化数据库    
 
+InitIt.jsp  
+
+```javascript
+$(function(){
+	$(".btn").click(function(){
+		$.post("init_data",function(data){   //注解方式的url
+			$("#info").html(data);
+		});
+	});
+});
+```
+
+DBLib.java  
+
+```java
+public class DBLib {
+	Connection conn;
+	Statement st;
+	
+	public DBLib() throws ClassNotFoundException,SQLException{
+		Class.forName("com.mysql.jdbc.Driver");
+	    String url="jdbc:mysql://127.0.0.1:3306";
+	  	String user="root";	
+	  	String pwd="123456";
+	  	conn=DriverManager.getConnection(url,user,pwd);
+	  	st=conn.createStatement();  //创建命令
+	}
+	//创建数据库方法
+	public void create_data() throws SQLException{
+		String sql="drop database if exists Book;";
+		st.executeUpdate(sql);
+		sql="create database Book;";
+		st.executeUpdate(sql);
+	}
+	//创建表方法
+	public void create_form() throws SQLException{
+		String sql="use Book;";
+		st.executeUpdate(sql);
+		sql="create table BOOKS";
+		sql+="(";
+		sql+="ID int(4) not null primary key auto_increment,";
+		sql+="Name	varchar(100),";
+		sql+="Author varchar(50),";
+		sql+="Price  decimal,";
+		sql+="Publisher varchar(100)";
+		sql+=")";
+		st.executeUpdate(sql);
+		 
+	}
+	//添加数据方法  
+	public void add_data(String path) throws IOException, SQLException{
+		FileReader fr=new FileReader(path);
+		BufferedReader br=new BufferedReader(fr);
+		String line;
+		String sql="use Book";
+		st.executeUpdate(sql);
+		sql="INSERT INTO BOOKS (Name,Author,Price,Publisher) VALUES(?,?,?,?)";
+		PreparedStatement ps=conn.prepareStatement(sql);
+		
+		while((line=br.readLine())!=null){
+			String[] arr=line.split(",");
+			ps.setString(1, arr[0]);
+			ps.setString(2, arr[1]);
+			ps.setDouble(3, Double.parseDouble(arr[2]));
+			ps.setString(4, arr[3]);
+			ps.executeUpdate();
+		}
+		br.close();
+	}
+}
+```
+
+init.jsp  
+
+```java
+<%
+DBLib lib=new DBLib();
+lib.create_data();
+lib.create_form();
+lib.add_data(application.getRealPath("")+"/data/data.txt");
+out.print("初始化成功");
+%>
+```
+
+init_data.java  
+
+```java
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {		
+			DBLib lib=new DBLib();
+			lib.create_data();
+			lib.create_form();		
+			lib.add_data(this.getServletContext().getRealPath("")+"/data/data.txt");
+			response.setCharacterEncoding("utf-8");
+			PrintWriter out=response.getWriter();
+			out.print("初始化成功2");
+		} catch (SQLException|ClassNotFoundException  e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+```
+
+[案例源码](../SourceCode/Servlet_Test/)   
 
 ---
 
