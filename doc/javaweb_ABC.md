@@ -477,6 +477,10 @@ create table BOOKS
 
 Servlet是用来处理逻辑的，而jsp是用来显示结果。所以讲上面的jsp页面改为Servlet页面。Servlet主要有doGet&doPost方法  
 
+Model 1:jsp+JavaBeans  
+
+Model 2:jsp+JavaBeans+Servlet  
+
 1. 创建Servlet，新建初始化对象，调用其方法(但是application是在jsp中的九大内置对象，在Servlet中没有，所以要通过``this.getServletContext()``来获取application对象)  
 
 2. 调用url（定义url有/，调用的时候没有），在jsp页面直接调用注解上的url即可  
@@ -615,6 +619,53 @@ init_data.java
 [案例源码](../SourceCode/Servlet_Test/)   
 
 ---
+
+
+
+案例:图书管理表格   
+
+1. 建立JavaBean  
+2. 建立数据访问接口DAO，里面有构造函数，添加书方法，删除书方法，修改书方法，获得书方法（...）  
+3. 前端处理：jq添加全选功能  
+
+```javascript
+	$("input[type='checkbox'][name='selectit']:first").click(function(){
+		$("input[type='checkbox'][name='selectit']").not(":first").
+		prop("checked",$(this).prop("checked"));
+	});
+```
+
+4. 修改按钮id的获取  
+
+```javascript
+	$("input[type='button'][name='modifyit']").click(function(){
+		//获取id
+		var id= $(this).parent().parent().children()
+		.eq(0).children().eq(0).val();
+		//页面跳转
+		location.href="modify.jsp?id="+id;
+	});
+```
+
+5. 删除按钮的功能   
+
+   1. 遍历每一个检查框（从第一个开始），如果被选中，就获取其id，并且用，分割开来  
+   2. 显示一个选择窗口``var answer=confirm("要删除"+i+"本书吗？");``  
+   3. 选择否，结束程序。否者调用该servlet方法``location.href="DeleteIt?ids="+ids;``  
+
+6. 修改图书信息功能  
+
+   1. 用request获取图书对象，通过对象获取其对应的属性显示在文本框values中  
+   2. 用jq验证数据合法性：输入不为空，价格必须为数字  
+   3. 最终表单提交到Modify  
+
+   ​
+
+
+
+
+
+- 前端设计
 
 
 
