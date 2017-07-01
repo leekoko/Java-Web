@@ -620,91 +620,305 @@ init_data.java
 
 ---
 
+## 5.Servlet图书管理案例  
 
+> 做一个表格，有增删改查的功能  
 
-案例:图书管理表格   
+1. 执行sql代码,新建数据表  
 
-1. 建立JavaBean  
-2. 建立数据访问接口DAO，里面有构造函数，添加书方法，删除书方法，修改书方法，获得书方法（...）  
-3. 前端处理：jq添加全选功能  
-
-```javascript
-	$("input[type='checkbox'][name='selectit']:first").click(function(){
-		$("input[type='checkbox'][name='selectit']").not(":first").
-		prop("checked",$(this).prop("checked"));
-	});
+```sql
+ create table BOOKS
+ (
+   ID int(4) not null primary key auto_increment,
+   Name	varchar(100),
+   Author varchar(50),
+   Price  decimal,
+   Publisher varchar(100)
+ )
 ```
 
-4. 修改按钮id的获取  
+2. 建立JavaBean，其属性有id,Name,Author,Price,Publisher  
+3. 建立DAO类，构造函数连接数据库，基础增删改查方法  
 
-```javascript
+```java
+public class BookDAO {
+	Connection conn;
+	Statement st;
+	String sql;
+	PreparedStatement ps;
+	
+	public BookDAO() throws ClassNotFoundException,SQLException{
+		System.out.println("进入初始化");
+		Class.forName("com.mysql.jdbc.Driver");
+	    String url="jdbc:mysql://127.0.0.1:3306/book";
+	  	String user="root";	
+	  	String pwd="123456";
+	  	conn=DriverManager.getConnection(url,user,pwd);
+	  	st=conn.createStatement();  //创建命令
+	}
+	//增
+	public int addBook(Book book) throws SQLException{
+		System.out.println("添加图书");
+		sql="insert into books (Name,Author,Price,Publisher) values(?,?,?,?) ";
+		ps=conn.prepareStatement(sql);
+		ps.setString(1, book.getName());
+		ps.setString(2, book.getAuthor());
+		ps.setFloat(3, book.getPrice());
+		ps.setString(4, book.getAuthor());
+		return ps.executeUpdate();
+	}
+	//删
+	public int deleteBook(int id) throws SQLException{
+		sql="delete from books where id=?";
+		ps=conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		return ps.executeUpdate();
+	}
+	//改
+	public int modifyBook(int id,Book book) throws SQLException{
+		sql="update books set name=?,author=?,price=?,publisher=? where id =?";
+		ps=conn.prepareStatement(sql);
+		ps.setString(1, book.Name);
+		ps.setString(2, book.getAuthor());
+		ps.setFloat(3, book.getPrice());
+		ps.setString(4, book.getPublisher());
+		ps.setInt(5, id);
+		return ps.executeUpdate();
+	}
+	//查
+	public ArrayList<Book> getBooks() throws SQLException{
+		System.out.println("进入了列表");
+		ArrayList<Book> books=new ArrayList<Book>();
+		sql="select * from books";
+		ResultSet rs=st.executeQuery(sql);
+		while(rs.next()){
+			Book book=new Book();
+			book.setId(rs.getInt(1));
+			book.setName(rs.getString(2));
+			book.setAuthor(rs.getString(3));
+			book.setPrice(rs.getFloat(4));
+			book.setPublisher(rs.getString(5));
+			books.add(book);
+		}
+		return books;
+	}
+	public ArrayList<Book> getBooks(String bookName) throws SQLException{
+		ArrayList<Book> books=new ArrayList<Book>();   //用数组是因为同名可能有多个
+		sql="select * from books where name = ?";
+		ps=conn.prepareStatement(sql);
+		ps.setString(1, bookName);
+		ResultSet rs=ps.executeQuery(sql);
+		while(rs.next()){
+			Book book=new Book();
+			book.setId(rs.getInt(1));
+			book.setName(rs.getString(2));
+			book.setAuthor(rs.getString(3));
+			book.setPrice(rs.getFloat(4));
+			book.setPublisher(rs.getString(5));
+			books.add(book);
+		}
+		return books;
+		
+	}
+	public Book getBookById(int id) throws SQLException{
+		String sql="select * from books where id =?";
+		ps=conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		ResultSet rs=ps.executeQuery();
+		rs.next();
+		Book book=new Book();
+		book.setId(rs.getInt(1));
+		book.setName(rs.getString(2));
+		book.setAuthor(rs.getString(3));
+		book.setPrice(rs.getFloat(4));
+		book.setPublisher(rs.getString(5));
+		return book;
+	}
+}
+```
+
+4. 用bookList.jsp页面遍历所有书本信息（用隐藏标签藏id，记得设置name）  
+
+bookList.java
+
+```css
+$(function(){
+	$("input[type='checkbox'][name='selectit']:first").click(function(){
+		$("input[type='checkbox'][name='selectit']").not(":first").prop("checked",$(this).prop("checked"));
+	});
 	$("input[type='button'][name='modifyit']").click(function(){
 		//获取id
-		var id= $(this).parent().parent().children()
-		.eq(0).children().eq(0).val();
+		var id=$(this).parent().parent().children().eq(0).children().eq(0).val();
 		//页面跳转
 		location.href="modify.jsp?id="+id;
 	});
+	$("#btnDelete").click(function(){
+		var ids="";
+		var num=0;
+		$("input[type='checkbox'][name='selectit']").each(function(i,e){
+			if(i>0){
+				if($(this).prop("checked")){
+					var id=$(this).parent().parent().children().eq(0).children().eq(0).val();
+					ids+=id;
+					num++;
+					if(!$(this).is(":last")){
+						ids+=",";
+					}
+				}
+			}
+		});
+		var answer =confirm("你确定要删除这"+num+"本图书吗？");
+		if(!answer){
+			return;
+		}
+		location.href="DeleteIt?ids="+ids;
+	});
+	$("#btnAdd").click(function(){
+		location.href="add.jsp";
+	});
+});
 ```
 
-5. 删除按钮的功能   
+```html
+<table>
+	<tr><th>序号</th><th>图书名称</th><th>作者</th><th>价格</th><th>出版社</th><th>修改</th><th><input type="checkbox" name="selectit"></th></tr>
+<%
+	BookDAO dao=new BookDAO();
+	ArrayList<Book> al=dao.getBooks();
+	for(int i=0;i<al.size();i++){
+		Book book=al.get(i);		
+%>
+	<tr>
+		<td><%=i+1%><input type="hidden" name="id" value="<%=book.getId()%>"></td>
+		<td><%=book.getName() %></td>
+		<td><%=book.getAuthor() %></td>
+		<td><%=book.getPrice() %></td>
+		<td><%=book.getPublisher() %></td>
+		<td><input type="button" name="modifyit" value="修改"></td>
+		<td><input type="checkbox" name="selectit"></td>
+	</tr>
+	
+<%
+	}
+%>	
+	<tr>
+		<td><input type="button" id="btnDelete" value="Delete"/></td>
+		<td><input type="button" id="btnAdd" value="Add"/></td>		
+	</tr>
+</table>
+```
 
-   1. 遍历每一个检查框（从第一个开始），如果被选中，就获取其id，并且用，分割开来  
-   2. 显示一个选择窗口``var answer=confirm("要删除"+i+"本书吗？");``  
-   3. 选择否，结束程序。否者调用该servlet方法``location.href="DeleteIt?ids="+ids;``  
+5. 点击删除的话，将id传给servlet，servlet收到之后将其分割成数组，删除对应的id信息  
 
-6. 修改图书信息功能  
+DeleteIt.java  
 
-   1. 用request获取图书对象，通过对象获取其对应的属性显示在文本框values中  
-   2. 用jq验证数据合法性：输入不为空，价格必须为数字  
-   3. 最终表单提交到Modify  
+```java
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String ids=request.getParameter("ids");
+		String[] id=ids.split(",");
+		try {
+			BookDAO dao=new BookDAO();
+			for (int i = 0; i < id.length; i++) {
+				dao.deleteBook(Integer.parseInt(id[i]));
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		response.sendRedirect("bookList.jsp");
+	}
+```
 
-   ​
+6. 点击修改，增加的话，新开一个页面（修改需要根据id将信息预设进去），然后提交到servlet中，最后将对象传入DAO中（修改还需要id）  
 
+modify.jsp
 
+```html
+<%
+	int id=Integer.parseInt(request.getParameter("id"));
+	BookDAO dao=new BookDAO();
+	Book book=dao.getBookById(id);
+%>
 
+<form method="post" action="Modify">
+	<table>
+		<input type="hidden" name="id" value="<%=id%>" />
+		<tr><td>序号</td><td><input type="text" name="name" value="<%=book.getName()%>"></td></tr>
+		<tr><td>作者</td><td><input type="text" name="author" value="<%=book.getAuthor()%>"></td></tr>
+		<tr><td>价格</td><td><input type="text" name="price" value="<%=book.getPrice()%>"></td></tr>
+		<tr><td>出版社</td><td><input type="text" name="publisher" value="<%=book.getPublisher()%>"></td></tr>
+		<tr><td colspan="2"><input type="submit" value="修改图书信息"></td><td><div id="info"></div></td></tr>
+	</table>
+</form>
 
+```
 
-- 前端设计
+Modify.java  
 
+```java
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		int id=Integer.parseInt(request.getParameter("id"));
+		String name=request.getParameter("name");
+		String author=request.getParameter("author");
+		float price=Float.parseFloat(request.getParameter("price"));
+		String publisher=request.getParameter("publisher");
+		Book book=new Book();
+		book.Name=name;
+		book.Author=author;
+		book.Price=price;
+		book.Publisher=publisher;
+		BookDAO dao;
+		try {
+			dao=new BookDAO();
+			dao.modifyBook(id, book);
+			response.sendRedirect("bookList.jsp");
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+```
 
+add.jsp  
 
+```html
+<form method="post" action="AddIt">
+	<table>
+		<tr><td>序号</td><td><input type="text" name="name"></td></tr>
+		<tr><td>作者</td><td><input type="text" name="author" "></td></tr>
+		<tr><td>价格</td><td><input type="text" name="price" ></td></tr>
+		<tr><td>出版社</td><td><input type="text" name="publisher"></td></tr>
+		<tr><td colspan="2"><input type="submit" value="添加图书"></td><td><div id="info"></div></td></tr>
+	</table>
+</form>
+```
 
+AddIt.java  
 
+```java
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String name=request.getParameter("name");
+		String author=request.getParameter("author");
+		float price=Float.parseFloat(request.getParameter("price"));
+		String publisher=request.getParameter("publisher");
+		Book book=new Book();
+		book.Name=name;
+		book.Author=author;
+		book.Price=price;
+		book.Publisher=publisher;
+		BookDAO dao;
+		try {
+			dao=new BookDAO();
+			dao.addBook(book);
+			response.sendRedirect("bookList.jsp");
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[案例源码](../SourceCode/Servlet_BookSys/)   
