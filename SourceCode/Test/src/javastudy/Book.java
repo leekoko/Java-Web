@@ -6,6 +6,7 @@ public class Book {
 	public String Author;
 	public float Price;
 	public String Publisher;
+	
 	public int getId() {
 		return id;
 	}
@@ -24,6 +25,7 @@ public class Book {
 	public void setAuthor(String author) {
 		Author = author;
 	}
+
 	public float getPrice() {
 		return Price;
 	}

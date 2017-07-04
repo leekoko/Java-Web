@@ -12,8 +12,8 @@
 
 <form method="post" action="AddIt">
 	<table>
-		<tr><td>序号</td><td><input type="text" name="name"></td></tr>
-		<tr><td>作者</td><td><input type="text" name="author" "></td></tr>
+		<tr><td>图书名称</td><td><input type="text" name="name"></td></tr>
+		<tr><td>作者</td><td><input type="text" name="author" ></td></tr>
 		<tr><td>价格</td><td><input type="text" name="price" ></td></tr>
 		<tr><td>出版社</td><td><input type="text" name="publisher"></td></tr>
 		<tr><td colspan="2"><input type="submit" value="添加图书"></td><td><div id="info"></div></td></tr>
