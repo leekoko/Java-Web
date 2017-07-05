@@ -649,11 +649,11 @@ public class BookDAO {
 	
 	public BookDAO() throws ClassNotFoundException,SQLException{
 		System.out.println("进入初始化");
-		Class.forName("com.mysql.jdbc.Driver");
-	    String url="jdbc:mysql://127.0.0.1:3306/book";
+		Class.forName("com.mysql.jdbc.Driver");    //加载驱动
+	    String url="jdbc:mysql://127.0.0.1:3306/book";   
 	  	String user="root";	
 	  	String pwd="123456";
-	  	conn=DriverManager.getConnection(url,user,pwd);
+	  	conn=DriverManager.getConnection(url,user,pwd);   //连接参数
 	  	st=conn.createStatement();  //创建命令
 	}
 	//增
@@ -736,6 +736,10 @@ public class BookDAO {
 	}
 }
 ```
+
+执行sql语句，当有返回值得时候，用executeQuery()，当没有返回值的时候用executeUpdate()  
+
+当没有返回值得时候返回运行后的情况(为int型)  
 
 4. 用bookList.jsp页面遍历所有书本信息（用隐藏标签藏id，记得设置name）  
 
