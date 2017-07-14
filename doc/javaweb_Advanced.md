@@ -59,7 +59,10 @@ initCtx.lookup("java:comp/env/mytest");
 
 
 
-一边跟着敲，一边做笔记  
+
+
+
+（目前搁置状态中）
 
 
 
