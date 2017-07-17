@@ -23,4 +23,7 @@
 
 ## 项目的收集  
 
-### 1.[JSP+MVC+jQuery 在线商城系统](doc/OnlineMall.md)
+### 1.[JSP+MVC+jQuery 在线商城系统](doc/OnlineMall.md)  
+
+ ### 2.[Java开发全球语言声控互译系统](doc/trans.md)  
+
