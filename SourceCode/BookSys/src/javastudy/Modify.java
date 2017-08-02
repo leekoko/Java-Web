@@ -28,33 +28,38 @@ public class Modify extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		int id=Integer.parseInt(request.getParameter("id"));
+		String name=request.getParameter("name");
+		String author=request.getParameter("author");
+		Float price=Float.parseFloat(request.getParameter("price"));
+		String publisher=request.getParameter("publisher");
+		Book book=new Book();
+		book.setAuthor(author);
+		book.setId(id);
+		book.setName(name);
+		book.setPrice(price);
+		book.setPublisher(publisher);
+		
+		try {
+			BookDAO dao=new BookDAO();
+			dao.modifyBook(id, book);
+			response.sendRedirect("bookList.jsp");
+		} catch (SQLException |ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		int id=Integer.parseInt(request.getParameter("id"));
-		String name=request.getParameter("name");
-		String author=request.getParameter("author");
-		float price=Float.parseFloat(request.getParameter("price"));
-		String publisher=request.getParameter("publisher");
-		Book book=new Book();
-		book.Name=name;
-		book.Author=author;
-		book.Price=price;
-		book.Publisher=publisher;
-		BookDAO dao;
-		try {
-			dao=new BookDAO();
-			dao.modifyBook(id, book);
-			response.sendRedirect("bookList.jsp");
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

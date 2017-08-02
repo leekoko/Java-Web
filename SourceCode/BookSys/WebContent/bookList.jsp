@@ -5,6 +5,50 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="jQuery/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btnAdd").click(function(){
+		location.href="add.jsp";
+	});
+	$("input[type='button'][name='modifyit']").click(function(){
+		//获取id
+		var id=$(this).parent().parent().children().eq(0).children().eq(0).val();
+		//页面跳转
+		location.href="modify.jsp?id="+id;
+		
+	});
+	$("input[type='checkbox'][name='selectit']:first").click(function(){
+		$("input[type='checkbox'][name='selectit']").not(":first").prop("checked",$(this).prop("checked"));
+	});
+	$("#btnDelete").click(function(){
+		var ids="";
+		var num=0;
+		$("input[type='checkbox'][name='selectit']").each(function(i,e){
+			if(i>0){
+				if($(this).prop("checked")){
+					var id=$(this).parent().parent().children().eq(0).children().eq(0).val();
+					ids+=id;
+					num++;
+					if(!$(this).is(":last")){
+						ids+=",";
+					}
+				}
+			}
+		});
+		var answer =confirm("你确定要删除这"+num+"本图书吗？");
+		if(!answer){
+			return;
+		}
+		location.href="DeleteIt?ids="+ids;
+	});
+
+	
+});
+
+
+</script>
+
 </head>
 <body>
 <table>

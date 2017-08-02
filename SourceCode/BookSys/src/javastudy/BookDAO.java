@@ -23,7 +23,41 @@ public class BookDAO {
 	  	conn=DriverManager.getConnection(url,user,pwd);
 	  	st=conn.createStatement();  //创建命令
 	}
+
+//增	
+	public int addBook(Book book) throws SQLException{
+		sql="insert into books (Name,Author,Price,Publisher) values(?,?,?,?) ";
+		ps=conn.prepareStatement(sql);
+		ps.setString(1, book.Name);
+		ps.setString(2, book.Author);
+		ps.setFloat(3, book.Price);
+		ps.setString(4, book.Publisher);
+		return ps.executeUpdate();
+	}
 	
+//删
+	public int deleteBook(int id) throws SQLException{
+		sql="delete from books where id=?";
+		ps=conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		return ps.executeUpdate();
+	}
+
+//改
+	public int modifyBook(int id,Book book) throws SQLException{
+		sql="update books set name=?,author=?,price=?,publisher=? where id =?";
+		ps=conn.prepareStatement(sql);
+		ps.setString(1, book.Name);
+		ps.setString(2, book.Author);
+		ps.setFloat(3, book.Price);
+		ps.setString(4, book.Publisher);
+		ps.setInt(5, id);
+		return ps.executeUpdate();
+	}
+
+	
+	
+//查	
 	public ArrayList<Book> getBooks() throws SQLException{
 		sql="select * from books";
 		ResultSet rs=st.executeQuery(sql);
@@ -39,4 +73,25 @@ public class BookDAO {
 		}
 		return al;
 	}
+	public Book getBookById(int id) throws SQLException{
+		sql="select * from books where id =?";
+		ps=conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		ResultSet rs=ps.executeQuery();
+		rs.next();
+		Book book=new Book();
+		book.id=rs.getInt(1);
+		book.Name=rs.getString(2);
+		book.Author=rs.getString(3);
+		book.Price=rs.getFloat(4);
+		book.Publisher=rs.getString(5);
+		return book;
+	}
+
+	
+	
+	
+	
+	
+	
 }

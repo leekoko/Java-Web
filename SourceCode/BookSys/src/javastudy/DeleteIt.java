@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AddIt
+ * Servlet implementation class DeleteIt
  */
-@WebServlet("/AddIt")
-public class AddIt extends HttpServlet {
+@WebServlet("/DeleteIt")
+public class DeleteIt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddIt() {
+    public DeleteIt() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,24 +29,21 @@ public class AddIt extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String name=request.getParameter("name");
-		String author=request.getParameter("author");
-		float price=Float.parseFloat(request.getParameter("price"));
-		String publisher=request.getParameter("publisher");
-		Book book=new Book();
-		book.Name=name;
-		book.Author=author;
-		book.Price=price;
-		book.Publisher=publisher;
-		BookDAO dao;
+		response.setCharacterEncoding("utf-8");
+		String ids=request.getParameter("ids");
+		String[] arr=ids.split(",");
 		try {
-			dao=new BookDAO();
-			dao.addBook(book);
+			BookDAO dao=new BookDAO();
+			for (int i = 0; i < arr.length; i++) {
+				dao.deleteBook(Integer.parseInt(arr[i]));
+			}
 			response.sendRedirect("bookList.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+	
 	}
 
 	/**
