@@ -29,7 +29,7 @@
 
 ### 3.[Java开发邮件群发系统（缺陷版）](doc/Mass.md)  
 
-### 4.[智能聊天机器人](doc/Robot.md)    
+### 4.[智能聊天机器人（手机版）](doc/Robot.md)      
 
 ### 5.[Java实现简单爬虫](doc/Crawler.md)   
 

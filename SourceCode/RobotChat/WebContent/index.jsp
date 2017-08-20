@@ -1,8 +1,6 @@
-# 智能聊天机器人（手机版）  
-
-### 1.前端部分  
-
-```html
+<%@page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -125,75 +123,3 @@
 	
 </body>
 </html>
-```
-
-这里前端主要是处理文字怎么传到另一个p标签上，并且还得控制标签自动换行，输入框清空，界面我是模仿微信聊天窗口做的    
-
-### 2.后台部分  
-
-```java
-
-/**
- * 聊天信息处理类
- * @author liyb
- *
- */
-
-@WebServlet("/robot")
-public class RobotAction extends HttpServlet{
-	public static final String APIKEY="857532846c5349939e6a0c70be75b6b3";
-	public static final String url="http://www.tuling123.com/openapi/api?key=";
-	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		resp.setCharacterEncoding("utf-8");
-		
-		String text=req.getParameter("text");
-		String result=getResult(text);
-		resp.getWriter().print(result);
-	}
-	
-	public static String getResult(String text){
-		String INFO="";
-		StringBuilder sb=new StringBuilder();
-		
-		try {
-			INFO=URLEncoder.encode(text,"UTF-8");
-			String getUrl=url+APIKEY+"&info="+INFO;
-			URL queryUrl=new URL(getUrl);
-			URLConnection connection=queryUrl.openConnection();
-			BufferedReader br=new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
-			String temp="";
-			while((temp=br.readLine())!=null){
-				sb.append(temp);
-			}
-		} catch (Exception e) {
-		}
-		return sb.toString();
-	}
-}
-
-```
-
-1. INFO=URLEncoder.encode(text,"UTF-8");设置传输的编码
-2. 执行链接，获取信息存入InputStream中，存入的时候也需要设置编码   
-
-``URLConnection connection=queryUrl.openConnection();``  
-
-``BufferedReader br=new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));``  
-
-3. 用BufferedReader包装InputStream，然后用readLine读取信息，用append追加后传到前台  
-
-
-
-案例截图：  
-
-![7](../images/7.jpg)  
-
-[案例源码](../SourceCode/RobotChat/)        
