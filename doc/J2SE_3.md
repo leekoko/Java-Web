@@ -9,12 +9,12 @@
 
 ## 2.MySql  
 java连接数据库的方法：JDBC  
-安装之后让MySql随系统启动启动（在 服务 中可以设置，也可以设置手动：net start mysql/ net stop mysql）  
+安装之后让MySql随系统启动启动（在 服务中可以设置，也可以设置手动：net start mysql/ net stop mysql）  
 ### 1.创建数据库  
 1. 数据库名词  
-view 视图  
-stored procedure 存储过程：用sql语法编写的程序  
-结构化语言：用来增删改查  
+  view 视图  
+  stored procedure 存储过程：用sql语法编写的程序  
+  结构化语言：用来增删改查  
 
 **创建student数据库，新建studinfo表，字段为no，name，sex，age**
 
@@ -52,7 +52,7 @@ public static void main(String[] args) throws ClassNotFoundException, SQLExcepti
 		System.out.println();
 	}
 }
-```  
+```
 
 8. 获取字段标题:``ResultSetMetaData data=rs.getMetaData(); data.getColumnName(i)``    
 
@@ -66,14 +66,14 @@ public static void main(String[] args) throws ClassNotFoundException, SQLExcepti
 ### 1.显示文件的信息  
 1. 创建File对象：``File file=new File("D:\\eclipse\\eclipse.exe");``  
 2. 将信息存进StringBuilder中：str.append("信息内容")  
-可以获得的信息：  
+  可以获得的信息：  
 * 最后修改日期：file.lastModified()  
-修改时间格式的方式：
+  修改时间格式的方式：
 ```
 Calendar ca=Calendar.getInstance();  
 ca.setTimeInMillis(file.lastModified());  
 ca.getTime().toLocaleString();
-```  
+```
 * 文件大小：file.length()  
 * 文件类型：file.isDirectory()  
 * 子目录：file.listFiles()  
@@ -114,7 +114,7 @@ BufferedInputStream,BufferedOutputStream      BufferedReader,BufferedWriter
 ### 2.字符流读取文本文件
 1. 新建FileReader对象：``FileReader fr=new FileReader("E:\\目录\\文件.txt");``  
 2. 用int型获取数据:``ch=fr.read()``  
-当读出来为-1的时候说明读取结束，跟字节流的不同，字节流读出来的不能直接强转为字符，需要装配为数组再包装为字符串  
+  当读出来为-1的时候说明读取结束，跟字节流的不同，字节流读出来的不能直接强转为字符，需要装配为数组再包装为字符串  
 3. 将int型转化为字符，记得关闭字符流fr.close()  
 
 ### 3.字节流的方式写文件  
