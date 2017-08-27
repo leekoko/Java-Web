@@ -221,7 +221,7 @@ CheckUser.java
 1. ajax访问url的方式：``obj=$.ajax({url:"CheckUser?uname="+$("uname").val(),async:false});``   
 
    ``.post是.ajax({type:'post})的简写``  
-   ``.get是 .ajax({type: 'get'}) 的简写  ``  
+   ``.get是 .ajax({type: 'get'})的简写  ``  
 
 2. 将返回对象显示：``$("#info").html(obj.responseText);``  
 
