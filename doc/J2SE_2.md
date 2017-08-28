@@ -3,7 +3,7 @@
 ## 1.枚举&静态  
 1. 枚举：枚举的定义，用enum Gender{ Male,Fenale },后面用Gender就可以点出来
 2. 静态成员：表示该成员属于所有的类，到处都能访问（访问静态成员，必须使用静态方法）  
-``被static修饰后的成员，在编译时由内存分配一块内存空间，直到程序停止运行才会释放，那么就是说该类的所有对象都会共享这块内存空间``  
+  ``被static修饰后的成员，在编译时由内存分配一块内存空间，直到程序停止运行才会释放，那么就是说该类的所有对象都会共享这块内存空间``  
 
 ---
 
@@ -21,7 +21,7 @@ Throwable主要有两个子类：Error&Exception
 >5.IllegalArgumentException（非法参数异常）  
 >6.ArithmeticException（算术异常）  
 >7.IllegalStateException（非法语句异常）   
->  
+>
 >**非RuntimeException**  
 >ClassNotFoundException（类找不到异常）  
 
@@ -53,7 +53,6 @@ public class Person implements Animal{   //实现animal接口
 		this.name=name;
 		this.age=age;
 	}
-	
 }
 
 public class Main {
@@ -78,26 +77,26 @@ public static void main(String[] args) throws ClassNotFoundException, Instantiat
 ### 1.Collection介绍  
 1. 数组：定长，只能存同一种类型  
 2. ArrayList:基于数组，查找速度比较快  
-遍历器循环：  
+  遍历器循环：  
 ```
 Iterator<String> it=al.iterator();
 while(it.hasNext()){
 	syso(it.next());	
 }
-```  
+```
 3. LinkList:基于链表，修改数据比较快  
 4. HashSet:Set没有索引，**不可以重复**，Hash是无序的  
 5. TreeSet:没有索引，并且是无序的  
-![](../images/2.png)  
-List和Set都属于接口，其下结点为它们的实现类  
+  ![](../images/2.png)  
+  List和Set都属于接口，其下结点为它们的实现类  
 
 ### 2.定义比较器  
 1. 比较类实现Comparator<Person>接口  
 2. 实例化ComparaTo方法，用传进来的Person类比较  
-返回1,0，-1三个值（或者直接返回compareTo方法）  
+  返回1,0，-1三个值（或者直接返回compareTo方法）  
 3. 调用的时候，传方法  
-``TreeSet<Dog> ts=new TreeSet<Dog>(new MyCom());   //传比较器对象``  
-**定义一个类，实例化类之后存进TreeSet中，其输出通过类的age排序**  
+  ``TreeSet<Dog> ts=new TreeSet<Dog>(new MyCom());   //传比较器对象``  
+  **定义一个类，实例化类之后存进TreeSet中，其输出通过类的age排序**  
 ```java
 public class Main {
 	public static void main(String[] args) {
