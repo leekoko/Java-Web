@@ -63,8 +63,7 @@ function query(){   /* 定义查询方法 */
 		 success:function(data){
 			 var StringJson=$.parseJSON(data);   //转化为json
 			 var trans_result=StringJson.trans_result[0].dst;
-			 $("#r_text").html(trans_result);
-			 
+			 $("#r_text").html(trans_result);		 
 			 function audioplay(){
 				 var str=trans_result.replace(/\s+/g,"_");
 				 if(to=="wyw"){   //解决中文类的其他读音
