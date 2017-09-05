@@ -16,19 +16,19 @@ document.form[0].mm.focus()选中内容
 function sayHello(){
 	alert("你好"+document.getElementsByName("xm")[0].value);
 }
-```  
+```
 name有多个，所以Elements需要加s  
 onload事件：页面加载的时候执行，写在body中  
 parseFloat(value值)：转化为浮点数  
 
 ### 5.正则表达式  
 1. 定义正则表达式  
-方法1：var reName=new RegExp("正则表达式");    
-方法2：var reName=/正则表达式/;  
+  方法1：var reName=new RegExp("正则表达式");    
+  方法2：var reName=/正则表达式/;  
 
 2. 中文正则表达式  
-/^[\u4e00-\u9fa5]+$/i   
-该编码范围内，+表示出现1次以上  
+  /^[\u4e00-\u9fa5]+$/i   
+  该编码范围内，+表示出现1次以上  
 
 3. 使用正则表达式  
 ```javascript
@@ -36,11 +36,11 @@ var str=/^[\u4e00-\u9fa5]+$/i;
 if(!str.test(某个value)){
 	...
 }
-```  
+```
 
 4. 数字正则表达式  
-/^[1-9][0-9]?$/ 第一位1-9，第二位0-9，问号表示不一定会出现  
-该正则表达式用来限制1-99的数字  
+  /^[1-9][0-9]?$/ 第一位1-9，第二位0-9，问号表示不一定会出现  
+  该正则表达式用来限制1-99的数字  
 
 **使用正则表达式，判断输入框的名字是否为中文，岁数是否为1-99岁**  
 ```html
@@ -73,25 +73,24 @@ if(!str.test(某个value)){
 </html>
 ```
 
-
 ---
 
 ## 2.DOM  
 操作网页上的元素（文档对象模型）  
 1. 隐藏元素  
-``document.getElementsByName("nvhx").item(i).style.display="none";``
-获取name必须添加item，从0开始计算    
-style.visibility=visible/hidden 元素隐藏，空间留着  
-style.display=block/none 元素和空间都会隐藏(为了防止排版出错，block改为table-row)  
+  ``document.getElementsByName("nvhx").item(i).style.display="none";``
+  获取name必须添加item，从0开始计算    
+  style.visibility=visible/hidden 元素隐藏，空间留着  
+  style.display=block/none 元素和空间都会隐藏(为了防止排版出错，block改为table-row)  
 
 2. 获取元素宽度  
-``document.getElementBy("inner").style.width=document.getElementById("inner").offsetWidth+50+"px";``  
-offsetWidth取出来的是纯粹数字，没有带px  
+  ``document.getElementBy("inner").style.width=document.getElementById("inner").offsetWidth+50+"px";``  
+  offsetWidth取出来的是纯粹数字，没有带px  
 
 3. 打印元素内容  
-document.write("<tr>");  
-document.write(books[i].name);  
-双引号内容用单引号代替  
+  document.write("<tr>");  
+  document.write(books[i].name);  
+  双引号内容用单引号代替  
 
 **点击男女选框，表格中的输入框发生改变**
 ```html
@@ -119,11 +118,11 @@ document.write(books[i].name);
 		<div style="background: red; width: 20px; height: 20px;" id="nv"></div>		
 	</body>
 </html>
-```  
+```
 
 4. 添加options属性  
-``document.getElementById("month").options.add(new Option("-月-"，0));``  
-**做一个年月日三级联动下拉框（四年一闰，百年不闰，四百年一润，闰年29）**  
+  ``document.getElementById("month").options.add(new Option("-月-"，0));``  
+  **做一个年月日三级联动下拉框（四年一闰，百年不闰，四百年一润，闰年29）**  
 ```html
 <html>
 	<head>
@@ -169,26 +168,25 @@ document.write(books[i].name);
 </html>
 ```
 
-
 ---
 
 ## 3.调试  
 1.  DOM资源管理器  
-可以查看javascript执行完之后的结果（跟直接查看源码不一样）  
-可以修改显示的内容，右边为对应样式  
+  可以查看javascript执行完之后的结果（跟直接查看源码不一样）  
+  可以修改显示的内容，右边为对应样式  
 2.  DeBug  
-在Debug页面可以调试断点  
-Source中可以断点跟踪，查看属性  
-Firefox可以添加插件firebug  
-3. console  
-可以在控制台打印：console.log(...width);  
+  在Debug页面可以调试断点  
+  Source中可以断点跟踪，查看属性  
+  Firefox可以添加插件firebug  
+3.  console  
+  可以在控制台打印：console.log(...width);  
 
 ---
 
 ## 4.定时器  
 1. setInterval：多次定时器  
-启动定时器：``timer=window.setInterval(show,50);``50毫秒执行一次show方法  
-停止定时器：``window.clearInterval(timer);``  
+  启动定时器：``timer=window.setInterval(show,50);``50毫秒执行一次show方法  
+  停止定时器：``window.clearInterval(timer);``  
 2. setTimeout：单次定时器  
 
 ---
@@ -268,14 +266,13 @@ var myFather=new Person("Bill","Gates",56,"blue");
 	</body>
 </html> 
 ```
- 
+
 ---
 
 ## 6.事件  
 1. 匿名事件处理函数：  
-``document.getElementsByTagName("input").item(0).onclick=function(){alert("匿名函数测试")};``  
-2. 事件的使用：可以通过window.XX来调用  
-获取鼠标移动信息：  
+  ``document.getElementsByTagName("input").item(0).onclick=function(){alert("匿名函数测试")};``  
+2. 事件的使用：可以通过window.XX来调用      获取鼠标移动信息：  
 ```javascript
 window.onmousemove=function(evt){
 	if(window.event) evt=window.event;
