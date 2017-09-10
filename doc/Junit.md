@@ -81,7 +81,52 @@
 
 更改测试运行器，一般使用默认的就可以完成   
 
- 
+**1.测试套件**  
+
+测试套件就是将多个测试类一起运行，测试运行器为Suite.class,将测试类作为数组传入Suite.SuiteClasses中  
+
+```java
+@RunWith(Suite.class)
+@Suite.SuiteClasses({CalculateTest_2.class,CalculateTest_3.class})
+public class CalculateTest {
+}
+```
+
+**参数化设置**  
+
+1. 设置运行器  
+2. 生命多组预期值&结果值，其返回值为Collection的静态方法，用@Parameters修饰    
+3. 为测试类编写构造方法并赋值，编写测试方法  
+
+```java
+@RunWith(Parameterized.class)
+public class ParameterTest {
+	int expected=0;
+	int input1=0;
+	int input2=0;
+	
+	@Parameters
+	public static Collection<Object[]> t(){
+		return Arrays.asList(new Object[][]{
+			{3,1,2},
+			{4,2,3}
+		});
+	}
+	
+	public ParameterTest(int expected,int input1,int input2){
+		this.expected=expected;
+		this.input1=input1;
+		this.input2=input2;
+	}
+	
+	@Test
+	public void testAdd(){
+		assertEquals(expected, new Calculate().add(input1, input2));
+	}
+}
+```
+
+
 
 
 
