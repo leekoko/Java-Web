@@ -15,8 +15,6 @@
 
 ### 7.[Java Web 进阶开发](doc/javaweb_Advanced.md)  
 
-
-
 ### 8.[Junit测试](doc/Junit.md)   
 
 
@@ -25,21 +23,21 @@
 
 ## 项目的收集  
 
-### 1.[JSP+MVC+jQuery 在线商城系统](doc/OnlineMall.md)  
+### 1.[JSP+MVC+jQuery 在线商城系统](proDoc/OnlineMall.md)  
 
- ### 2.[Java开发全球语言声控互译系统](doc/trans.md)  
+ ### 2.[Java开发全球语言声控互译系统](proDoc/trans.md)  
 
-### 3.[Java开发邮件群发系统（缺陷版）](doc/Mass.md)  
+### 3.[Java开发邮件群发系统（缺陷版）](proDoc/Mass.md)  
 
-### 4.[智能聊天机器人（手机版）](doc/Robot.md)      
+### 4.[智能聊天机器人（手机版）](proDoc/Robot.md)      
 
-### 5.[Java实现简单爬虫](doc/Crawler.md)   
+### 5.[Java实现简单爬虫](proDoc/Crawler.md)   
 
 ---
 
 ## 知识专题  
 
-### 1.[JDBC的使用](doc/jdbc.md)    
+### 1.[JDBC的使用](knowDoc/jdbc.md)    
 
 
 
