@@ -39,5 +39,5 @@
 
 ### 1.[JDBC的使用](knowDoc/jdbc.md)    
 
-
+### 2.[连接池](knowDoc/connPool.md)
 
