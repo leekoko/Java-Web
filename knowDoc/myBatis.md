@@ -159,13 +159,104 @@ _后来公司觉得接口部门人少事少，就把它和核心部门合并成�
 - 多对多的关系需要再新建一个表   
 
 
-ResultMap可以实现复杂查询结果到复杂对象关联关系的转化   
+### 1.ResultMap   
+
+- ResultMap可以实现复杂查询结果到复杂对象关联关系的转化   
+
+#### 1.xml配置的修改
+
+```xml
+<!--使用resultMap的方式  start-->
+    <select id="getUserById2" parameterType="Integer" resultMap="UserMap">
+        select * from user where id=#{id}
+    </select>
+    
+    <resultMap type="cn.leekoko.User" id="UserMap">
+    	<constructor>
+    		<idArg column="id" javaType="int"/>
+    		<arg column="userName" javaType="String"/>
+    		<arg column="password" javaType="String"/>
+    	</constructor>
+    </resultMap>
+<!--使用resultMap的方式  end-->  
+```
+
+#### 2.pojo添加构造函数   
+
+```java
+	public User(Integer id,String userName,String password){
+		this.id=id;
+		this.userName=userName;
+		this.password=password;
+	}
+```
+
+其他的使用跟resultType一样    
+
+### 2.Collection   
+
+当pojo的java对象里面有List< Course >属性的时候，需要用collection标签在xml配置中注入。（一般用于连接查询）  
+
+```xml
+    <resultMap type="cn.leekoko.User" id="UserMap">
+    	<constructor>
+    		<idArg column="id" javaType="int"/>
+    		<arg column="userName" javaType="String"/>
+    		<arg column="password" javaType="String"/>
+    	</constructor>
+    	<collection property="courses" ofType="cn.leekoko.Course">
+    		<id property="id" column="courseId" />
+    		<result property="courseName" column="courseName"/>
+    	</collection>
+    </resultMap>
+```
+
+其中property是对象名，ofType是对象所在的位置。    
+
+### 3.association   
+
+当pojo里面有List< Course >属性，而List< Course >属性里面又有teacher对象的时候，需要用association标签在xml配置中注入。
+
+```xml
+    <resultMap type="cn.leekoko.User" id="UserMap">
+    	<constructor>
+    		<idArg column="id" javaType="int"/>
+    		<arg column="userName" javaType="String"/>
+    		<arg column="password" javaType="String"/>
+    	</constructor>
+    	<collection property="courses" ofType="cn.leekoko.Course">
+    		<id property="id" column="courseId" />
+    		<result property="courseName" column="courseName"/>
+    		<association property="teacher" column="teacher_id"
+    		javaType="cn.leekoko.Teacher">
+	      		<id property="id" column="teacherId" />
+	    		<result property="teacherName" column="teacherName"/>  			
+    		</association>
+    	</collection>
+    </resultMap>
+```
+
+## 6.MyBatis3.0内置连接池   
+
+#### 1.开启方式dataSource的type设置为"POOLED"   
+
+```xml
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/test" />
+                <property name="username" value="root" />
+                <property name="password" value="123456" />
+            </dataSource>
+```
+
+#### 2.MyBatis连接周期流程图   
+
+![](../images/db15.png)  
+
+- 最大活跃连接数：poolMaximumActiveConnections  
+- 最大空闲连接数：poolMaximumIdleConnections(超过连接就会被释放)
 
 
-
-
-
-
-
-
-
+- 最大checkout时间：poolMaximumCheckoutTime  
+- 超时重连：poolTimeToWait   
+- 连接侦察：检查连接是否有效poolPingEnabled（默认关闭，建议开启）,poolPingQuery检查数据库是否存活，poolPingConnectionsNotUsedFor侦测时间，连接静置时长   
