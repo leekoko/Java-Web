@@ -31,7 +31,7 @@ _我们用java对象直接操作数据库，方便但是不灵活。而sql来写
 mybatis-3.2.3.jar
 mysql-connector-java-5.1.28-bin.jar
 
-_用使用mybatis，需要将mybatis加工厂搬到系统中。mybatis加工厂就像一个外包技术团队，专门处理sql方面的问题。_  
+_使用mybatis，需要将mybatis加工厂搬到系统中。mybatis加工厂就像一个外包技术团队，专门处理sql方面的问题。_  
 
 ### 2.配置SqlSessionFactory     
 
@@ -238,7 +238,7 @@ _后来公司觉得接口部门人少事少，就把它和核心部门合并成�
 
 ## 6.MyBatis3.0内置连接池   
 
-#### 1.开启方式dataSource的type设置为"POOLED"   
+#### 1.mybatis连接池开启方式dataSource的type设置为"POOLED"   
 
 ```xml
             <dataSource type="POOLED">
