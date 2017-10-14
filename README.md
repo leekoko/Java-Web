@@ -47,7 +47,9 @@
 
 ### 5.[事务](knowDoc/transaction.md)     
 
-### 6.[MyBatis](knowDoc/myBatis.md)    
+### 6.[MyBatis](knowDoc/myBatis.md)      
+
+### 7.[IOC](knowDoc/ioc.md)    
 
 
 
