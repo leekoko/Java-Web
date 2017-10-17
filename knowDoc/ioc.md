@@ -19,8 +19,6 @@ _我们是饺子厂商，主要卖有两种饺子。一种是包装的，包什�
 
 将业务逻辑和非业务逻辑分开来写，但是运行的时候要一起运行。   
 
-
-
 Spring模块（feiman）  
 
 ![](../images/sp02.png)    
@@ -34,11 +32,38 @@ Spring模块（feiman）
 
 ### 1.新建maven工程   
 
-- 选择简单工程，使用war包    
-- 解决新建报错：缺少web.xml，右键项目选择Generate Deployment Descriptor Stub   
-- tomcat运行注意修改其配置  
+- 选择简单工程，使用war包/使用jar    
 
-### 2.在sources中新建application-context.xml   
+> jar包相当于一个个的类集合成一个包，当你使用某些功能时就需要这些jar包的支持，需要导入jar包。
+> war包是web工程中对web应用的一个打包，目的是节省资源，提供效率，把war包方法到服务器指定文件夹中，war包会自动生成一个web应用，十分方便。
+
+- 解决新建报错：缺少web.xml，右键项目选择Generate Deployment Descriptor Stub   
+- tomcat运行注意修改其配置   
+
+### 2.添加pom依赖   
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.leekoko.course</groupId>
+  <artifactId>spring-container</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>  
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>4.2.1.RELEASE</version>
+	</dependency>
+	
+  </dependencies>
+      
+</project>
+```
+
+_引入spring相关jar包的过程_   
+
+### 3.在sources中新建application-context.xml   
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -55,6 +80,70 @@ Spring模块（feiman）
     
 </beans>    
 ```
+
+_为了xml文件的规范合法，需要引入命名空间和标签规范_  	
+
+### 4.新建bean类   
+
+```java
+public class ScrewDriver {
+	public void use(){
+		System.out.println("Use screwdriver");
+	}
+}
+```
+
+### 5.在application-context.xml中添加bean  
+
+```xml
+    <!-- 定义bean -->
+    <bean id="screwDriver" class="cn.leekoko.course.ScrewDriver"></bean>
+```
+
+### 6.测试代码   
+
+```java
+public class TestContainer {
+	public static void main(String[] args) {
+		//获取ioc容器
+		ApplicationContext context=
+				new ClassPathXmlApplicationContext("application-context.xml");
+		ScrewDriver screwDriver=context.getBean("screwDriver",ScrewDriver.class);
+		screwDriver.use();
+	}
+
+}
+```
+
+通过读取application-context文件获取ioc容器，用ioc容器获取bean类，执行bean类的方法。   
+
+### 7.作用域   
+
+- singleton：bean的配置默认就是singleton，也可以添加scope="singleton"设立。 
+
+只有一个对象：在声明一次对象之后，就算多次声明，也不会改变其属性值。    
+
+- prototype：添加scope="prototype"
+
+每次获取都是一个新的对象，状态不共享      
+
+
+
+_作用域就是对象的有效范围：prototype只能用一个，singleton多个都是同一个，_
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 在web.xml中启动配置文件的加载，web-app中添加：
 
@@ -79,6 +168,10 @@ Spring模块（feiman）
 	</servlet-mapping>
 ```
 
+指定application-context.xml的路径，
+
+
+
 DispatcherServlet需要有对应的配置文件example-servlet.xml  
 
 设置扫描类
@@ -100,6 +193,8 @@ DispatcherServlet需要有对应的配置文件example-servlet.xml
 </beans> 
 ```
 
+
+
 ### 3.新建Controller   
 
 访问该路径输出文字：
@@ -116,7 +211,11 @@ public class HelloController {
 }
 ```
 
+_指定访问的路径_  
 
+
+
+ApplicationContext=ioc容器  
 
 
 
