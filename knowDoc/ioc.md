@@ -1,4 +1,4 @@
-# IOC控制反转   
+# IOC控制反转(待feiman)   
 
 ## 1.IOC的介绍   
 
@@ -125,97 +125,106 @@ public class TestContainer {
 
 - prototype：添加scope="prototype"
 
-每次获取都是一个新的对象，状态不共享      
+每次获取都是一个新的对象，状态不共享  
 
+- request scope：一次访问产生一个，request结束销毁   
+- session scope：在session期间，会话都有效   
+- application scope：在整个application中只有一个实例   
 
+_作用域就是对象的有效范围：prototype只能用一个，singleton多个都是同一个_
 
-_作用域就是对象的有效范围：prototype只能用一个，singleton多个都是同一个，_
+### 8.回调   
 
+有好几个时期的回调，在不同的时期执行   
 
+#### 使用方式：
 
-
-
-
-
-
-
-
-
-
-
-
-
-在web.xml中启动配置文件的加载，web-app中添加：
-
-```xml  
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value> 
-		classpath:application-context.xml </param-value>
-	</context-param>
-
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<servlet>
-		<servlet-name>example</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>example</servlet-name>
-		<url-pattern>/api/*</url-pattern>
-	</servlet-mapping>
-```
-
-指定application-context.xml的路径，
-
-
-
-DispatcherServlet需要有对应的配置文件example-servlet.xml  
-
-设置扫描类
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"  
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context.xsd
-	http://www.springframework.org/schema/mvc  
-    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-
-	<context:component-scan base-package="cn.leekoko.controller.HelloController"></context:component-scan>
-</beans> 
-```
-
-
-
-### 3.新建Controller   
-
-访问该路径输出文字：
+1. 在bean类中编写回调方法   
 
 ```java
-@Controller
-@RequestMapping(value="/hello")
-public class HelloController {
-	@RequestMapping(value="/spring")
-	public void spring(HttpServletResponse response) throws IOException{
-		response.getWriter().write("Hello,Spring,hehe!!");
+	public void init(){
+		System.out.println("init screwdriver");
+	}
+```
+
+2. bean中添加 init-method="init"指向初始化方法   
+
+```xml
+<!-- 定义bean -->
+    <bean id="screwDriver" class="cn.leekoko.course.ScrewDriver" init-method="init"></bean>
+```
+
+### 9.依赖注入方式  
+
+强依赖使用构造函数，可选依赖使用Setter方法   
+
+#### 1.构造函数注入的例子   
+
+##### 1.定义接口   
+
+```java
+public interface Header {
+	public void doWork();
+	public String getInfo();
+}
+```
+
+##### 2.新建实现类   
+
+```java
+public class StraightHeader implements Header{
+	private String color;
+	private int size;
+	public StraightHeader(String color,int size){
+		this.color=color;
+		this.size=size;
+	}
+	
+	public void doWork() {
+		System.out.println("Do work with straight header");
+	}
+
+	public String getInfo() {
+		return "StraightHeader：color"+color+",size="+size;
 	}
 	
 }
 ```
 
-_指定访问的路径_  
+##### 3.在application-context.xml中添加bean
+
+```xml
+    <bean id="header" class="cn.leekoko.course.StraightHeader">
+    	<constructor-arg value="red"></constructor-arg>
+    	<constructor-arg value="15"></constructor-arg>
+    </bean>
+```
+
+constructor-arg用来给构造函数传值    
+
+##### 4.调用方法执行      
+
+```java	
+		Header header=context.getBean("header",StraightHeader.class);
+		System.out.println(header.getInfo());
+		header.doWork();
+```
 
 
 
-ApplicationContext=ioc容器  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
