@@ -154,7 +154,7 @@ _作用域就是对象的有效范围：prototype只能用一个，singleton多�
     <bean id="screwDriver" class="cn.leekoko.course.ScrewDriver" init-method="init"></bean>
 ```
 
-### 9.依赖注入方式  
+### 9.手动注入方式  
 
 强依赖使用构造函数，可选依赖使用Setter方法   
 
@@ -200,7 +200,7 @@ public class StraightHeader implements Header{
     </bean>
 ```
 
-constructor-arg用来给构造函数传值    
+constructor-arg用来给构造函数传值，确定顺序可以用：index="1",type="java.lang.String",name="size"       
 
 ##### 4.调用方法执行      
 
@@ -209,6 +209,173 @@ constructor-arg用来给构造函数传值
 		System.out.println(header.getInfo());
 		header.doWork();
 ```
+
+#### 2.Map的注入  
+
+##### 1.编写传集合的构造函数   
+
+```java
+	public StraightHeader(Map<String, String> paras){
+		this.color=paras.get("color");
+		this.size=Integer.parseInt(paras.get("size"));
+	}
+```
+
+##### 2.配置注入集合    
+
+```xml
+    	<constructor-arg>
+    		<map>
+    			<entry key="color" value="red"></entry>
+    			<entry key="size" value="14"></entry>
+    		</map>
+    	</constructor-arg>
+```
+
+跟map类似的还有props，其子标签未prop   
+
+#### 3.List注入   
+
+##### 1.编写注入的list
+
+```xml
+    	<constructor-arg>
+    		<list>
+    			<value>red</value>
+    			<value>14</value>
+    		</list>
+    	</constructor-arg>
+```
+
+除了List，也可以用Set    
+
+##### 2.编写传List的构造方法   
+
+```java
+    	<constructor-arg>
+    		<list>
+    			<value>red</value>
+    			<value>14</value>
+    		</list>
+    	</constructor-arg>
+```
+
+#### 4.从配置文件读取注入   
+
+从properties文件读取   
+
+#####  1.在application-context.xml中添加properties配置文件的读取    
+
+```xml
+    <bean id="headerProperty" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">    
+        <property name="location" value="classpath:header.properties">    
+        </property>    
+    </bean>    
+```
+
+读取的文件名称为
+
+header.properties
+
+##### 2.在resources中添加header.properties配置文件   
+
+```xml
+color=green
+size=16
+```
+
+使用键值对的方式
+
+##### 3.注入之后在application-context.xml中就可以调用对应的值
+
+```xml
+    <bean id="header" class="cn.leekoko.course.StraightHeader">
+    	<constructor-arg name="color" value="${color}"></constructor-arg>
+    	<constructor-arg name="size" value="${size}"></constructor-arg>
+    </bean>
+```
+
+用${size}对值进行提取    
+
+#### 5.bean类型的依赖注入    
+
+##### 1.在实现类中声明注入的类，添加构造函数   
+
+```java
+	private Header header;
+	
+	public ScrewDriver(Header header){    //编写bean的构造函数
+		this.header=header;
+      	 header.doWork();
+	}
+```
+
+##### 2.配置文件中注入bean   
+
+```xml
+    <!-- 定义bean -->
+    <bean id="screwDriver" class="cn.leekoko.course.ScrewDriver" init-method="init">
+    	<constructor-arg>
+    		<ref bean="header" />
+		</constructor-arg>
+    </bean>
+```
+
+这样在ScrewDriver中就能获取header的信息   
+
+#### 6.使用setter方式注入   
+
+##### 1.修改bean配置为property      
+
+```xml
+    <bean id="header" class="cn.leekoko.course.StraightHeader">
+    	<property name="color" value="${color}"></property>
+    	<property name="size" value="${size}"></property>
+    </bean>
+```
+
+##### 2.在被注入对象中编写setter方法   
+
+```java
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+```
+
+### 10.Spring自动注入   
+
+
+
+
+
+2-4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
