@@ -1,4 +1,4 @@
-# IOC控制反转(待feiman)   
+# IOC控制反转   
 
 ## 1.IOC的介绍   
 
@@ -19,7 +19,7 @@ _我们是饺子厂商，主要卖有两种饺子。一种是包装的，包什�
 
 将业务逻辑和非业务逻辑分开来写，但是运行的时候要一起运行。   
 
-Spring模块（feiman）  
+Spring模块  
 
 ![](../images/sp02.png)    
 
@@ -37,8 +37,12 @@ Spring模块（feiman）
 > jar包相当于一个个的类集合成一个包，当你使用某些功能时就需要这些jar包的支持，需要导入jar包。
 > war包是web工程中对web应用的一个打包，目的是节省资源，提供效率，把war包方法到服务器指定文件夹中，war包会自动生成一个web应用，十分方便。
 
-- 解决新建报错：缺少web.xml，右键项目选择Generate Deployment Descriptor Stub   
-- tomcat运行注意修改其配置   
+_jar包相当于一个零件，而war包相当于整个产品。就像一辆汽车，jar包发动机也可以作为一款单独的产品，但是它主要还是用来与其他零件配合来构建汽车的（war包）_    
+
+- 解决新建报错：缺少web.xml，右键项目选择Generate Deployment Descriptor Stub    
+- tomcat运行注意修改其配置     
+
+![](../images/sp03.png)   
 
 ### 2.添加pom依赖   
 
@@ -117,6 +121,8 @@ public class TestContainer {
 
 通过读取application-context文件获取ioc容器，用ioc容器获取bean类，执行bean类的方法。   
 
+_配置文件的bean就像是类中的bean的遥控器，所以main方法通过操纵遥控器来控制类中的bean_    
+
 ### 7.作用域   
 
 - singleton：bean的配置默认就是singleton，也可以添加scope="singleton"设立。 
@@ -135,7 +141,7 @@ _作用域就是对象的有效范围：prototype只能用一个，singleton多�
 
 ### 8.回调   
 
-有好几个时期的回调，在不同的时期执行   
+有好几个时期的回调，在不同的时期执行，例如执行前、执行后      
 
 #### 使用方式：
 
@@ -154,9 +160,13 @@ _作用域就是对象的有效范围：prototype只能用一个，singleton多�
     <bean id="screwDriver" class="cn.leekoko.course.ScrewDriver" init-method="init"></bean>
 ```
 
+_就像在对接机器人（类）和遥控器（配置bean）的时候，添加一个组合技能的按钮init方法，按下之后就会执行一系列的操作_    
+
 ### 9.手动注入方式  
 
-强依赖使用构造函数，可选依赖使用Setter方法   
+强依赖使用构造函数，可选依赖使用Setter方法  
+
+_像饺子中的饺子皮是必须的，这是强依赖。而馅料可以选择添加香菜，姜等数不尽的配料，这是可选依赖_     
 
 #### 1.构造函数注入的例子   
 
@@ -168,6 +178,8 @@ public interface Header {
 	public String getInfo();
 }
 ```
+
+_因为直接用遥控器控制机器人功能太有限，所以就使用一个核心管理器(接口)控制机器人，而遥控器直接控制核心管理器就可以了，这样就可以扩展更多的功能。像一开始只能控制手摆动，扩展之后可以控制摆动的幅度大小。_   
 
 ##### 2.新建实现类   
 
@@ -191,6 +203,8 @@ public class StraightHeader implements Header{
 }
 ```
 
+用一个类实现该接口   
+
 ##### 3.在application-context.xml中添加bean
 
 ```xml
@@ -200,7 +214,9 @@ public class StraightHeader implements Header{
     </bean>
 ```
 
-constructor-arg用来给构造函数传值，确定顺序可以用：index="1",type="java.lang.String",name="size"       
+constructor-arg用来给**构造函数 **传值，确定顺序可以用：index="1",type="java.lang.String",name="size"       
+
+_因为本来遥控器按“手按钮”就是抬手，为了更加精度地控制机器人手臂摆动地幅度。就需要输入数据，而数据的输入就在于遥控器输入（配置文件配置)_          
 
 ##### 4.调用方法执行      
 
@@ -275,7 +291,7 @@ constructor-arg用来给构造函数传值，确定顺序可以用：index="1",t
 
 读取的文件名称为
 
-header.properties
+_插入header.properties内存卡_   	
 
 ##### 2.在resources中添加header.properties配置文件   
 
@@ -297,6 +313,8 @@ size=16
 
 用${size}对值进行提取    
 
+_这个输入值可以编写在一个（内存卡）properties中，从properties中读取出来录入到遥控器中_   
+
 #### 5.bean类型的依赖注入    
 
 ##### 1.在实现类中声明注入的类，添加构造函数   
@@ -310,7 +328,7 @@ size=16
 	}
 ```
 
-##### 2.配置文件中注入bean   
+##### 2.通过配置文件中注入bean   
 
 ```xml
     <!-- 定义bean -->
@@ -345,55 +363,62 @@ size=16
 	}
 ```
 
-### 10.Spring自动注入   
+### 10.Spring自动装配      
 
+#### 1.xml配置的方式   
 
+```xml
+    <!-- 定义bean -->
+    <bean id="screwDriver" class="cn.leekoko.course.ScrewDriver" autowire="byName">
+    </bean>
+```
 
+```java
+	public void setHeader(Header header){
+		this.header=header;
+	}
+```
 
+java上设置setter方法就可以自动装配，**配置文件注入需要添加setter或者构造函数**     
 
+_通过遥控器(bean)中引入数据太麻烦，所以还可以借用智能芯片(ioc容器)自己注入，只需要在bean配置中添加autowire="byName"，这样就开启芯片的根据名称注入相应信息内容_    
 
+#### 2.注解配置的方式    
 
+相比xml配置，耦合度比较高，不易管理        
 
+@Component   定义bean，如果该bean和配置文件的id不同，需要指定名称``@Component("header")``   
 
+@Value   properties注入属性,从配置文件注入使用方式：``@Value("${color}")``
 
+@Autowired  &  @Resource   自动装配依赖   
 
+@PostConstruct  &  @PreDestroy    生命周期回调     
 
+#### 3.注解使用   
 
+application-context.xml  配置定义扫描的包名：
 
+```xml
+    <context:component-scan base-package="cn.leekoko.course"></context:component-scan>
+```
 
+为model文件添加注解   
 
+```java
+@Component
+public class StraightHeader implements Header{
+	@Value("${color}")
+	private String color;
+	@Value("${size}")
+	private int size;
+```
 
+去掉配置文件中bean的自动注入，添加注解：
 
+```java
+	@Autowired
+	private Header header;
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+_如果觉得遥控器也太麻烦，还可以抛弃配置遥控器，用注解遥控器。注解就是将配置文件打散，然后分散到java文件对应的位置，开启扫描器进行扫描，以达到控制的效果。_      
