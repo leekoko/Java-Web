@@ -49,7 +49,9 @@
 
 ### 6.[MyBatis](knowDoc/myBatis.md)      
 
-### 7.[IOC](knowDoc/ioc.md)    
+### 7.[IOC](knowDoc/ioc.md)      
+
+### 8.[AOP](knowDoc/aop.md)     
 
 
 
