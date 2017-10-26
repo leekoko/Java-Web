@@ -36,16 +36,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 ### 2.Schema  
 
 - XML Schema 是基于 XML 的 DTD 替代者。   
@@ -98,11 +88,65 @@ xsi:schemaLocation="http://www.w3schools.com note.xsd">
 
 通过三条代码片段引用 Schema   
 
+### 3.简易元素   
+
+1. 【例子】   
+
+这是一些 XML 元素：
+
+```xml
+<lastname>Refsnes</lastname>
+<age>36</age>
+<dateborn>1970-03-27</dateborn>
+```
+
+这是相应的标签定义：
+
+```xml
+<xs:element name="lastname" type="xs:string"/>
+<xs:element name="age" type="xs:integer"/>
+<xs:element name="dateborn" type="xs:date"/>
+```
+
+_该标签（lastname）里面的内容是什么类型的xs:string_   
+
+2. 常用类型   
+
+- xs:string
+- xs:decimal
+- xs:integer
+- xs:boolean
+- xs:date
+- xs:time  
+
+3. 设置默认值&固定值       
+
+``<xs:element name="color" type="xs:string" default="red"/>``     
+
+使用 fixed="red" 则是固定值   
+
+### 4.声明属性   
+
+1. 【例子】
+
+这是带有属性的 XML 元素：
+
+``<lastname lang="EN">Smith</lastname>``  
+
+这是对应的属性定义：
+
+``<xs:attribute name="lang" type="xs:string"/>``  
+
+_该属性（lang）的值是什么类型的（string）_   
+
+2. 其他属性   
+
+它也可以设置默认值，固定值，甚至可以设置``use="required"``     
 
 
 
 
-Next:   
 
-http://www.runoob.com/schema/schema-simple.html
 
+
+http://www.runoob.com/schema/schema-facets.html
