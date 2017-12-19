@@ -1,0 +1,8 @@
+package smallToBig;
+
+public class Test {
+	//不需要弄那么麻烦 这样就行了 
+	public static void main(String[] args) {
+		String str = "a";
+	}
+}

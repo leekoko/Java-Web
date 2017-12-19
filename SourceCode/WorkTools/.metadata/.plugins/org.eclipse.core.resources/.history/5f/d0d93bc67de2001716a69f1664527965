@@ -1,0 +1,8 @@
+package smallToBig;
+
+public class Test {
+	public static void main(String[] args) {
+		char str = 'a';
+		System.out.println((int)(str));
+	}
+}
