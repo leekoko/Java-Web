@@ -1,6 +1,160 @@
 # SpringBoot    
 
-SpringBoot为SpringMVC升级版，
+SpringBoot为SpringMVC升级版。简化配置，很可能成为下一代的框架。   
+
+## 1.新建项目
+
+使用IntelliJ IDEA  ， 其破解地址为：``http://idea.lanyus.com/``    
+
+New Project -- Spring Initializr -- 选择web ，即可创建SpringBoot项目。  
+
+#### 启动SpringBoot项目      
+
+运行自动生成的XXApplication类，其必须带有``@SpringBootApplication``注解，右键Run XX即可启动项目。   
+
+```java
+@SpringBootApplication
+public class HellospringbootApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(HellospringbootApplication.class, args);
+	}
+}
+```
+
+## 2.配置文件
+
+### 1.配置文件.properties   
+
+```properties
+server.port=8081     
+server.context-path=/girl
+```
+
+- 设置端口   
+- 添加访问前缀   
+
+### 2.配置文件.yml   
+
+yml配置文件更加简便,推荐使用。
+
+```properties
+server:
+	port:8082
+	context:/girl   
+```
+
+#### 1.yml配置变量   
+
+1. 声明配置的变量   
+
+   ```properties
+   size:B
+   ```
+
+
+2. 注入配置的变量
+
+   ```java
+   @Value("size")
+   private String size;
+   ```
+
+#### 2.配置调用当前配置   
+
+```properties
+age:18
+content:"age:${age}"
+```
+
+#### 3.yml配置对象
+
+1. 设置配置文件
+
+   ```properties
+   girl:
+   	name:koko
+   	age:18
+   ```
+
+2. 注入java对象   
+
+   ```java
+   @Component
+   @ConfigurationProperties(prefix="girl")
+   public class GirlProperties{
+     private String name;
+     private Integer age;
+     ...setter & getter
+   }
+   ```
+
+   - 以前缀为girl的注解，将其属性注入进来。
+   - @Component注解相当于:@Service,@Controller,@Repository，并下面类纳入进spring容器中管理。这样才能被下一层@Autowired注入该对象。   
+
+#### 4.调用配置   
+
+当配置文件需要频繁变换，将其写成两个配置文件，而主配置文件只要选好要哪一个配置文件即可。   
+
+1. 新建两个配置文件 application-dev.yml   &  application-prod.yml
+
+2. 在application.yml中指定调用哪一个配置文件：
+
+   ```properties
+   spring:
+   	profiles:
+   		active:dev
+   ```
+
+   调用dev后缀的配置文件。
+
+3. 如果用同时使用两种配置文件，那就分别用不同启动方式启动即可。    
+
+
+## 3.注解    
+
+### 1.Controller   
+
+1. 注解@RestController   =  @Controller + @ResponseBody 。   
+
+### 2.RequestMapping   
+
+1. @RequestMapping可以指定多个value： ``@RequestMapping(value={"/say","/hi"})`` 。   
+
+2. @RequestMapping获取参数的方式：
+
+   1. 方式一PathVariable：直接地址中传输：
+
+      ```java
+          @RequestMapping(value="/{id}/say",method = RequestMethod.GET)
+          public String say(@PathVariable("id") Integer id){
+              return "Hello Spring Boot:"+id;
+          }
+      ```
+
+      可以将id放在前面传输：``http://localhost:8080/hello/233333/say``   
+
+   2. 方式二RequestParam：?后面传值：  
+
+      ```java  
+          @RequestMapping(value="/say",method = RequestMethod.GET)
+          public String say(@RequestParam("id") Integer id){
+              return "Hello Spring Boot:"+id;
+          }
+      ```
+
+      url传址方式：``http://localhost:8080/hello/say?id=110``     
+
+      添加默认值：``(@RequestParam(value = "id", required = false, defaultValue = "0") Integer id)``  ,如何不传id，它就会默认为0。
+
+## 4.数据库   
+
+### 1.环境搭建   
+
+添加组件：
+
+```xml
+
+```
 
 
 
@@ -8,55 +162,34 @@ SpringBoot为SpringMVC升级版，
 
 
 
-配置环境：
-
-java1.8         maven3.3.9       
 
 
 
 
 
-用eclipse最好，主要是网络限制   
-
-idea    新的电脑安装（旗舰版学生免费使用）   
 
 
 
 
 
-idea会自动创建pom文件     
 
-右键项目，即可启动该类     
-
-直接编写Controller就可以进行运行了    
+视频4-1实战
 
 
 
-其他的启动方式。    
-
-可以配置端口，yml语法：yml配置文件更好写    
 
 
 
-配置文件的内容可以通过注解传到Controller中    
 
 
 
-大量获取：
-
-注入配置
-
-配置分组：获取前缀配置，直接通过对象setter进入。     
 
 
 
-Controler中通过注解的方式，从配置的对象中获取属性信息      
 
-   
 
-当配置文件修改，可以用一个配置文件管理其他的配置文件们。     
 
-可以在不同环境使用不同配置，同时挂两个    
+
 
 
 
@@ -74,19 +207,15 @@ JPA
 
 直接返回Mapping请求，就可以将数据信息存到数据库
 
+增删改查通过注解就可以直接实现
+
+方法名有一定的规范
 
 
 
+事务管理
 
 
-
-
-
-
-
-
-
-5-2   13min
 
 ​    
 
@@ -124,6 +253,3 @@ JPA
 
 做出最好的教程    
 
-
-
-http://idea.lanyus.com/

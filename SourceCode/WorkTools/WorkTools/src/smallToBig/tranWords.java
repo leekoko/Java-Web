@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.tz.util.TransApi;
 
 /**
- * 聊天信息处理类
  * @author liyb
  *
  */
