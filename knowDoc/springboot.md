@@ -150,12 +150,66 @@ content:"age:${age}"
 
 ### 1.环境搭建   
 
-添加组件：
+1. pom添加组件：
 
 ```xml
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 ```
 
+2. 配置数据库连接：
+
+```properties
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test
+    username: root
+    passwod: 123456
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+```
+
+``      ddl-auto: create``:每次都重新创建数据库，数据不保存，要保存得用update。   
+
+``show-sql: true``:打印sql语句。   
+
+### 2.建类生成表   
+
+1. 新建数据库对应的POJO   
+
+
+   ```java
+   @Entity
+   public class Girl {
+
+       @Id
+       @GeneratedValue
+       private Integer id;
+
+       private String name;
+
+       private Integer age;
+
+       public Girl() {    //添加无参构造方法
+       }
+   ...setter & getter ...
+   ```
+
+   添加数据库表``@Entity``  ，自增长``@GeneratedValue``   
+
+2. 运行程序即可自动生成mysql表格    
+
+### 3.实现增删改查   
 
 
 
@@ -172,30 +226,13 @@ content:"age:${age}"
 
 
 
-
-视频4-1实战
-
+视频 5-1 实战  6min
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-模板使用，Controller这是在干什么？？
 
 
 
@@ -218,16 +255,6 @@ JPA
 
 
 ​    
-
-
-
-
-
-
-
-
-
-
 
 
 
