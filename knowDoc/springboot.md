@@ -211,6 +211,42 @@ spring:
 
 ### 3.实现增删改查   
 
+#### 1.查询   
+
+1. 新建接口   
+
+   ```java
+   public interface GirlRepository extends JpaRepository<Girl, Integer> {
+
+   }
+   ```
+
+   继承与``JpaRepository<Girl, Integer>``   
+
+2. 实现接口   
+
+   ```java
+   @RestController
+   public class GirlController {
+       @Autowired
+       private  GirlRepository girlRepository;
+
+       @GetMapping(value = "/girls")
+       public List<Girl> girlList(){
+           return girlRepository.findAll();
+       }
+   }
+   ```
+
+   调用接口的``.findAll()``方法，即可获取到``List<Girl>``所有内容。        
+
+3. ​
+
+   ​
+
+    
+
+​	
 
 
 
@@ -225,8 +261,7 @@ spring:
 
 
 
-
-视频 5-1 实战  6min
+视频 5-2 实战  1min
 
 
 
