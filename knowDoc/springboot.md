@@ -240,78 +240,93 @@ spring:
 
    调用接口的``.findAll()``方法，即可获取到``List<Girl>``所有内容。        
 
-3. ​
 
-   ​
+#### 2.添加    	
 
-    
+```java
+    /**
+     * 添加内容
+     * @param name
+     * @param age
+     * @return
+     */
+    @PostMapping(value="/girlAdd")
+    public Girl girlAdd(@RequestParam("name") String name,@RequestParam("age") Integer age){
+        Girl girl = new Girl();
+        girl.setAge(age);
+        girl.setName(name);
 
-​	
+        return girlRepository.save(girl);
+    }
+```
 
+接收参数，使用save方法存入数据库。
 
+测试的方式可以使用Postman，将参数传到Controller。    
 
+#### 2.根据id查询   
 
+```java
+    @PostMapping(value="/girlById/{id}")
+    public Girl girlFindOne(@PathVariable("id") Integer id){
+        return girlRepository.findOne(id);
+    }
+```
 
+根据传来的id查询对象``.findOne(id)``     
 
+#### 3.根据id更新   
 
+```java
+    /**
+     * 更新
+     */
+    @PutMapping(value="/moGirlById/{id}")
+    public Girl girlUpdate(@PathVariable("id") Integer id,@RequestParam("name") String name,@RequestParam("age") Integer age){
+        Girl girl = new Girl();
+        girl.setId(id);
+        girl.setName(name);
+        girl.setAge(age);
+        return girlRepository.save(girl);
+    }
+```
 
+- ``@RequestParam("name")``:使用传参方式传值过来。
+- ``@PathVariable("id")``:使用地址方式传值过来。   
 
+#### 3.删除   
 
+```java
+    /**
+     * 删除
+     */
+    @DeleteMapping(value = "/delGirls/{id}")
+    public void girlDelete(@PathVariable("id") Integer id){
+        girlRepository.delete(id);
+    }
+```
 
+#### 4.扩展查询   
 
+1. 在接口中扩展查询属性：
 
+   ```java
+   public interface GirlRepository extends JpaRepository<Girl, Integer> {
+       //通过年龄查询
+       public List<Girl> findByAge(Integer age);
+   }
+   ```
 
-视频 5-2 实战  1min
+2. 调用接口方法进行查询：
 
+   ```java
+   /**
+    * 通过年龄查询
+    */
+   @GetMapping(value = "/girlByAge/{age}")
+   public List<Girl> getListByAge(@PathVariable("age") Integer age){
+       return girlRepository.findByAge(age);
+   }
+   ```
 
-
-
-
-
-
-
-
-JPA
-
-配置数据库连接     
-
-建类可以直接映射成表！！！设置为update可以保留数据   
-
-直接返回Mapping请求，就可以将数据信息存到数据库
-
-增删改查通过注解就可以直接实现
-
-方法名有一定的规范
-
-
-
-事务管理
-
-
-
-​    
-
-
-
-
-
-
-
-
-
-
-
-
-
-先看过一遍    
-
-
-
-挑重要的地方看       
-
-做实际案例     
-
-查询网上资料    
-
-做出最好的教程    
-
+   [查看源码](../SourceCode/hellospringboot)    
