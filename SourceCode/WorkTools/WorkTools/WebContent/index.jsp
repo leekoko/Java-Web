@@ -10,5 +10,7 @@
 	<a href="Page/toBig.jsp">小写转大写</a>
 	</br>
 	<a href="Page/trans.jsp">翻译</a>
+	</br>
+	<a href="Page/format.jsp">代码格式化</a>
 </body>
 </html>
