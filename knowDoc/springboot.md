@@ -4,7 +4,7 @@ SpringBoot为SpringMVC升级版。简化配置，很可能成为下一代的框�
 
 ## 1.新建项目
 
-使用IntelliJ IDEA  ， 其破解地址为：``http://idea.lanyus.com/``    
+使用IntelliJ IDEA  ， 其破解地址为：``http://idea.lanyus.com/``    或者  ``https://jetlicense.nss.im/``
 
 New Project -- Spring Initializr -- 选择web ，即可创建SpringBoot项目。  
 
