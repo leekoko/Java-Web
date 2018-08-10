@@ -53,12 +53,7 @@
 
 ### 9.[过滤器](knowDoc/interceptor.md)  
 
-### 10.[SpringBoot](knowDoc/springboot.md)
+### 10.[log4j的使用](knowDoc/log4j.md)   
 
-### 11.[log4j的使用](knowDoc/log4j.md)   
+### 11.[Schema](knowDoc/Schema.md)
 
----
-
-### 
-
-###  [Schema](knowDoc/Schema.md)
