@@ -1,4 +1,93 @@
-# log4j的使用   
+# 日志  
+
+## A.Logback   
+
+M：怎么编写一个logger输出日志呢？   
+
+Z：利用springBoot自带的logback日志，调用logger对象的对应方法即可：
+
+1. 首先获取logger对象：
+
+   ``private final Logger logger = LoggerFactory.getLogger(GirlServiceTest.class);``  
+
+2. 调用其相关级别方法：
+
+   ```java
+       @Test
+       public void test1(){
+           logger.debug("debug..");
+           logger.info("info..");
+           logger.error("error..");
+       }
+   ```
+
+M：为什么只输出info，error两个方法呢？
+
+Z：系统默认info级别及以上的输出，Debug属于其以下，故不做输出。  
+
+M：如果我要简化日志输出的内容，要怎么进行配置呢？   
+
+Z：可以再application.yml中进行配置，例如：
+
+```yaml
+logging:
+  pattern:
+    console: "%d - %msg%n"
+```
+
+M：那路径，日志级别要怎么配置呢？
+
+Z：如下所示
+
+```yaml
+logging:
+  pattern:
+    console: "%d - %msg%n"
+  file: D:/log/logTest.log
+  level:
+    cn.leekoko.girl.GirlServiceTest: error
+```
+
+M：那在logback-spring.xml配置文件中怎么配置呢？
+
+Z：首先在resource文件夹下创建logback-spring.xml文件
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!--配置log输出位置，调用ConsoleAppender类 -->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <!--展示形式配置的类 -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--传值：格式为%msg%n -->
+            <pattern>
+                %msg%n
+            </pattern>
+        </layout>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="consoleLog"/>
+    </root>
+
+</configuration>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## B.log4j的使用   
 
 log4j分以下几个日志级别，日志级别依次升高。级别高的level会屏蔽级别低的信息。
 
@@ -6,7 +95,7 @@ log4j分以下几个日志级别，日志级别依次升高。级别高的level�
 
 比如设置INFO级别，TRACE，DEBUG就不会输出，如果设置WARNING级别，则TRACE，DEBUG，INFO都不会输出。
 
-## 1.log4j.properties文件的编写    
+### 1.log4j.properties文件的编写    
 
 ```properties
 # Output pattern : date [thread] priority category - message   FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 
@@ -77,9 +166,9 @@ log4j.appender.flow.layout.ConversionPattern=%-d{yyyy-MM-dd HH\:mm\:ss} [%c-%L]-
 
 9. ``log4j.appender.common.MaxBackupIndex=2``:设置最大记录文件数，属于``RollingFileAppender``专用。    
 
-## 2.使用log4j
+### 2.使用log4j  
 
-### 1.导入jar包   
+#### 1.导入jar包   
 
 parent项目pom.xml中添加以下代码，common项目再进行继承：
 
@@ -91,7 +180,7 @@ parent项目pom.xml中添加以下代码，common项目再进行继承：
 </dependency>  
 ```
 
-#### 或者相似的有slf4j：      
+或者相似的有slf4j：      
 
 ```xml
 <!-- 日志处理 -->
@@ -102,6 +191,7 @@ parent项目pom.xml中添加以下代码，common项目再进行继承：
 </dependency>
 ```
 
-### 2.引入配置文件    
+#### 2.引入配置文件    
 
-将log4j.properties文件放到web（或者controller）项目的resources文件夹的根目录下即可。   
+将log4j.properties文件放到web（或者controller）项目的resources文件夹的根目录下即可。    
+
