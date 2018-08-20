@@ -73,17 +73,30 @@ Z：首先在resource文件夹下创建logback-spring.xml文件
 </configuration>
 ```
 
+M：想要每天打印一个文件怎么做呢？
 
+Z：滚动策略如下，但出现**报错**，暂时找不出问题（过滤级别也如下）
 
-
-
-
-
-
-
-
-
-
+```
+    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--过滤级别：打印单个级别-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>
+                %msg%n
+            </pattern>
+        </encoder>
+        <!--滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--路径-->
+            <fileNamePattern>D:/log/info.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+```
 
 
 
