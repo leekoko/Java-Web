@@ -139,7 +139,7 @@ class MyCom implements Comparator<Person>{
 
 ### 3.Map介绍（HashMap&TreeMap）  
 1. 获取键的集合：使用keySet()方法，Set集合用Iterator遍历  
-2. 通过序号获取内容：cities.get(序号);  
+2. 通过序号获取内容：cities.get(序号)
 3. 拿整个键值对：``Set<Entry<String,String>> entries=cities.entrySet();``,拿到Entry之后可以通过getKey()获取键，用getValue()获取值。  
 
 ---
