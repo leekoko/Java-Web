@@ -73,8 +73,6 @@ if(!str.test(某个value)){
 </html>
 ```
 
----
-
 ## 2.DOM  
 操作网页上的元素（文档对象模型）  
 1. 隐藏元素  
@@ -168,8 +166,6 @@ if(!str.test(某个value)){
 </html>
 ```
 
----
-
 ## 3.调试  
 1.  DOM资源管理器  
   可以查看javascript执行完之后的结果（跟直接查看源码不一样）  
@@ -181,15 +177,11 @@ if(!str.test(某个value)){
 3.  console  
   可以在控制台打印：console.log(...width);  
 
----
-
 ## 4.定时器  
 1. setInterval：多次定时器  
   启动定时器：``timer=window.setInterval(show,50);``50毫秒执行一次show方法  
   停止定时器：``window.clearInterval(timer);``  
 2. setTimeout：单次定时器  
-
----
 
 ## 5.对象  
 js有许多内置对象，可以获取坐标，浏览器信息，屏幕大小等  
@@ -267,8 +259,6 @@ var myFather=new Person("Bill","Gates",56,"blue");
 </html> 
 ```
 
----
-
 ## 6.事件  
 1. 匿名事件处理函数：  
   ``document.getElementsByTagName("input").item(0).onclick=function(){alert("匿名函数测试")};``  
@@ -293,7 +283,6 @@ shift 键被按了吗？
 哪个事件类型发生了？
 ```
 
----
 **进入下一章：[5.JQuery](JQuery.md)**
 
 
