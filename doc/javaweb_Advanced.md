@@ -57,20 +57,3 @@ initCtx.lookup("java:comp/env/mytest");
    1. 在DAO中构造函数初始化连接   
    2. 进行基础的增删改查   
 
-
-
-
-
-
-（目前搁置状态中）
-
-
-
-
-
-
-
-
-
-
-
