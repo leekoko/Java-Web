@@ -59,7 +59,9 @@
 
 #### 15.[api接口规范](doc/api.md)  
 
-#### 16.[maven](doc/maven.md)
+#### 16.[maven](doc/maven.md)  
+
+#### 17.[shiro](doc/shiro.md)
 
 ### 基础知识   
 
