@@ -131,8 +131,6 @@ roles_permissions	角色权限表(role_name,permission)
 
 ## 5.md5加密 
 
-略（https://www.imooc.com/video/16955/0）
-
 
 
 https://www.imooc.com/video/16959    7min
