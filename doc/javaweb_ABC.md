@@ -926,5 +926,3 @@ AddIt.java
 ```
 
 [案例源码](../SourceCode/BookSys/)   
-
-**进入下一章：[7.Java Web 进阶开发](javaweb_Advanced.md)**
