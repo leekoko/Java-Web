@@ -54,7 +54,7 @@ Mark=123456,admin,user
 admin=user:delete
 ```
 
-[users]:定义用户，roles:定义角色权限
+
 
 ```java
 @Test
@@ -130,6 +130,10 @@ roles_permissions	角色权限表(role_name,permission)
 ```
 
 ## 5.md5加密 
+
+ 
+
+
 
 
 
