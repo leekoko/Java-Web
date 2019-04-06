@@ -1,4 +1,10 @@
-### [redis](doc/redis.md)
+### [redis](docs/redis.md)
+
+发简历找工作的时候，面试官回了一句话： ``nosql，redis，主从复制，集群，哨兵，redis的rdb和aof，以及集群中增加删除主从节点都会吗``。我对于redis的认识仅限于缓存的使用上，其他的什么都不清楚。于是我对redis进行了进一步的了解。  
+
+
+
+
 
 
 
