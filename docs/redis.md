@@ -30,9 +30,15 @@ Web2.0使用Nosql，更高效方便建立数据库。
 
 redis集群在业务工作中比较少用到，之前有记录到，所以整理起来。
 
-### [redis实践](component/redisPractice.md)
+### [jedis实践](component/redisPractice.md)
 
-redis在代码中实践可能会遇到很多问题，这里记录了之前的实践案例。
+jedis是通过java操作redis的一种方式。jedis在实践可能会遇到很多问题，这里记录了之前的实践案例，实际用到之后再做整理。
+
+### [redis数据结构](component/redisDataStructure.md)  
+
+redis有五种数据类型：字符串（String），哈希（hash），字符串列表（list），字符串集合（set），有序字符串集合（sorted set）  
+
+### redis通用命令 
 
 
 
@@ -42,4 +48,12 @@ redis在代码中实践可能会遇到很多问题，这里记录了之前的实
 
 
 
-https://www.imooc.com/video/14925
+
+
+
+
+
+
+
+
+https://www.imooc.com/video/14927
