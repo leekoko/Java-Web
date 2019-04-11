@@ -36,9 +36,26 @@ jedis是通过java操作redis的一种方式。jedis在实践可能会遇到很�
 
 ### [redis数据结构](component/redisDataStructure.md)  
 
-redis有五种数据类型：字符串（String），哈希（hash），字符串列表（list），字符串集合（set），有序字符串集合（sorted set）  
+redis有五种数据类型：字符串（String），哈希（hash），字符串列表（list），字符串集合（set），有序字符串集合（sorted set）      
 
-### redis通用命令 
+### redis持久化
+
+#### 1.RDB
+
+定时备份（可能回丢失数据），备份为一个文件。redis.conf默认支持RDB，还指定了缓存文件名称和路径。
+
+#### 2.AOF
+
+AOF带来更高的安全策略（修改就同步或每秒同步），包含日志文件记录修改操作，但是速度很慢。
+
+使用方式：
+
+1. 打开追加开关：``appendonly yse``
+2. 设置策略：appendfsync always
+
+
+
+[https://www.imooc.com/video/14935](https://www.imooc.com/video/14935)
 
 
 
