@@ -51,26 +51,5 @@ AOF带来更高的安全策略（修改就同步或每秒同步），包含日�
 使用方式：
 
 1. 打开追加开关：``appendonly yse``
-2. 设置策略：appendfsync always
-
-
-
-[https://www.imooc.com/video/14935](https://www.imooc.com/video/14935)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://www.imooc.com/video/14927
+2. 设置策略：appendfsync always  
+3. 使用的时候：打开aof文件，删除掉flushAll，重启即可恢复数据   

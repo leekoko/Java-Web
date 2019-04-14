@@ -1,5 +1,49 @@
 # shrio   
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[https://juejin.im/post/5ab1b969f265da239376f1a6](https://juejin.im/post/5ab1b969f265da239376f1a6)
+
+
+
+
+
+
+
+https://www.imooc.com/video/16959    7min
+
+
+
+
+
+https://www.sojson.com/shiro
+
+http://www.cnblogs.com/learnhow/p/5694876.html
+
+https://github.com/baichengzhou/SpringMVC-Mybatis-Shiro-redis-0.2
+
+
+
+
+
+
+
+
+
 ## 1.认证过程
 
 如下，首先  构建securityManager环境，然后主体提交认证请求
@@ -133,18 +177,3 @@ roles_permissions	角色权限表(role_name,permission)
 
  
 
-
-
-
-
-https://www.imooc.com/video/16959    7min
-
-
-
-
-
-https://www.sojson.com/shiro
-
-http://www.cnblogs.com/learnhow/p/5694876.html
-
-https://github.com/baichengzhou/SpringMVC-Mybatis-Shiro-redis-0.2
