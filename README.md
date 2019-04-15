@@ -2,7 +2,7 @@
 
 发简历找工作的时候，面试官回了一句话： ``nosql，redis，主从复制，集群，哨兵，redis的rdb和aof，以及集群中增加删除主从节点都会吗``。我对于redis的认识仅限于缓存的使用上，其他的什么都不清楚。于是我对redis进行了进一步的了解。  
 
-### [shiro](doc/shiro.md)
+### [shiro](docs/shiro.md)
 
 自己做项目的时候想加到登陆权限，就用比较Spring Shiro，顺便学习一下。  
 
