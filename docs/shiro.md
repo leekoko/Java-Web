@@ -220,6 +220,39 @@ public class CustomRealm extends AuthorizingRealm{
     }
 ```
 
+## 6.md5加密
+
+### 普通加密
+
+如果数据库存储的是md5加密的密文，那么在使用CustomRealm的时候，设定以下代码：
+
+```java
+...
+  		DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
+
+        //md5加密
+        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+        matcher.setHashAlgorithmName("md5");
+        matcher.setHashIterations(1); //hash迭代次数
+        customRealm.setCredentialsMatcher(matcher);
+
+        defaultSecurityManager.setRealm(customRealm);
+...
+```
+
+### 加盐加密
+
+如果密文是通过加盐的，那只要在``doGetAuthenticationInfo()``的实现方法中添加以下加盐代码即可
+
+```java
+...
+		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo("leekoko",password,"customRealm");
+		//加盐
+        authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes("Mark"));
+
+        return authenticationInfo;
+...
+```
 
 
 
@@ -229,8 +262,7 @@ public class CustomRealm extends AuthorizingRealm{
 
 
 
-
-
+[https://www.imooc.com/video/16963](https://www.imooc.com/video/16963)
 
 
 
