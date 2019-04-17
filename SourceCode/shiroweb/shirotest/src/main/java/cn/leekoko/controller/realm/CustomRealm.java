@@ -19,7 +19,7 @@ public class CustomRealm extends AuthorizingRealm{
 
     Map<String,String> userMap = new HashMap<String, String>(16);
     {
-        userMap.put("leekoko","283538989cef48f3d7d8a1c1bdf2008f");  //md5   123456
+        userMap.put("leekoko","f4e926585ac943b8f1ec789a639527e0");  //md5   123456
         super.setName("customRealm");
     }
 
@@ -66,8 +66,7 @@ public class CustomRealm extends AuthorizingRealm{
         if(password == null){
             return null;
         }
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo("leekoko",password,"customRealm");
-        authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes("Mark"));
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo("leekoko",password,ByteSource.Util.bytes("leekoko"),getName());
         return authenticationInfo;
     }
 

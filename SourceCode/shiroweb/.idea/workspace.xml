@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="shiro-web" />
+      <artifact name="shiro-test:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
@@ -11,6 +11,7 @@
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/shiro-web/target/" />
     <ignored path="$PROJECT_DIR$/shiromodule/target/" />
+    <ignored path="$PROJECT_DIR$/shirotest/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,78 +20,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shiromodule/pom.xml">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shiromodule/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spring.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/shiromodule/src/main/resources/spring/spring.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="19" column="54" lean-forward="false" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shiromodule/src/main/webapp/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomRealm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/realm/CustomRealm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="378">
+              <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,12 +33,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="springmvc.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shiromodule/src/main/resources/spring/springmvc.xml">
+      <file leaf-file-name="CustomRealm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/realm/CustomRealm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-              <folding />
+            <state relative-caret-position="336">
+              <caret line="68" column="101" lean-forward="false" selection-start-line="68" selection-start-column="93" selection-end-line="68" selection-end-column="101" />
+              <folding>
+                <element signature="e#2663#2664#0" expanded="true" />
+                <element signature="e#2707#2708#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,6 +55,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>springmvc.xml</find>
+    </findStrings>
+  </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
@@ -126,14 +69,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/shiromodule/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/shiromodule/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/realm/CustomRealm.java" />
         <option value="$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/realm/UserController.java" />
         <option value="$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/vo/User.java" />
         <option value="$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/UserController.java" />
         <option value="$PROJECT_DIR$/shiromodule/src/main/resources/spring/spring.xml" />
         <option value="$PROJECT_DIR$/shiromodule/src/main/resources/spring/springmvc.xml" />
+        <option value="$PROJECT_DIR$/shiromodule/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/shirotest/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/shirotest/src/main/resources/spring/spring.xml" />
+        <option value="$PROJECT_DIR$/shirotest/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/shirotest/src/main/resources/spring/springmvc.xml" />
+        <option value="$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/realm/CustomRealm.java" />
       </list>
     </option>
   </component>
@@ -164,7 +112,17 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand />
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="shiro-test" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="shiro-test" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
       <select />
     </treeState>
   </component>
@@ -189,9 +147,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -202,25 +157,25 @@
             <path>
               <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
-              <item name="shiromodule" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
-              <item name="shiromodule" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
-              <item name="shiromodule" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
-              <item name="shiromodule" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -228,7 +183,7 @@
             <path>
               <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
-              <item name="shiromodule" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -237,7 +192,27 @@
             <path>
               <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
-              <item name="shiromodule" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="realm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
@@ -245,7 +220,7 @@
             <path>
               <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
-              <item name="shiromodule" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
@@ -254,16 +229,28 @@
             <path>
               <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
-              <item name="shiromodule" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shiroweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shiroweb" type="462c0819:PsiDirectoryNode" />
+              <item name="shirotest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -271,7 +258,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../minstone_place/workB01_tech/eda-sci-tech-parent" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -279,6 +266,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\program-workplace\github_place\Java-Web\SourceCode\shiroweb\shirotest\src\main" />
       <recent name="D:\program-workplace\github_place\Java-Web\SourceCode\shiroweb\shiromodule\src\main\webapp" />
       <recent name="D:\program-workplace\github_place\Java-Web\SourceCode\shiroweb\shiromodule\src\main\webapp\WEB-INF" />
     </key>
@@ -379,9 +367,15 @@
       <listeners />
     </configuration>
     <configuration name="shiro-test" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="LeeS" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/" />
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="shiro-test:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/shiro-test" />
+          </settings>
+        </artifact>
+      </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_shiroweb_2" />
       </server-settings>
@@ -473,7 +467,9 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
       <method>
-        <option name="BuildArtifacts" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="shiro-test:war exploded" />
+        </option>
       </method>
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -496,49 +492,53 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555425289242</updated>
-      <workItem from="1555425292568" duration="3758000" />
+      <workItem from="1555425292568" duration="8876000" />
+      <workItem from="1555512446843" duration="2144000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3758000" />
+    <option name="totallyTimeSpent" value="11020000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1703125" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1703125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6597146" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3435785" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="MyBatis Sql Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="MyBatis Sql Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,71 +548,72 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/UserController.java</url>
+          <line>18</line>
+          <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/realm/CustomRealm.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="13" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/shiro-web/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shiromodule/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webcreate/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/resources/spring/spring.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/resources/spring/springmvc.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <caret line="12" column="42" lean-forward="false" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="46" column="40" lean-forward="false" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shirotest/pom.xml">
       <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="1932">
+          <caret line="84" column="21" lean-forward="false" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/webapp/login.html">
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/vo/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -620,17 +621,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/realm/CustomRealm.java">
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/realm/CustomRealm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="1311">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="e#2663#2664#0" expanded="true" />
+            <element signature="e#2707#2708#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/vo/User.java">
+    <entry file="file://$PROJECT_DIR$/shiro-web/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/webapp/WEB-INF/web.xml" />
+    <entry file="file://$PROJECT_DIR$/webcreate/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/vo/User.java" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/resources/spring/springmvc.xml" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/webapp/index.html" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/webapp/login.html" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/resources/spring/spring.xml" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/webapp/WEB-INF/web.xml" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/realm/CustomRealm.java" />
+    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/UserController.java" />
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/resources/spring/springmvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="42" lean-forward="false" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/vo/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -638,27 +670,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/java/cn/leekoko/controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/resources/spring/spring.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="19" column="54" lean-forward="false" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+        <state relative-caret-position="460">
+          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/resources/spring/springmvc.xml">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shiromodule/src/main/resources/spring/spring.xml">
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="1058">
+          <caret line="46" column="40" lean-forward="false" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shirotest/pom.xml">
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1932">
+          <caret line="84" column="21" lean-forward="false" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/system-data/SOArepository/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/authc/SimpleAuthenticationInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/system-data/SOArepository/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/subject/SimplePrincipalCollection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="76" column="38" lean-forward="false" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/realm/CustomRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="68" column="101" lean-forward="false" selection-start-line="68" selection-start-column="93" selection-end-line="68" selection-end-column="101" />
+          <folding>
+            <element signature="e#2663#2664#0" expanded="true" />
+            <element signature="e#2707#2708#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shirotest/src/main/java/cn/leekoko/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -668,11 +749,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>shiro-web</last-edited>
+          <last-edited>shiromodule</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.31034482" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -695,7 +777,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.31034482" />
               </list>
             </option>
           </splitter-proportions>
@@ -707,7 +789,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.31034482" />
               </list>
             </option>
           </splitter-proportions>

@@ -6,12 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="shiromodule" />
+        <module name="shiro-test" />
+        <module name="shirotest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="shiromodule" target="1.8" />
-      <module name="shiroweb" target="1.8" />
+      <module name="shiro-test" target="1.5" />
+      <module name="shiromodule" target="1.5" />
+      <module name="shirotest" target="1.5" />
+      <module name="shiroweb" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

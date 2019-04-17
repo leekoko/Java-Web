@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/shirotest" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -9,6 +12,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/shiro-web/pom.xml" />
+        <option value="$PROJECT_DIR$/shiromodule/pom.xml" />
         <option value="$PROJECT_DIR$/webcreate/pom.xml" />
       </set>
     </option>
