@@ -256,15 +256,13 @@ public class CustomRealm extends AuthorizingRealm{
 
 
 
+搭建一个spring项目的各种注意要点。选中之后再创建，web.xml文件的编写
 
 
 
 
 
-
-[https://www.imooc.com/video/16963](https://www.imooc.com/video/16963)
-
-
+[https://www.imooc.com/video/16961](https://www.imooc.com/video/16961)
 
 
 
@@ -272,7 +270,7 @@ public class CustomRealm extends AuthorizingRealm{
 
 
 
-https://www.sojson.com/shiro
+https://www.sojson.com/shiro   demo
 
 http://www.cnblogs.com/learnhow/p/5694876.html
 

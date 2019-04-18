@@ -22,10 +22,10 @@
     </bean>
 
     <bean class="cn.leekoko.controller.realm.CustomRealm" id="realm">
-
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
     </bean>
 
-    <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher" id="hashedCredentialsMatcher">
+    <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher" id="credentialsMatcher">
         <property name="hashAlgorithmName" value="md5"/>
         <property name="hashIterations" value="1"/>
     </bean>

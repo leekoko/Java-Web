@@ -23,7 +23,10 @@ public class UserController {
         }catch (AuthenticationException e){
             return e.getMessage();
         }
-        return "登陆成功";
+        if(subject.hasRole("admin")){
+            return "有admin权限";
+        }
+        return "无admin权限";
     }
 
 }
