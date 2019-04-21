@@ -254,25 +254,86 @@ public class CustomRealm extends AuthorizingRealm{
 ...
 ```
 
+## 7.Shiro集成Spring
+
+### 1.创建[SpringMVC](docs/SpringMVC.md)项目
+
+### 2.[spring-shiro案例](component/shiroSpringDemo.md)  
+
+Shiro集成Spring需要不少的配置，在这里做简单的记录。  
+
+### 3. ContextLoaderListener
+
+ContextLoaderListener监听器的作用就是启动Web容器时，装配配置信息。默认装配的是``/WEB-INF/applicationContext.xml``下的applicationContext
+
+而我们这里制定了装配的配置文件spring.xml
+
+```xml
+	<!-- 加载spring容器 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/spring.xml</param-value>
+	</context-param>
+```
+
+### 4.DelegatingFilterProxy
+
+DelegatingFilterProxy是对于servlet filter的代理，通过这个类有两个好处：
+
+- spring容器来管理servlet filter的生命周期
+- 容器的实例通过读取配置文件注入
+
+使用方式如下：
+
+1. 在web.xml中配置
+
+   ```xml
+   	<filter>
+   		<filter-name>shiroFilter</filter-name>
+   		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+   	</filter>
+   	<filter-mapping>
+   		<filter-name>shiroFilter</filter-name>
+   		<url-pattern>/*</url-pattern>
+   	</filter-mapping>
+   ```
+
+2. 在Spring的配置文件中(spring.xml)，配置具体的Filter类的实例(需要保持spring.xml配置文件中的bean的id跟web.xml中的filter-name一样)
+
+   ```xml
+   	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+           <property name="securityManager" ref="securityManager"/> <!--注入实例 -->
+           <property name="loginUrl" value="login.html"/>
+           <property name="unauthorizedUrl" value="403.html"/>
+           <property name="filterChainDefinitions">
+               <value>
+                   /login.html = anon
+                   /subLogin = anon
+                   /* = authc
+               </value>
+           </property>
+       </bean>
+   ```
+
+   ​
+
+   ​
 
 
-搭建一个spring项目的各种注意要点。选中之后再创建，web.xml文件的编写
 
 
 
 
 
-[https://www.imooc.com/video/16961](https://www.imooc.com/video/16961)
 
 
 
-[https://juejin.im/post/5ab1b969f265da239376f1a6](https://juejin.im/post/5ab1b969f265da239376f1a6)
 
+[https://www.imooc.com/video/16961](https://www.imooc.com/video/16961)   注解方式授权
 
+[https://juejin.im/post/5ab1b969f265da239376f1a6](https://juejin.im/post/5ab1b969f265da239376f1a6)   shiro简介
 
-https://www.sojson.com/shiro   demo
+https://www.sojson.com/shiro   shiro用户管理demo
 
-http://www.cnblogs.com/learnhow/p/5694876.html
-
-https://github.com/baichengzhou/SpringMVC-Mybatis-Shiro-redis-0.24.JdbcRealm
+http://www.cnblogs.com/learnhow/p/5694876.html  shiro简介
 

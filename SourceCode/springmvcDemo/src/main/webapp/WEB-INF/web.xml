@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>SpringMVC_01</display-name>
+
   <!-- 配置前端控制器DispatcherServlet -->
   <servlet>
     <servlet-name>springmvc</servlet-name>
