@@ -48,5 +48,9 @@
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-event:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-web:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.45" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:druid:1.1.6" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.2.4.RELEASE" level="project" />
   </component>
 </module>

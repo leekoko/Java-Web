@@ -30,18 +30,5 @@ public class UserController {
         return "无admin权限";
     }
 
-    @RequiresRoles("admin")
-    @RequestMapping(value="/testRole",method = RequestMethod.GET)
-    @ResponseBody
-    public String testRole(){
-        return "testRole success";
-    }
-
-    @RequiresRoles("admin1")
-    @RequestMapping(value="/testRole1",method = RequestMethod.GET)
-    @ResponseBody
-    public String testRole1(){
-        return "testRole1 success";
-    }
 
 }

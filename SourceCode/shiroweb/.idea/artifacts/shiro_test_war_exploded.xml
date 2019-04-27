@@ -30,6 +30,10 @@
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-event:1.4.0" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-spring:1.4.0" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.4.0" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.45" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.6" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.2.4.RELEASE" />
         </element>
       </element>
       <element id="directory" name="META-INF">
