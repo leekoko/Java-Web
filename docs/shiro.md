@@ -325,7 +325,7 @@ DelegatingFilterProxy是对于servlet filter的代理，通过这个类有两个
 
 
 
-[https://www.imooc.com/video/16961](https://www.imooc.com/video/16961)   注解方式授权
+[https://www.imooc.com/video/16961](https://www.imooc.com/video/16961)
 
 [https://juejin.im/post/5ab1b969f265da239376f1a6](https://juejin.im/post/5ab1b969f265da239376f1a6)   shiro简介
 

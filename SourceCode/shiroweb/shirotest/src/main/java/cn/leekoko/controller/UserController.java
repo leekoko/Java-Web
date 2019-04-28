@@ -18,16 +18,16 @@ public class UserController {
     @ResponseBody
     public String subLogin(User user){
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),user.getPassword());
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
         try {
             subject.login(token);
         }catch (AuthenticationException e){
             return e.getMessage();
         }
-        if(subject.hasRole("admin")){
-            return "有admin权限";
+        if(subject.hasRole("user")){
+            return "有user权限";
         }
-        return "无admin权限";
+        return "无user权限";
     }
 
 

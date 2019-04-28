@@ -89,10 +89,12 @@ public class CustomRealm extends AuthorizingRealm{
 //        return userMap.get(userName);
     }
 
-/*    Map<String,String> userMap = new HashMap<String, String>(16);
+    /*
+    Map<String,String> userMap = new HashMap<String, String>(16);
     {
         userMap.put("leekoko","f4e926585ac943b8f1ec789a639527e0");  //md5   123456
         super.setName("customRealm");
-    }*/
+    }
+    */
 
 }

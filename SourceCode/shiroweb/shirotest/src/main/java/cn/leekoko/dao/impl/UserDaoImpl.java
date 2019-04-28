@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     public List<String> queryRolesByUserName(String userName) {
-        String sql = "select role_name from user_roles where username = ?";
+        String sql = "select role_name from user_roles where user_name = ?";
         return jdbcTemplate.query(sql, new String[]{userName}, new RowMapper<String>() {
             public String mapRow(ResultSet resultSet, int i) throws SQLException {
                 return resultSet.getString("role_name");
