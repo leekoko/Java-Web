@@ -7,7 +7,7 @@ import com.leekoko.mvcframework.annotation.GPService;
 @GPService
 public class DemoService implements IDemoService{
 
-    public String get(@GPRequestParam("name") String name) {
-        return "This is result";
+    public String get(String name) {
+        return "This is result:"+name;
     }
 }
