@@ -2,7 +2,7 @@
 
 .project
 
-
+.idea/
 
 
 # 忽略 eclipse创建的 .metadata/ 文件夹
