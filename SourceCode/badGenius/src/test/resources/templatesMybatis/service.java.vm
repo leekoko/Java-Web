@@ -1,0 +1,26 @@
+package ${package.Service};
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${package.Entity}.${entity};
+import ${superServiceClassPackage};
+
+import java.util.List;
+
+/**
+ * <p>
+ * $!{table.comment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+
+    /**
+    * 自定义SaveOrUpdate
+    * @param ${table.entityPath}
+    * @return
+    * */
+    Boolean saveAndUpdate(${entity} ${table.entityPath});
+
+}

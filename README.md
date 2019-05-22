@@ -10,6 +10,26 @@
 
 
 
+#### [Mybatis-Plus](docs/Mybatis-Plus.md)    
+
+之前接触过[MyBatis](knowDoc/myBatis.md)，现在研究一下它的增强工具Mybatis-Plus。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -56,9 +76,7 @@
 
 #### 4.[sql注入](knowDoc/injection.md)      
 
-#### 5.[事务](knowDoc/transaction.md)     
-
-#### 6.[MyBatis](knowDoc/myBatis.md)      
+#### 5.[事务](knowDoc/transaction.md)       
 
 #### 7.[IOC](knowDoc/ioc.md)      
 
@@ -78,7 +96,7 @@
 
 #### 15.[api接口规范](doc/api.md)  
 
-#### 16.[maven](doc/maven.md)  
+
 
 
 

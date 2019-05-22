@@ -1,0 +1,39 @@
+package ${package.ServiceImpl};
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+import org.springframework.stereotype.Service;
+import org.apache.commons.lang3.StringUtils;
+import com.minstone.bd.eda.common.utils.CommonUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.Serializable;
+
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+
+    @Override
+    public Boolean saveAndUpdate(${entity} ${table.entityPath}){
+        Boolean result = false;
+        if(StringUtils.isBlank(${table.entityPath}.getCode())){
+            ${table.entityPath}.setCode(CommonUtils.uuid());
+            result = this.save(${table.entityPath});
+        }else{
+            QueryWrapper<${entity}> wrapper = new QueryWrapper<>();
+            wrapper.eq("CODE", ${table.entityPath}.getCode());
+            result = this.update(${table.entityPath}, wrapper);
+        }
+        return result;
+    }
+}
