@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leekoko.pojo.mapper.ProblemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.leekoko.pojo.entity.Problem">
+        <id column="ID" property="id" />
+        <result column="TITLE" property="title" />
+        <result column="OPTION_VALUE" property="optionValue" />
+        <result column="ANSWER" property="answer" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, TITLE, OPTION_VALUE, ANSWER
+    </sql>
+
+</mapper>

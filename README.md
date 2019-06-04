@@ -8,15 +8,15 @@
 
 ### [oauth2.0](docs/oauth2.md)
 
-
+oAuth2是一种协议，提供认证和授权的标准。
 
 #### [Mybatis-Plus](docs/Mybatis-Plus.md)    
 
 之前接触过[MyBatis](knowDoc/myBatis.md)，现在研究一下它的增强工具Mybatis-Plus。
 
-#### 会话
+#### [会话](docs/session-token-cookie.md)
 
-整理一下会话的知识点：[cookie](docs/cookie.md)，[session](docs/session.md)，[token](docs/token.md)    
+整理一下会话的知识点，包含：cookie，session，token
 
 
 

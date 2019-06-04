@@ -8,7 +8,7 @@ Mybatis-plus是对mybatis进行增强，简化了配置和使用。
 
 
 
-[https://juejin.im/post/5b517d24e51d451907696dec](https://juejin.im/post/5b517d24e51d451907696dec)
+
 
 [https://www.bilibili.com/video/av44926850?p=8](https://www.bilibili.com/video/av44926850?p=8)
 

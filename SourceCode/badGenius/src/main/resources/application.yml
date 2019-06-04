@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  datasource:
+    url: jdbc:mysql://localhost:3306/badgenius?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.leekoko.pojo
