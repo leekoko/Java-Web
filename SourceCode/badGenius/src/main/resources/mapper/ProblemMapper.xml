@@ -12,7 +12,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, TITLE, OPTION_VALUE, ANSWER
+        ID, TITLE, OPTION_VALUE, ANSWER, NODES
     </sql>
 
 </mapper>

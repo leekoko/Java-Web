@@ -1,40 +1,80 @@
 package com.leekoko.util;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.leekoko.pipeline.MemoryPipeline;
 import com.leekoko.pojo.Chapter;
+import com.leekoko.pojo.ChapterProblem;
 import com.leekoko.pojo.Course;
+import com.leekoko.pojo.Problem;
+import com.leekoko.service.IChapterService;
+import com.leekoko.service.IProblemService;
 import org.apache.commons.lang3.StringUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
+import us.codecraft.webmagic.selector.Selectable;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
+//注意线程问题
 public class HGPageProcesser implements PageProcessor {
 
-    private static String TARGET_URL = "https://wl.scutde.net/edu3/edu3/framework/index.html";
-    private static String COOKIE_STR = "JSESSIONID=6B5E1CA60689C77FB8A68C8C63B2C6B3.tomcat_edu3_4; UM_distinctid=169c4ad99b0b89-025c0a028b688a-7a1437-144000-169c4ad99b18c4; route=c70be6285cf639ed1c561ba730b3e730; CNZZDATA1000212023=332861529-1554647206-https%253A%252F%252Fwl.scutde.net%252F%7C1557664870";
-    private Site site = Site.me().setDomain("wl.scutde.net");
-    //所有章节对象
-//    private List<Chapter> chapterList = new ArrayList<Chapter>();
-    //一级章节对象id
-    private List<String> courseUrlList;
+    private IProblemService problemService;
 
-    public void startCrawl(){
-        long startTime = System.currentTimeMillis();;
+    private IChapterService chapterService;
+
+    private HttpServletRequest request;
+
+
+    public HGPageProcesser(IProblemService problemService, IChapterService chapterService, HttpServletRequest request){
+        this.problemService = problemService;
+        this.chapterService = chapterService;
+        this.request = request;
+    }
+    private List<Chapter> chapterList = new ArrayList<Chapter>();
+    private List<ChapterProblem> chapterProblemList = new ArrayList<ChapterProblem>();
+
+    private static String TARGET_URL = "https://wl.scutde.net/edu3/edu3/framework/index.html";
+    String cookieStr = "route=c70be6285cf639ed1c561ba730b3e730;JSESSIONID=D8D86DF0B9BC88150FCD91F2B6849F12.tomcat_edu3_4";
+    String userName = "身份证内容异常";
+    private Site site = Site.me().setDomain("wl.scutde.net");
+
+    public void startCrawl(String cookie, String userName){
+        System.out.println(cookie);
+        if(StringUtils.isBlank(cookie) || StringUtils.isBlank(userName)){
+            System.out.println("cookie或者userName是空的");
+            return;
+        }
+        //初始化session信息
+        initSession();
+        long startTime = System.currentTimeMillis();
+        HGPageProcesser newHgPageProcesser = new HGPageProcesser(problemService, chapterService, request);
+        newHgPageProcesser.cookieStr = cookie;
+        newHgPageProcesser.userName = userName;
         MemoryPipeline pipeline = new MemoryPipeline();
-        Spider.create(new HGPageProcesser()).addUrl(TARGET_URL).addPipeline(pipeline).thread(10).run();
+        Spider.create(newHgPageProcesser).addUrl(TARGET_URL).addPipeline(pipeline).thread(10).run();
         long endTime = System.currentTimeMillis();
         System.out.println("爬取结束，耗时约" + ((endTime - startTime) / 1000) + "秒");
+    }
+
+    /**
+     * 初始化session信息
+     */
+    private void initSession() {
+        HttpSession session= request.getSession();
+        session.setAttribute("chapterList", chapterList);
+        session.setAttribute("chapterProblemList",chapterProblemList);
     }
 
 
@@ -53,7 +93,6 @@ public class HGPageProcesser implements PageProcessor {
             System.out.println("进入题目页面");
             getProblemDetail(page);
         }
-
     }
 
     /**
@@ -64,12 +103,21 @@ public class HGPageProcesser implements PageProcessor {
         Html html = page.getHtml();
         List<String> problemIdList = html.css("input[name='activeCourseExamId']").all();
         List<String> problemAnswerList = html.xpath("//*[@id=\"StuActiveCourseExamForm\"]/table[1]/tbody/tr/td/div[3]/div[1]").all();
+        List<String> titleList = html.xpath("//*[@id=\"StuActiveCourseExamForm\"]/table[1]/tbody/tr/td/div[1]").all();
+
+        String chapterId = getChapterIdByUrl(page.getUrl().toString());
+        //存储章节问题id
+        saveChapterProblem(chapterId, problemIdList);
+
+
+
         if(problemAnswerList.size() == 0){
             System.out.println("没有答案");
             return;
         }
+
         //存储答案
-        saveAnswer(problemIdList,problemAnswerList);
+        saveAnswer(problemIdList,problemAnswerList,titleList,chapterId);
         //添加下一页
         String nextPage = html.css(".sk_pagedown").toString();
         //获取下一页地址
@@ -81,6 +129,36 @@ public class HGPageProcesser implements PageProcessor {
     }
 
     /**
+     * 存储章节问题id
+     * @param chapterId
+     * @param problemIdList
+     */
+    private void saveChapterProblem(String chapterId, List<String> problemIdList) {
+        HttpSession session = request.getSession();
+        List<ChapterProblem> chapterProblemTemp = (List<ChapterProblem>) session.getAttribute("chapterProblemList");
+        //提取问题ID
+        List<String> problemIdResultList = solveProblemId(problemIdList);
+        for (String problemIdResult : problemIdResultList) {
+            //存储章节题目对应数据
+            ChapterProblem temp = new ChapterProblem();
+            temp.setChapterId(chapterId);
+            temp.setProblemId(problemIdResult);
+            chapterProblemTemp.add(temp);
+            session.setAttribute("chapterProblemList",chapterProblemTemp);
+        }
+
+    }
+
+    private String getChapterIdByUrl(String url) {
+        String urlStr = url.substring(url.indexOf("syllabusId=") + 11, url.length());
+        int cutNum = urlStr.indexOf("&");
+        if(cutNum > 0){
+            urlStr = urlStr.substring(0,cutNum);
+        }
+        return urlStr;
+    }
+
+    /**
      * 获取题目页面下一页地址
      * @param nextPage
      * @return
@@ -88,7 +166,7 @@ public class HGPageProcesser implements PageProcessor {
     private String solveNextPage(String nextPage, Page page) {
         String pageNum = nextPage.substring(nextPage.indexOf("goPage('")+8,nextPage.indexOf("')"));
         String preUrl = page.getUrl().toString();
-        String url = preUrl + "&pageNum=2&pageSize=10&scopeType=all&term=2&isPublished=Y&isAutoSave=N";
+        String url = preUrl + "&pageNum=" + pageNum + "&pageSize=10&scopeType=all&term=2&isPublished=Y&isAutoSave=N";
         return url;
     }
 
@@ -97,14 +175,27 @@ public class HGPageProcesser implements PageProcessor {
      * @param problemIdList
      * @param problemAnswerList
      */
-    private void saveAnswer(List<String> problemIdList, List<String> problemAnswerList) {
+    private void saveAnswer(List<String> problemIdList, List<String> problemAnswerList, List<String> titleList, String chapterId) {
         //提取问题ID
         List<String> problemIdResultList = solveProblemId(problemIdList);
         //提取答案值
         List<String> problemAnswerResultList = solveProblemAnswer(problemAnswerList);
         for (int i = 0; i < problemAnswerResultList.size(); i++) {
             //存储答案--值
-            System.out.println(problemIdResultList.get(i)+"的答案："+problemAnswerResultList.get(i));
+            System.out.println(problemIdResultList.get(i)+"的答案：" + problemAnswerResultList.get(i));
+            String id = problemIdResultList.get(i);
+            //已有该答案，跳过
+            if(problemService.getOne(new QueryWrapper<Problem>().eq("ID",id)) != null){
+                continue;
+            }
+            Problem problem = new Problem();
+            if(StringUtils.isEmpty(id)){
+                id = UUID.randomUUID().toString();
+            }
+            problem.setId(id);
+            problem.setAnswer(problemAnswerResultList.get(i));
+            problem.setTitle(titleList.get(i));
+            problemService.save(problem);
         }
     }
 
@@ -152,10 +243,30 @@ public class HGPageProcesser implements PageProcessor {
         }
         Chapter chapter = JSON.parseObject(zNodeStr, Chapter.class);
         //获取chapter列表
-        courseUrlList = new ArrayList<String>();
-        getChapterList(chapter);
+        List<String> courseUrlList = new ArrayList<String>();
+        getChapterList(chapter, courseUrlList, "0");
         //添加题目页面url
         addSubjectRequest(page, courseUrlList);
+    }
+
+    /**
+     * 保存用户与其Chapter信息到session
+     * @param chapter
+     */
+    private void insertChapter2List(Chapter chapter, String parentCode) {
+        //关联父子树关系
+        Chapter temp = new Chapter();
+        temp.setId(chapter.getId());
+        temp.setParentCode(parentCode);
+        temp.setIdCode(userName);
+        temp.setName(chapter.getName());
+        temp.setLevel(chapter.getLevel());
+
+        HttpSession session = request.getSession();
+        List<Chapter> chapterTemp = (List<Chapter>) session.getAttribute("chapterList");
+        chapterTemp.add(temp);
+        session.setAttribute("chapterList",chapterTemp);
+
     }
 
     /**
@@ -186,11 +297,9 @@ public class HGPageProcesser implements PageProcessor {
      * 根据json对象获取chapter列表
      * @param chapter
      */
-    private void getChapterList(Chapter chapter) {
-        Chapter temp = new Chapter();
-        temp.setId(chapter.getId());
-        temp.setName(chapter.getName());
-        temp.setLevel(chapter.getLevel());
+    private void getChapterList(Chapter chapter, List<String> courseUrlList, String parentCode) {
+        //保存用户与其Chapter信息
+        insertChapter2List(chapter, parentCode);
         if(chapter.getLevel().equals("1")){
             String idStr = chapter.getId();
             String[] idArr = idStr.split(",");
@@ -200,15 +309,13 @@ public class HGPageProcesser implements PageProcessor {
                 courseUrlList.add(id2Url(id));
             }
         }
-//        chapterList.add(temp);
-
         List<Chapter> nodes = chapter.getNodes();
         if(nodes == null || nodes.size() == 0){
             return;
         }
         for (int i = 0; i < nodes.size(); i++) {
             Chapter temp2 = nodes.get(i);
-            getChapterList(temp2);
+            getChapterList(temp2, courseUrlList, chapter.getId());
         }
     }
 
@@ -292,15 +399,14 @@ public class HGPageProcesser implements PageProcessor {
     }
 
     public Site getSite() {
-        initCookie(COOKIE_STR);
+        initCookie();
         return site;
     }
 
     /**
      * 初始化cookie信息
-     * @param cookieStr
      */
-    private void initCookie(String cookieStr) {
+    private void initCookie() {
         String[] cookieArr = cookieStr.split(";");
         for (int i = 0; i < cookieArr.length; i++) {
             String cookie = cookieArr[i];

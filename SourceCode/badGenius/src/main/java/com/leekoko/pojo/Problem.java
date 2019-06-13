@@ -24,7 +24,7 @@ public class Problem extends Model<Problem> {
     private static final long serialVersionUID = 1L;
 
     @TableId("ID")
-    private Integer id;
+    private String id;
 
     /**
      * 题目

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leekoko.mapper.ChapterMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.leekoko.entity.Chapter">
+        <result column="ID" property="id" />
+        <result column="PARENT_CODE" property="parentCode" />
+        <result column="NAME" property="name" />
+        <result column="OPEN" property="open" />
+        <result column="LEVEL" property="level" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, PARENT_CODE, NAME, OPEN, LEVEL
+    </sql>
+
+</mapper>
