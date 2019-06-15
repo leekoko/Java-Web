@@ -58,7 +58,7 @@ public class CrawlTest {
     @Test
     public void resolveJson(){
         String json = "{\"name\":\"名师讲座\",\"id\":\"4aa66366326ce1eb013270e91114052c,\",\"open\":true,\"level\":0,\"nodes\":[{\"name\":\"人文社会科学类\",\"id\":\"4aa66366326ce1eb013270e991cd052d,1\",\"open\":true,\"level\":1,\"nodes\":[{\"name\":\"中国传统政治制度的整体认识\",\"id\":\"4aa66366326ce1eb013270ea16ec052f,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"中国古代科举制度的研究\",\"id\":\"4aa66366326ce1eb013270eeaf3e0531,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"哲学的性质与功能\",\"id\":\"4aa66366326ce1eb013270efdce50532,2\",\"open\":true,\"level\":2,\"nodes\":[{\"name\":\"矛盾法则与生活智慧\",\"id\":\"4aa663673436a33001343b3f8f65569b,3\",\"open\":true,\"level\":3,\"parentId\":\"4aa66366326ce1eb013270efdce50532\",\"exAttribute\":{\"mate\":\"Y\"}}],\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"管理的目的与任务\",\"id\":\"4aa66366326ce1eb013270f07de30535,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"企业运营的目的与机制等\",\"id\":\"4aa66366326ce1eb013270f0b0c60536,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"中国经济超越世界的投资战略选择\",\"id\":\"4aa66366326ce1eb013270f25d380539,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"经济学的思维方式\",\"id\":\"4aa66366326ce1eb013270f2811d053a,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"犯罪根源论\",\"id\":\"4aa66366326ce1eb013270f30353053d,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"我国刑法中的理论与实践问题\",\"id\":\"4aa66366326ce1eb013270f38973053e,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"文学与人生\",\"id\":\"4aa66366326ce1eb013270f427460542,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"心理学讲座\",\"id\":\"4aa663673696872a01369a583c763b53,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"形势与政策讲座（2012-10-28）\",\"id\":\"4aa663673b65444a013b6a2fd6ec7f76,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"大学——人生新起航\",\"id\":\"4aa66367413072a0014148bbecbe65aa,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"广东如何成为中国特色社会主义的排头兵\",\"id\":\"4aa663674346a51e014350b7344f0254,2\",\"open\":true,\"level\":2,\"parentId\":\"4aa66366326ce1eb013270e991cd052d\",\"exAttribute\":{\"mate\":\"Y\"}}],\"parentId\":\"4aa66366326ce1eb013270e91114052c\"},{\"name\":\"自然科学类\",\"id\":\"4aa66366326ce1eb013270f3e2310540,1\",\"level\":1,\"nodes\":[{\"name\":\"会计核算与涉税处理技巧\",\"id\":\"4aa66366326ce1eb013270f46b850543,2\",\"level\":2,\"parentId\":\"4aa66366326ce1eb013270f3e2310540\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"经济数学发展历史\",\"id\":\"4aa66366326ce1eb013270f48eb90544,2\",\"level\":2,\"parentId\":\"4aa66366326ce1eb013270f3e2310540\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"电子商务趋势与移动商务运用\",\"id\":\"4aa66366326ce1eb013270f4b2660545,2\",\"level\":2,\"parentId\":\"4aa66366326ce1eb013270f3e2310540\",\"exAttribute\":{\"mate\":\"Y\"}}],\"parentId\":\"4aa66366326ce1eb013270e91114052c\"},{\"name\":\"专利讲座\",\"id\":\"msjz-zhuanlijiangzuo,1\",\"level\":1,\"nodes\":[{\"name\":\"专利信息应用\",\"id\":\"msjz-zhuanlijiangzuo-1,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"专利权无效及专利侵权概述\",\"id\":\"msjz-zhuanlijiangzuo-2,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"专利法概述\",\"id\":\"msjz-zhuanlijiangzuo-3,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"企业知识产权管理规范解读\",\"id\":\"msjz-zhuanlijiangzuo-4,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"商标法概述及商标注册实务\",\"id\":\"msjz-zhuanlijiangzuo-5,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"外观设计专利申请实务\",\"id\":\"msjz-zhuanlijiangzuo-6,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"机械领域专利申请概述\",\"id\":\"msjz-zhuanlijiangzuo-7,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"生化领域专利申请实务\",\"id\":\"msjz-zhuanlijiangzuo-8,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"电学领域专利申请概述\",\"id\":\"msjz-zhuanlijiangzuo-9,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"知识产权对企业发展的重要意义\",\"id\":\"msjz-zhuanlijiangzuo-10,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"著作权法概述及著作权登记实务\",\"id\":\"msjz-zhuanlijiangzuo-11,2\",\"level\":2,\"parentId\":\"msjz-zhuanlijiangzuo\",\"exAttribute\":{\"mate\":\"Y\"}}],\"parentId\":\"4aa66366326ce1eb013270e91114052c\"},{\"name\":\"创新与创业\",\"id\":\"msjz-shuangchuangkecheng,1\",\"level\":1,\"nodes\":[{\"name\":\"创新8大波\",\"id\":\"msjz-shuangchuangkecheng-1,2\",\"level\":2,\"parentId\":\"msjz-shuangchuangkecheng\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"创业8大波\",\"id\":\"msjz-shuangchuangkecheng-2,2\",\"level\":2,\"parentId\":\"msjz-shuangchuangkecheng\",\"exAttribute\":{\"mate\":\"Y\"}},{\"name\":\"俞文辉校友创业事迹分享\",\"id\":\"ff80808163f347ec0163f80b5c882c02,2\",\"level\":2,\"parentId\":\"msjz-shuangchuangkecheng\",\"exAttribute\":{\"mate\":\"Y\"}}],\"parentId\":\"4aa66366326ce1eb013270e91114052c\"}]}";
-        Chapter chapter = JSON.parseObject(json, Chapter.class);
+        Chapter chapter = JSON.parseObject(JSON_OBJECT, Chapter.class);
         getChapterList(chapter);
         System.out.println(chapterList.size());
     }
@@ -1313,4 +1313,353 @@ public class CrawlTest {
             "  </form> \n" +
             " </body>\n" +
             "</html>";
+
+    String JSON_OBJECT = "{\n" +
+            "        \"name\":\"离散数学\",\n" +
+            "        \"id\":\"402881382ea3cffc012ea411e76f0242,\",\n" +
+            "        \"open\":true,\n" +
+            "        \"level\":0,\n" +
+            "        \"nodes\":[\n" +
+            "            {\n" +
+            "                \"name\":\"第一章 命题逻辑\",\n" +
+            "                \"id\":\"402881382f520988012f570fafdd0140,1\",\n" +
+            "                \"open\":true,\n" +
+            "                \"level\":1,\n" +
+            "                \"nodes\":[\n" +
+            "                    {\n" +
+            "                        \"name\":\"第一节 命题与联结词\",\n" +
+            "                        \"id\":\"402881382f520988012f571282680148,2\",\n" +
+            "                        \"open\":true,\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f570fafdd0140\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\",\n" +
+            "                            \"exam\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第二节 命题公式\",\n" +
+            "                        \"id\":\"402881382f520988012f5712a86b0149,2\",\n" +
+            "                        \"open\":true,\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f570fafdd0140\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第三节 命题公式的范式\",\n" +
+            "                        \"id\":\"402881382f520988012f5712c8b1014a,2\",\n" +
+            "                        \"open\":true,\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f570fafdd0140\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第四节 联结词的功能完全集\",\n" +
+            "                        \"id\":\"402881382f520988012f57134b8f014b,2\",\n" +
+            "                        \"open\":true,\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f570fafdd0140\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第五节 推理规则和证明方法\",\n" +
+            "                        \"id\":\"402881382f520988012f57136aa4014c,2\",\n" +
+            "                        \"open\":true,\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f570fafdd0140\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\",\n" +
+            "                            \"exam\":\"Y\"\n" +
+            "                        }\n" +
+            "                    }\n" +
+            "                ],\n" +
+            "                \"parentId\":\"402881382ea3cffc012ea411e76f0242\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"name\":\"第二章 谓词逻辑\",\n" +
+            "                \"id\":\"402881382f520988012f570fe4190141,1\",\n" +
+            "                \"level\":1,\n" +
+            "                \"nodes\":[\n" +
+            "                    {\n" +
+            "                        \"name\":\"第一节 谓词逻辑的基本概念\",\n" +
+            "                        \"id\":\"402881382f520988012f5715ea250152,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f570fe4190141\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第二节 谓词逻辑公式\",\n" +
+            "                        \"id\":\"402881382f520988012f5716373e0153,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f570fe4190141\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\",\n" +
+            "                            \"exam\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第三节 谓词演算的推理规则\",\n" +
+            "                        \"id\":\"402881382f520988012f5716788a0154,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f570fe4190141\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\",\n" +
+            "                            \"exam\":\"Y\"\n" +
+            "                        }\n" +
+            "                    }\n" +
+            "                ],\n" +
+            "                \"parentId\":\"402881382ea3cffc012ea411e76f0242\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"name\":\"第三章 集合\",\n" +
+            "                \"id\":\"402881382f520988012f57102a660142,1\",\n" +
+            "                \"level\":1,\n" +
+            "                \"nodes\":[\n" +
+            "                    {\n" +
+            "                        \"name\":\"第一节 集合的基本概念\",\n" +
+            "                        \"id\":\"402881382f520988012f57198743015a,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f57102a660142\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第二节 集合的运算\",\n" +
+            "                        \"id\":\"402881382f520988012f5719a46a015b,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f57102a660142\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第三节 归纳法与自然数\",\n" +
+            "                        \"id\":\"402881382f520988012f5719d90d015c,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f57102a660142\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第四节 笛卡尔积\",\n" +
+            "                        \"id\":\"402881382f520988012f571a52d9015d,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f57102a660142\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第五节 可数与不可数集合\",\n" +
+            "                        \"id\":\"402881382f520988012f571a8148015e,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f57102a660142\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第六节 集合基数的比较\",\n" +
+            "                        \"id\":\"402881382f520988012f571a9cb2015f,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f57102a660142\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    }\n" +
+            "                ],\n" +
+            "                \"parentId\":\"402881382ea3cffc012ea411e76f0242\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"name\":\"第四章 二元关系与函数\",\n" +
+            "                \"id\":\"402881382f520988012f5710597e0143,1\",\n" +
+            "                \"level\":1,\n" +
+            "                \"nodes\":[\n" +
+            "                    {\n" +
+            "                        \"name\":\"第一节 二元关系的基本概念\",\n" +
+            "                        \"id\":\"402881382f520988012f571e5fe30167,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f5710597e0143\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第二节 关系的合成\",\n" +
+            "                        \"id\":\"402881382f520988012f571eb9bb0168,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f5710597e0143\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第三节 闭包\",\n" +
+            "                        \"id\":\"402881382f520988012f571f31230169,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f5710597e0143\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第四节 偏序关系\",\n" +
+            "                        \"id\":\"402881382f520988012f5720e35e016a,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f5710597e0143\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\",\n" +
+            "                            \"exam\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第五节 等价关系和划分\",\n" +
+            "                        \"id\":\"ff8080816145c81801614aeb5c7000d8,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f5710597e0143\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\",\n" +
+            "                            \"exam\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第六节 函数的基本概念\",\n" +
+            "                        \"id\":\"ff8080816145c81801614aeb7ba800d9,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f5710597e0143\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\",\n" +
+            "                            \"exam\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第七节 特殊 函数类\",\n" +
+            "                        \"id\":\"ff8080816145c81801614aeeba3100da,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f5710597e0143\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第八节 逆函数\",\n" +
+            "                        \"id\":\"ff8080816145c81801614aeed7c600db,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f5710597e0143\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    }\n" +
+            "                ],\n" +
+            "                \"parentId\":\"402881382ea3cffc012ea411e76f0242\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"name\":\"第五章 图论简介\",\n" +
+            "                \"id\":\"402881382f520988012f57108fc30144,1\",\n" +
+            "                \"level\":1,\n" +
+            "                \"nodes\":[\n" +
+            "                    {\n" +
+            "                        \"name\":\"第一节 有向图及无向图\",\n" +
+            "                        \"id\":\"402881382f520988012f5722d3f6016c,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f57108fc30144\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第二节 路径与回路\",\n" +
+            "                        \"id\":\"402881382f520988012f5723d925016d,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f57108fc30144\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\",\n" +
+            "                            \"exam\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第三节 图的矩阵表示\",\n" +
+            "                        \"id\":\"402881382f520988012f57240dc6016e,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f57108fc30144\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    }\n" +
+            "                ],\n" +
+            "                \"parentId\":\"402881382ea3cffc012ea411e76f0242\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"name\":\"第六章 特殊的图类\",\n" +
+            "                \"id\":\"402881382f520988012f571126ca0145,1\",\n" +
+            "                \"level\":1,\n" +
+            "                \"nodes\":[\n" +
+            "                    {\n" +
+            "                        \"name\":\"第一节 二部图\",\n" +
+            "                        \"id\":\"402881382f520988012f572864c10176,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f571126ca0145\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"mate\":\"Y\",\n" +
+            "                            \"exam\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第二节 路径与回路\",\n" +
+            "                        \"id\":\"402881382f520988012f5728848e0177,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f571126ca0145\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    },\n" +
+            "                    {\n" +
+            "                        \"name\":\"第三节 树与有向树\",\n" +
+            "                        \"id\":\"402881382f520988012f57289caa0178,2\",\n" +
+            "                        \"level\":2,\n" +
+            "                        \"parentId\":\"402881382f520988012f571126ca0145\",\n" +
+            "                        \"exAttribute\":{\n" +
+            "                            \"exam\":\"Y\",\n" +
+            "                            \"mate\":\"Y\"\n" +
+            "                        }\n" +
+            "                    }\n" +
+            "                ],\n" +
+            "                \"parentId\":\"402881382ea3cffc012ea411e76f0242\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"name\":\"课程考点\",\n" +
+            "                \"id\":\"4aa6636742db04d30142eac40c5a5496,1\",\n" +
+            "                \"level\":1,\n" +
+            "                \"parentId\":\"402881382ea3cffc012ea411e76f0242\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"name\":\"随堂练习\",\n" +
+            "                \"id\":\"4aa6636756e00aa70156e8dde9c86ec9,1\",\n" +
+            "                \"level\":1,\n" +
+            "                \"parentId\":\"402881382ea3cffc012ea411e76f0242\"\n" +
+            "            }\n" +
+            "        ]\n" +
+            "    }";
 }

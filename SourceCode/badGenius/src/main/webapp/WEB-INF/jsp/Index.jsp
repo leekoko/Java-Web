@@ -122,7 +122,7 @@ function showOneLevel(chapterList) {
 function showTwoLevel(chapterList, oneLevelArr) {
     for(var i = 0 ; i < chapterList.length; i++){
         var curChapter2 = chapterList[i];
-        if(curChapter2.level === '1' || curChapter2.level === '2'){
+        if(curChapter2.level !== '0'){
             var curId = curChapter2.id.split(",");
             var tabHtml2 = "<li><a href=\"#problemPage\" tabindex=\"-1\" data-toggle=\"tab\" onclick=\"goProblemPage('"+ curId[0] +"')\">"+ curChapter2.name +"</a></li>";
             var parentId = curChapter2.parentCode.split(",");

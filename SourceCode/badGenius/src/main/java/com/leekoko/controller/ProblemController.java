@@ -1,9 +1,7 @@
 package com.leekoko.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.leekoko.pojo.Problem;
 import com.leekoko.pojo.User;
 import com.leekoko.service.IChapterService;
@@ -53,9 +51,15 @@ public class ProblemController {
         String param = "j_username="+ userName +"&j_password="+password;
         User user = new User();
         user.setUserName(userName);
-        user.setPassword(password);
-        user.setLoginTime(new Date().toString());
-        userService.saveOrUpdate(user);
+        user = userService.getOne(new QueryWrapper<User>().eq("userName", userName));
+        if(user == null){
+            user.setPassword(password);
+            user.setLoginTime(new Date().toString());
+            userService.saveOrUpdate(user);
+        }else {
+            user.setLoginTime(new Date().toString());
+            userService.saveOrUpdate(user);
+        }
         String cookie = null;
         try {
             cookie = HttpUtil.doPost("https://wl.scutde.net:443/edu3/j_spring_security_check?"+ param,null);

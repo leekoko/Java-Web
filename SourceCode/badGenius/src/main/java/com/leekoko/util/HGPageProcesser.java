@@ -109,23 +109,20 @@ public class HGPageProcesser implements PageProcessor {
         //存储章节问题id
         saveChapterProblem(chapterId, problemIdList);
 
+        //存在下一页则添加下一页
+        String nextPage = html.css(".sk_pagedown").toString();
+        if(nextPage != null){
+            String nextPageResult = solveNextPage(nextPage, page);
+            addSubjectRequest(page, nextPageResult);
+        }
 
-
+        //存储答案
         if(problemAnswerList.size() == 0){
             System.out.println("没有答案");
             return;
         }
-
         //存储答案
-        saveAnswer(problemIdList,problemAnswerList,titleList,chapterId);
-        //添加下一页
-        String nextPage = html.css(".sk_pagedown").toString();
-        //获取下一页地址
-        if(nextPage == null){
-            return;
-        }
-        String nextPageResult = solveNextPage(nextPage, page);
-        addSubjectRequest(page, nextPageResult);
+        saveAnswer(problemIdList,problemAnswerList,titleList);
     }
 
     /**
@@ -166,8 +163,21 @@ public class HGPageProcesser implements PageProcessor {
     private String solveNextPage(String nextPage, Page page) {
         String pageNum = nextPage.substring(nextPage.indexOf("goPage('")+8,nextPage.indexOf("')"));
         String preUrl = page.getUrl().toString();
+        //去掉无关参数
+        preUrl = cutToEndStr("&pageNum=",preUrl);
         String url = preUrl + "&pageNum=" + pageNum + "&pageSize=10&scopeType=all&term=2&isPublished=Y&isAutoSave=N";
         return url;
+    }
+
+    /**
+     *  将旧的Str裁切到指定位置
+     */
+    private String cutToEndStr(String cutEndStr, String oldStr) {
+        Integer cutEndNum = oldStr.indexOf(cutEndStr);
+        if(cutEndNum > 0){
+            oldStr = oldStr.substring(0, cutEndNum);
+        }
+        return oldStr;
     }
 
     /**
@@ -175,7 +185,7 @@ public class HGPageProcesser implements PageProcessor {
      * @param problemIdList
      * @param problemAnswerList
      */
-    private void saveAnswer(List<String> problemIdList, List<String> problemAnswerList, List<String> titleList, String chapterId) {
+    private void saveAnswer(List<String> problemIdList, List<String> problemAnswerList, List<String> titleList) {
         //提取问题ID
         List<String> problemIdResultList = solveProblemId(problemIdList);
         //提取答案值
@@ -208,7 +218,7 @@ public class HGPageProcesser implements PageProcessor {
         List<String> resultList = new ArrayList<String>();
         for (String answerEl : problemAnswerList) {
             int answerIndex = answerEl.indexOf("参考答案：");
-            String answer = answerEl.substring(answerIndex+5,answerIndex+6);
+            String answer = answerEl.substring(answerIndex+5,answerEl.indexOf("</div>"));
             resultList.add(answer);
         }
         return resultList;
@@ -300,12 +310,12 @@ public class HGPageProcesser implements PageProcessor {
     private void getChapterList(Chapter chapter, List<String> courseUrlList, String parentCode) {
         //保存用户与其Chapter信息
         insertChapter2List(chapter, parentCode);
-        if(chapter.getLevel().equals("1")){
+        if(!chapter.getLevel().equals("0")){
             String idStr = chapter.getId();
             String[] idArr = idStr.split(",");
             String id = idArr[0];
             //存储一级课程id
-            if(id.length() == 32){
+            if(id.length() > 20){  //排除非正常id
                 courseUrlList.add(id2Url(id));
             }
         }
