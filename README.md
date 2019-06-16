@@ -22,9 +22,9 @@ oAuth2是一种协议，提供认证和授权的标准。
 
 锁包括重量级锁、自旋锁、轻量级锁、偏向锁、悲观、乐观锁等各种锁，这里逐个进行介绍。
 
+### [线程](docs/thread.md)  
 
-
-
+线程的方方面面。
 
 
 
@@ -97,8 +97,6 @@ oAuth2是一种协议，提供认证和授权的标准。
 #### 11.[Schema](knowDoc/Schema.md)   
 
 #### 12.[WebSocket](knowDoc/WebSocket.md)   
-
-#### 13.[线程安全](knowDoc/thread.md)    
 
 #### 14.[zTree](knowDoc/zTree.md)  
 
