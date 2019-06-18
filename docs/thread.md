@@ -12,29 +12,19 @@
 
 进程是隔离的,占一个内存地址。线程可以共享数据，用的是进程的内存地址。 
 
-### 加锁synchronized
+### 加锁[synchronized](component/synchronized.md)  
 
-synchronized的作用就是让代码块具有原子性
+synchronized可以让代码块具有原子性，对部分方法加锁可能会产生脏读，对多个方法加锁可能会产生死锁。  
 
-![](../images/t10.png)  
+### 线程可见volatile
 
-#### 加锁写法
+如果不给变量添加volatile，线程之间就是不可见的，running将不会变成false，线程t1将永远不会结束。
 
-要执行内部代码，需要拿到堆内存中new出来的Object对象的锁
+![](../images/t13.png)  
 
-![](../images/t06.png)
+因为在JMM(java内存模型)中，running变量会被存入到cpu的缓存区内。而其他线程修改内存上的running值将不会影响cpu中缓存区的running变量。
 
-o对象没有实际用途，只是用来获取锁。可以优化代码，用自身做锁：
-
-![](../images/t07.png)  
-
-此方法再做优化，省去对象，默认当前类
-
-![](../images/t08.png)
-
-因为静态方法不能通过``类.方法``访问，所以this将引用不到，需要用class进行锁定（锁静态方法 = 锁类）
-
-![](../images/t09.png)  
+当while代码块中cpu有了空闲时间，它将会取内存中读值。或者添加volatile修饰，在running变量发生改变的时候，主线程会去通知t1线程取更新running的值。
 
 
 
@@ -42,7 +32,9 @@ o对象没有实际用途，只是用来获取锁。可以优化代码，用自�
 
 
 
-https://www.bilibili.com/video/av33688545/?p=19
+
+
+<https://www.bilibili.com/video/av33688545/?p=21>
 
 码农翻身书籍P21
 
