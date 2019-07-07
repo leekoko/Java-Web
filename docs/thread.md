@@ -26,6 +26,16 @@ synchronized可以让代码块具有原子性，对部分方法加锁可能会�
 
 当while代码块中cpu有了空闲时间，它将会取内存中读值。或者添加volatile修饰，在running变量发生改变的时候，主线程会去通知t1线程取更新running的值。
 
+#### volatile与synchronized的比较
+
+能用volatile就不要加锁，并发效果有提高很多。但是volatile只有可见性，而synchronized具有可见性和原子性。
+
+volatile不具有原子性表现如下：
+
+![](../images/t14.png)  
+
+虽然线程从内存读取的数据是实时的，但是不保证在写入的
+
 
 
 
