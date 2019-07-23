@@ -30,7 +30,11 @@ oAuth2是一种协议，提供认证和授权的标准。
 
 zookeeper主要功能包括：配置维护、域名服务、分布式同步、集群管理。
 
+### [webservice](docs/webservice.md)
 
+使用后再做记录。
+
+### [kafka](docs/kafka.md)  
 
 
 
