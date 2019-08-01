@@ -34,11 +34,7 @@ zookeeper主要功能包括：配置维护、域名服务、分布式同步、�
 
 使用后再做记录。
 
-### [kafka](docs/kafka.md)  
 
-
-
-### [MQ消息队列](docs/mq.md)
 
 
 
