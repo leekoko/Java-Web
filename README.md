@@ -106,15 +106,9 @@ zookeeper主要功能包括：配置维护、域名服务、分布式同步、�
 
 #### 12.[WebSocket](knowDoc/WebSocket.md)   
 
-#### 14.[zTree](knowDoc/zTree.md)  
-
 #### 15.[api接口规范](doc/api.md)  
 
 
 
 
-
-### 基础知识   
-
-#### 1.[面向对象](base/oop.md)   
 

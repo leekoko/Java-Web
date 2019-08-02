@@ -10,7 +10,9 @@
 
 ![](../images/t05.png)  
 
-进程是隔离的,占一个内存地址。线程可以共享数据，用的是进程的内存地址。 
+进程是隔离的，占一个内存地址。线程可以共享数据，用的是进程的内存地址。 
+
+[线程启动源码分析](component/threadStart.md)     
 
 ### 加锁[synchronized](component/synchronized.md)  
 
