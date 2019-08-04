@@ -32,7 +32,7 @@ zookeeper主要功能包括：配置维护、域名服务、分布式同步、�
 
 ### [webservice](docs/webservice.md)
 
-使用后再做记录。
+编写一个代码模拟webservice的通讯。
 
 
 
