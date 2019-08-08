@@ -65,5 +65,6 @@ JVM调优主要针对堆内存调优，常用的参数如下：
 | -XX:NewRatio=n          | 设置年轻代和年老代的比值        |
 | -XX:+PrintGCDetails     | 查看堆空间情况                  |
 
+## [强引用、弱引用、软引用、虚引用](component/Quote.md)  
 
-
+不同引用的解释与举例
