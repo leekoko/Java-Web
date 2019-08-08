@@ -1,0 +1,128 @@
+{
+  "small": [
+    {
+      "max_concurrent": 109,
+      "avg_rtt": 44.36304436304437
+    },
+    {
+      "max_concurrent": 148,
+      "avg_rtt": 56.27376425855513
+    },
+    {
+      "max_concurrent": 108,
+      "avg_rtt": 36.46185010128292
+    },
+    {
+      "max_concurrent": 147,
+      "avg_rtt": 58.61244019138756
+    },
+    {
+      "max_concurrent": 121,
+      "avg_rtt": 36.99174564353409
+    },
+    {
+      "max_concurrent": 136,
+      "avg_rtt": 42.915746292205746
+    },
+    {
+      "max_concurrent": 101,
+      "avg_rtt": 26.199740596627755
+    },
+    {
+      "max_concurrent": 110,
+      "avg_rtt": 36.937541974479515
+    },
+    {
+      "max_concurrent": 116,
+      "avg_rtt": 32.29398663697105
+    },
+    {
+      "max_concurrent": 135,
+      "avg_rtt": 64.74820143884892
+    }
+  ],
+  "medium": [
+    {
+      "max_concurrent": 411,
+      "avg_rtt": 62.07521522428636
+    },
+    {
+      "max_concurrent": 392,
+      "avg_rtt": 47.138047138047135
+    },
+    {
+      "max_concurrent": 331,
+      "avg_rtt": 39.278509552628456
+    },
+    {
+      "max_concurrent": 365,
+      "avg_rtt": 46.74093994109361
+    },
+    {
+      "max_concurrent": 423,
+      "avg_rtt": 50.315213512549064
+    },
+    {
+      "max_concurrent": 370,
+      "avg_rtt": 43.85445063411165
+    },
+    {
+      "max_concurrent": 418,
+      "avg_rtt": 34.20342034203421
+    },
+    {
+      "max_concurrent": 379,
+      "avg_rtt": 48.00506649778341
+    },
+    {
+      "max_concurrent": 345,
+      "avg_rtt": 36.012526096033405
+    },
+    {
+      "max_concurrent": 355,
+      "avg_rtt": 66.15728661945583
+    }
+  ],
+  "large": [
+    {
+      "max_concurrent": 504,
+      "avg_rtt": 56.48957632817754
+    },
+    {
+      "max_concurrent": 484,
+      "avg_rtt": 48.14004376367615
+    },
+    {
+      "max_concurrent": 585,
+      "avg_rtt": 55.1314673452078
+    },
+    {
+      "max_concurrent": 512,
+      "avg_rtt": 58.96579523206265
+    },
+    {
+      "max_concurrent": 480,
+      "avg_rtt": 36.03062603212731
+    },
+    {
+      "max_concurrent": 518,
+      "avg_rtt": 35.98721689592886
+    },
+    {
+      "max_concurrent": 505,
+      "avg_rtt": 36.26831370295892
+    },
+    {
+      "max_concurrent": 535,
+      "avg_rtt": 40.755694370381654
+    },
+    {
+      "max_concurrent": 563,
+      "avg_rtt": 37.96870785001349
+    },
+    {
+      "max_concurrent": 534,
+      "avg_rtt": 70.73784607232746
+    }
+  ]
+}

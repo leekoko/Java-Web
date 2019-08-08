@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>service</artifactId>
+        <groupId>com.aliware.tianchi</groupId>
+        <version>tianchi.1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>service-provider</artifactId>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.aliware.tianchi</groupId>
+            <artifactId>workspace-provider</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliware.tianchi</groupId>
+            <artifactId>workspace-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliware.tianchi</groupId>
+            <artifactId>service-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <!-- for test -->
+        <dependency>
+            <artifactId>workspace-provider</artifactId>
+            <groupId>com.aliware.tianchi</groupId>
+            <version>1.0.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.4.RELEASE</version>
+                <configuration>
+                    <fork>true</fork>
+                    <layout>ZIP</layout>
+                    <mainClass>com.aliware.tianchi.MyProvider</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <finalName>service-provider</finalName>
+    </build>
+
+</project>
