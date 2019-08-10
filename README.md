@@ -46,7 +46,9 @@ Servlet知识整理
 
 关于Java虚拟机的一些知识点。
 
-### [中间件性能挑战赛](SourceCode/adaptive-loadbalance)
+### [中间件性能挑战赛解析](docs/middleware.md)  
+
+比赛之后的总结。
 
 
 
