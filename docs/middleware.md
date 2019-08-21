@@ -1,3 +1,5 @@
+# 中间件比赛
+
 测试的数据是每秒1024个请求，执行60s，达到12w的QPS
 
 1.权重轮询
@@ -25,3 +27,4 @@ Q = R * W
 2. LoadBalancer选择的时候，比较每个Provider的workRequestQueue的大小，size最大的把请求发过去。
 
 3. 请求处理完成后，发还workRequest给对应的ProviderStatus的workRequestQueue.
+
