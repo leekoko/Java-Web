@@ -135,3 +135,84 @@ public class ServerHandler implements Runnable {
 
 从socket中拿到RpcInfo对象，通过拿到的对象信息反序列化，调用指定的方法。
 
+## webserivce调用
+
+webservice1.2调用方式：
+
+```
+以下是 SOAP 1.2 请求和响应示例。所显示的占位符需替换为实际值。
+
+POST /WebServices/MobileCodeWS.asmx HTTP/1.1
+Host: ws.webxml.com.cn
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: length
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <soap12:Body>
+    <getMobileCodeInfo xmlns="http://WebXml.com.cn/">
+      <mobileCode>string</mobileCode>
+      <userID>string</userID>
+    </getMobileCodeInfo>
+  </soap12:Body>
+</soap12:Envelope>
+```
+
+具体调用方法如下：
+
+```java
+    private boolean sendNeiKong(InternallyPilotingResult internallyPilotingResult){
+        //服务的地址
+        URL wsUrl = null;
+        InputStream is = null;
+        HttpURLConnection conn = null;
+        OutputStream os = null;
+        try {
+            wsUrl = new URL("http://XXX.XX.X.X/kcj/interface/dataservice.asmx"); 
+            conn = (HttpURLConnection) wsUrl.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/soap+xml; charset=utf-8");
+            os = conn.getOutputStream();
+
+            String result = internallyPilotingResult.getResult()+"";
+            String policycashcode = internallyPilotingResult.getPolicyCashCode();
+
+            //请求体
+            String soap = "<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\"><soap12:Body><ConfirmCrash xmlns=\"http://tempuri.org/\"><code>1</code><policycashcode>"+policycashcode+"</policycashcode><result>"+result+"</result></ConfirmCrash></soap12:Body></soap12:Envelope>";
+
+            os.write(soap.getBytes());
+
+            is = conn.getInputStream();
+
+            byte[] b = new byte[1024];
+            int len = 0;
+            String s = "";
+            while((len = is.read(b)) != -1){
+                String ss = new String(b,0,len,"UTF-8");
+                s += ss;
+            }
+            System.out.println("输出内容=================================="+s);
+            if(!s.equals("0")){
+                return false;
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }finally {
+            try {
+                is.close();
+                os.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            conn.disconnect();
+        }
+        return true;
+    }
+```
+
