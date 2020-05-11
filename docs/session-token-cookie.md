@@ -2,7 +2,7 @@
 
 ### session
 
-session的出现是为了区分不同用户的Http请求，让Http请求从无状态变为又状态。
+session的出现是为了区分不同用户的Http请求，让Http请求从无状态变为有状态。
 
 session存储在服务器上对服务器造成了不少的负担，还不利于服务器的扩展，所以将session id存储到客户机上。
 
