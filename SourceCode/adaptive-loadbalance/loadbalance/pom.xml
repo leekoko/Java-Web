@@ -10,7 +10,7 @@
     <version>1.0.0</version>
 
     <properties>
-        <dubbo.version>tianchi.1.0.0</dubbo.version>
+        <dubbo.version>2.7.15</dubbo.version>
     </properties>
 
 
